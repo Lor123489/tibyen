@@ -164,6 +164,7 @@
 </header>
 
 
+
 <!-- =========================
      محتوى الصفحة
 ========================== -->
@@ -208,6 +209,7 @@
 </div>
 
 
+
 <!-- =========================
      Supabase
 ========================== -->
@@ -215,6 +217,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="supabase.js"></script>
+
 
 
 <!-- =========================
@@ -232,6 +235,7 @@
 
     const category =
         params.get("category");
+
 
 
     /* =========================
@@ -263,6 +267,7 @@
     };
 
 
+
     /* =========================
        عنوان الصفحة
     ========================== */
@@ -275,6 +280,7 @@
     document.getElementById("categoryDescription")
         .textContent =
         descriptions[category] || "";
+
 
 
     /* =========================
@@ -292,6 +298,7 @@
         return div.innerHTML;
 
     }
+
 
 
     /* =========================
@@ -330,7 +337,7 @@
             const {
                 data: lists,
                 error
-            } = await supabase
+            } = await supabaseClient
 
                 .from("lists")
 
@@ -363,7 +370,9 @@
             listsContainer.innerHTML = "";
 
 
-            /* لا توجد قوائم */
+            /* =========================
+               لا توجد قوائم
+            ========================== */
 
             if (
                 !lists ||
@@ -385,6 +394,7 @@
             }
 
 
+
             /* =========================
                إنشاء بطاقات القوائم
             ========================== */
@@ -399,12 +409,15 @@
                     "list-card";
 
 
-                /* عدد التلاوات */
+
+                /* =========================
+                   عدد التلاوات
+                ========================== */
 
                 const {
                     count,
                     error: countError
-                } = await supabase
+                } = await supabaseClient
 
                     .from("recitations")
 
@@ -429,6 +442,7 @@
                     );
 
                 }
+
 
 
                 card.innerHTML = `
@@ -485,6 +499,7 @@
     }
 
 
+
     /* =========================
        عرض التلاوات
     ========================== */
@@ -502,7 +517,6 @@
 
         listsContainer.style.display =
             "none";
-
 
         container.style.display =
             "grid";
@@ -539,6 +553,7 @@
 
         try {
 
+
             /* =========================
                جلب اسم القائمة
             ========================== */
@@ -546,7 +561,7 @@
             const {
                 data: list,
                 error: listError
-            } = await supabase
+            } = await supabaseClient
 
                 .from("lists")
 
@@ -570,6 +585,7 @@
             }
 
 
+
             /* =========================
                جلب التلاوات
             ========================== */
@@ -577,7 +593,7 @@
             const {
                 data: recitations,
                 error: recitationsError
-            } = await supabase
+            } = await supabaseClient
 
                 .from("recitations")
 
@@ -606,6 +622,7 @@
                 throw recitationsError;
 
             }
+
 
 
             /* =========================
@@ -643,7 +660,10 @@
             `;
 
 
-            /* لا توجد تلاوات */
+
+            /* =========================
+               لا توجد تلاوات
+            ========================== */
 
             if (
                 !recitations ||
@@ -663,6 +683,7 @@
                 return;
 
             }
+
 
 
             /* =========================
@@ -749,6 +770,7 @@
         }
 
     }
+
 
 
     /* =========================

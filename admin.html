@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 
 <head>
@@ -160,15 +161,16 @@ input {
 
 </head>
 
-
 <body>
-
 
 <header>
 
 <div class="logo">
+
     تبيان
+
     <span>لوحة التحكم</span>
+
 </div>
 
 </header>
@@ -250,7 +252,6 @@ onclick="openCategory('nawader')"
 </div>
 
 
-
 <!-- صفحة القسم -->
 
 <div id="categoryPage" style="display:none;">
@@ -277,7 +278,6 @@ onclick="showCreateList()"
 <div id="lists"></div>
 
 </div>
-
 
 
 <!-- صفحة القائمة -->
@@ -309,7 +309,6 @@ onclick="showAddRecitation()"
 
 
 </div>
-
 
 
 <!-- نافذة إنشاء قائمة -->
@@ -350,7 +349,6 @@ onclick="closeListModal()"
 </div>
 
 </div>
-
 
 
 <!-- نافذة إضافة تلاوة -->
@@ -399,16 +397,20 @@ onclick="closeRecitationModal()"
 
 </div>
 
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script src="supabase.js"></script>
 
 <script>
- if (localStorage.getItem("tibyanAdminLoggedIn") !== "true") {
+
+if (localStorage.getItem("tibyanAdminLoggedIn") !== "true") {
     location.href = "login.html";
 }
 
 
 var currentCategory = null;
+
 var currentList = null;
 
 
@@ -428,6 +430,7 @@ function getCategoryName(category) {
         return "النوادر";
 
     return "";
+
 }
 
 
@@ -452,6 +455,7 @@ async function openCategory(category) {
         .textContent = getCategoryName(category);
 
     await showLists();
+
 }
 
 
@@ -469,6 +473,7 @@ function goHome() {
 
     document.getElementById("listPage")
         .style.display = "none";
+
 }
 
 
@@ -499,7 +504,7 @@ async function showLists() {
 
     if (result.error) {
 
-        console.error(result.error);
+        console.error("SUPABASE ERROR:", result.error);
 
         container.innerHTML = `
             <p class="subtitle">
@@ -580,7 +585,9 @@ async function showLists() {
 
 
         container.appendChild(div);
+
     }
+
 }
 
 
@@ -596,6 +603,7 @@ function escapeHTML(text) {
     div.textContent = text;
 
     return div.innerHTML;
+
 }
 
 
@@ -610,6 +618,7 @@ function showCreateList() {
 
     document.getElementById("listName")
         .focus();
+
 }
 
 
@@ -617,6 +626,7 @@ function closeListModal() {
 
     document.getElementById("listModal")
         .classList.remove("show");
+
 }
 
 
@@ -637,7 +647,26 @@ async function createList() {
         alert("اكتب اسم القائمة");
 
         return;
+
     }
+
+
+    if (!currentCategory) {
+
+        alert("لم يتم تحديد القسم");
+
+        return;
+
+    }
+
+
+    console.log("إرسال القائمة:", {
+
+        category_id: currentCategory,
+
+        name: name
+
+    });
 
 
     var result =
@@ -658,22 +687,45 @@ async function createList() {
 
     if (result.error) {
 
-        console.error(result.error);
-
-        alert(
-            "حدث خطأ أثناء إنشاء القائمة"
+        console.error(
+            "SUPABASE ERROR:",
+            result.error
         );
 
+
+        alert(
+
+            "خطأ Supabase:\n\n" +
+
+            result.error.message +
+
+            "\n\nالكود: " +
+
+            result.error.code
+
+        );
+
+
         return;
+
     }
+
+
+    console.log(
+        "تم إنشاء القائمة:",
+        result.data
+    );
 
 
     document.getElementById("listName")
         .value = "";
 
+
     closeListModal();
 
+
     await showLists();
+
 }
 
 
@@ -696,17 +748,23 @@ async function deleteList(id) {
 
     if (result.error) {
 
-        console.error(result.error);
+        console.error(
+            "SUPABASE ERROR:",
+            result.error
+        );
 
         alert(
-            "حدث خطأ أثناء حذف القائمة"
+            "حدث خطأ أثناء حذف القائمة:\n\n" +
+            result.error.message
         );
 
         return;
+
     }
 
 
     await showLists();
+
 }
 
 
@@ -726,13 +784,18 @@ async function openList(id) {
 
     if (result.error) {
 
-        console.error(result.error);
+        console.error(
+            "SUPABASE ERROR:",
+            result.error
+        );
 
         alert(
-            "تعذر فتح القائمة"
+            "تعذر فتح القائمة:\n\n" +
+            result.error.message
         );
 
         return;
+
     }
 
 
@@ -752,6 +815,7 @@ async function openList(id) {
 
 
     await showRecitations();
+
 }
 
 
@@ -763,13 +827,16 @@ function backToCategory() {
 
     currentList = null;
 
+
     document.getElementById("listPage")
         .style.display = "none";
 
     document.getElementById("categoryPage")
         .style.display = "block";
 
+
     showLists();
+
 }
 
 
@@ -781,6 +848,7 @@ function showAddRecitation() {
 
     document.getElementById("recitationModal")
         .classList.add("show");
+
 }
 
 
@@ -788,6 +856,7 @@ function closeRecitationModal() {
 
     document.getElementById("recitationModal")
         .classList.remove("show");
+
 }
 
 
@@ -808,6 +877,7 @@ function getYoutubeId(url) {
 
 
     return null;
+
 }
 
 
@@ -836,6 +906,7 @@ async function createRecitation() {
         );
 
         return;
+
     }
 
 
@@ -850,6 +921,7 @@ async function createRecitation() {
         );
 
         return;
+
     }
 
 
@@ -881,18 +953,24 @@ async function createRecitation() {
 
     if (result.error) {
 
-        console.error(result.error);
+        console.error(
+            "SUPABASE ERROR:",
+            result.error
+        );
 
         alert(
-            "حدث خطأ أثناء إضافة التلاوة"
+            "حدث خطأ أثناء إضافة التلاوة:\n\n" +
+            result.error.message
         );
 
         return;
+
     }
 
 
     document.getElementById("recitationName")
         .value = "";
+
 
     document.getElementById("youtubeUrl")
         .value = "";
@@ -902,6 +980,7 @@ async function createRecitation() {
 
 
     await showRecitations();
+
 }
 
 
@@ -934,7 +1013,10 @@ async function showRecitations() {
 
     if (result.error) {
 
-        console.error(result.error);
+        console.error(
+            "SUPABASE ERROR:",
+            result.error
+        );
 
         container.innerHTML = `
             <p class="subtitle">
@@ -943,6 +1025,7 @@ async function showRecitations() {
         `;
 
         return;
+
     }
 
 
@@ -959,6 +1042,7 @@ async function showRecitations() {
         `;
 
         return;
+
     }
 
 
@@ -1010,10 +1094,13 @@ async function showRecitations() {
 
 
         container.appendChild(div);
+
     }
+
 }
 
 </script>
 
 </body>
+
 </html>
