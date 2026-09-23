@@ -1,146 +1,290 @@
-*{
-box-sizing:border-box;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background: #fafafa;
+    color: #111;
+    overflow-x: hidden;
 }
 
 
-body{
+/* =========================
+   الهيدر
+========================= */
 
-margin:0;
-font-family:'Cairo',sans-serif;
-background:#fafafa;
-color:#111;
+header {
+    min-height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    gap: 25px;
+}
+
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logo span {
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    color: #777;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 10px;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   الواجهة الرئيسية
+========================= */
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 50px;
+    padding: 80px 10%;
+    background: #000000;
+    color: white;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero-text h1 {
+    font-size: 50px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+}
+
+.hero-text p {
+    font-size: 20px;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+button {
+    background: #c5a45a;
+    color: #111;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.image {
+    flex-shrink: 0;
+}
+
+.image img {
+    width: 320px;
+    max-width: 100%;
+    display: block;
+    border-radius: 20px;
+}
+
+
+/* =========================
+   البطاقات
+========================= */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px #ddd;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px #d5d5d5;
+}
+
+
+/* =========================
+   الفوتر
+========================= */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #111;
+    color: white;
+}
+
+
+/* =========================
+   الجوال
+========================= */
+
+@media (max-width: 768px) {
+
+    header {
+        min-height: auto;
+        padding: 18px 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 30px;
+    }
+
+    .logo span {
+        font-size: 12px;
+    }
+
+    nav {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    nav a {
+        margin: 0;
+        padding: 8px 4px;
+        font-size: 13px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+    }
+
+
+    /* الواجهة */
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+        gap: 35px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+        line-height: 1.6;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    button {
+        padding: 13px 32px;
+        font-size: 16px;
+    }
+
+    .image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image img {
+        width: min(260px, 80vw);
+    }
+
+
+    /* البطاقات */
+
+    .cards {
+        padding: 35px 20px;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 25px;
+        text-align: center;
+    }
+
+    .card h2 {
+        font-size: 21px;
+    }
+
+    .card p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    footer {
+        padding: 25px 15px;
+        font-size: 13px;
+    }
 
 }
 
 
-header{
+/* =========================
+   الجوال الصغير جدًا
+========================= */
 
-height:90px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 8%;
+@media (max-width: 400px) {
 
-background:white;
-border-bottom:1px solid #ddd;
+    .hero {
+        padding: 40px 15px;
+    }
 
-}
+    .hero-text h1 {
+        font-size: 27px;
+    }
 
+    .hero-text p {
+        font-size: 15px;
+    }
 
+    .logo {
+        font-size: 27px;
+    }
 
-.logo{
+    nav a {
+        font-size: 12px;
+    }
 
-font-size:35px;
-font-weight:bold;
-
-}
-
-
-.logo span{
-
-display:block;
-font-size:13px;
-font-weight:normal;
-color:#777;
-
-}
-
-
-
-nav a{
-
-text-decoration:none;
-color:#333;
-margin:0 15px;
-
-}
-
-
-
-.hero{
-
-display:flex;
-align-items:center;
-justify-content:space-around;
-
-padding:80px 10%;
-
-background:#111;
-color:white;
-
-}
-
-
-
-.hero-text h1{
-
-font-size:50px;
-
-}
-
-
-
-.hero-text p{
-
-font-size:20px;
-color:#ccc;
-
-}
-
-
-
-button{
-
-background:#c5a45a;
-border:none;
-padding:15px 40px;
-border-radius:30px;
-
-font-size:18px;
-cursor:pointer;
-
-}
-
-
-
-.image img{
-
-width:320px;
-border-radius:20px;
-
-}
-
-
-
-.cards{
-
-display:flex;
-justify-content:center;
-gap:30px;
-padding:60px;
-
-}
-
-
-
-.card{
-
-width:300px;
-background:white;
-padding:30px;
-border-radius:20px;
-
-box-shadow:0 5px 20px #ddd;
-
-}
-
-
-
-footer{
-
-text-align:center;
-padding:30px;
-background:#111;
-color:white;
+    .image img {
+        width: 230px;
+    }
 
 }
