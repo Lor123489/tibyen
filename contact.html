@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تبيان | تواصل معنا</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+.contact-page {
+    min-height: calc(100vh - 90px);
+    padding: 70px 8%;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.contact-header h1 {
+    font-size: 42px;
+    margin: 0 0 10px;
+}
+
+.contact-header p {
+    color: #777;
+    font-size: 17px;
+}
+
+.contact-cards {
+    max-width: 850px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px #ddd;
+    text-decoration: none;
+    color: #111;
+    transition: .2s;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px #d5d5d5;
+}
+
+.contact-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    color: #c5a45a;
+    border-radius: 15px;
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.contact-card h2 {
+    margin: 0 0 8px;
+    font-size: 21px;
+}
+
+.contact-card p {
+    margin: 0;
+    color: #777;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+
+    .contact-page {
+        padding: 45px 20px;
+    }
+
+    .contact-header h1 {
+        font-size: 32px;
+    }
+
+    .contact-header p {
+        font-size: 15px;
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .contact-card {
+        padding: 25px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        تبيان
+        <span>تلاوات الشيخ ياسر الدوسري</span>
+    </div>
+
+    <nav>
+
+        <a href="login.html">
+            تحكم المشرفين
+        </a>
+
+        <a href="index.html">
+            الرئيسية
+        </a>
+
+        <a href="category.html?category=tarawih">
+            التراويح
+        </a>
+
+        <a href="category.html?category=haram">
+            الحرم
+        </a>
+
+        <a href="category.html?category=nawader">
+            النوادر
+        </a>
+
+        <a href="contact.html">
+            تواصل معنا
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="contact-page">
+
+
+    <div class="contact-header">
+
+        <h1>
+            تواصل معنا
+        </h1>
+
+        <p>
+            يمكنك التواصل معنا 
+        </p>
+
+    </div>
+
+
+    <div class="contact-cards">
+
+
+
+        <!-- سحابي تيليجرام -->
+
+        <a
+            class="contact-card"
+            
+        >
+
+            <div class="contact-icon">
+                ✈
+            </div>
+
+            <h2>
+               حساب صاحب الموقع على تليجرام
+            </h2>
+
+            <p>
+                @HH4581H
+            </p>
+
+        </a>
+
+
+        <!-- تيك توك -->
+
+        <a
+            class="contact-card"
+            href="https://www.tiktok.com/@MS4wLjABAAAAFyiopuAJ84CxGtbCBqRMO2ahdLEYBFcj5wihtWzdKw-Nf21Ex4WjDCwYO09GoTwJ?is_from_webapp=1&sender_device=pc"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <div class="contact-icon">
+                ♪
+            </div>
+
+            <h2>
+                حساب صاحب الموقع على تيك توك
+            </h2>
+
+            <p>
+              تابعني على تيك توك للتواصل معي
+            </p>
+
+        </a>
+
+
+        <!-- قناة تبيان -->
+
+        <a
+            class="contact-card"
+            href="https://t.me/tibyan_10"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <div class="contact-icon">
+                ◈
+            </div>
+
+            <h2>
+                قناة تبيان على تيليجرام
+            </h2>
+
+            <p>
+                تابع قناة تبيان للحصول على آخر التلاوات والتحديثات.
+            </p>
+
+        </a>
+
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © تبيان - جميع الحقوق محفوظة
+
+</footer>
+
+
+</body>
+
+</html>
