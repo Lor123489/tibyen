@@ -399,67 +399,22 @@ onclick="closeRecitationModal()"
 
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
 
 <script>
-    if (localStorage.getItem("tibyanAdminLoggedIn") !== "true") {
+ if (localStorage.getItem("tibyanAdminLoggedIn") !== "true") {
     location.href = "login.html";
 }
-
-
-/* =========================
-   البيانات
-========================= */
-
-
-var data = JSON.parse(
-    localStorage.getItem("tibyanData")
-);
-
-
-if (!data) {
-
-    data = {
-
-        tarawih: [],
-        haram: [],
-        nawader: []
-
-    };
-
-}
-
-
-if (!data.tarawih) data.tarawih = [];
-if (!data.haram) data.haram = [];
-if (!data.nawader) data.nawader = [];
 
 
 var currentCategory = null;
 var currentList = null;
 
 
-
-/* =========================
-   حفظ
-========================= */
-
-
-function saveData() {
-
-    localStorage.setItem(
-        "tibyanData",
-        JSON.stringify(data)
-    );
-
-}
-
-
-
 /* =========================
    أسماء الأقسام
 ========================= */
-
 
 function getCategoryName(category) {
 
@@ -473,17 +428,14 @@ function getCategoryName(category) {
         return "النوادر";
 
     return "";
-
 }
-
 
 
 /* =========================
    فتح القسم
 ========================= */
 
-
-function openCategory(category) {
+async function openCategory(category) {
 
     currentCategory = category;
 
@@ -497,19 +449,15 @@ function openCategory(category) {
         .style.display = "block";
 
     document.getElementById("categoryTitle")
-        .textContent =
-        getCategoryName(category);
+        .textContent = getCategoryName(category);
 
-    showLists();
-
+    await showLists();
 }
-
 
 
 /* =========================
    الرئيسية
 ========================= */
-
 
 function goHome() {
 
@@ -521,26 +469,49 @@ function goHome() {
 
     document.getElementById("listPage")
         .style.display = "none";
-
 }
-
 
 
 /* =========================
    عرض القوائم
 ========================= */
 
-
-function showLists() {
+async function showLists() {
 
     var container =
         document.getElementById("lists");
 
-    container.innerHTML = "";
+    container.innerHTML = `
+        <p class="subtitle">
+            جارٍ تحميل القوائم...
+        </p>
+    `;
 
 
-    var lists =
-        data[currentCategory];
+    var result = await supabaseClient
+        .from("lists")
+        .select("*")
+        .eq("category_id", currentCategory)
+        .order("created_at", {
+            ascending: false
+        });
+
+
+    if (result.error) {
+
+        console.error(result.error);
+
+        container.innerHTML = `
+            <p class="subtitle">
+                حدث خطأ أثناء تحميل القوائم.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    var lists = result.data;
 
 
     if (lists.length === 0) {
@@ -552,13 +523,28 @@ function showLists() {
         `;
 
         return;
-
     }
+
+
+    container.innerHTML = "";
 
 
     for (var i = 0; i < lists.length; i++) {
 
         var list = lists[i];
+
+
+        var recitationsResult =
+            await supabaseClient
+                .from("recitations")
+                .select("id")
+                .eq("list_id", list.id);
+
+
+        var count =
+            recitationsResult.data
+                ? recitationsResult.data.length
+                : 0;
 
 
         var div =
@@ -569,10 +555,10 @@ function showLists() {
 
         div.innerHTML = `
 
-            <h3>${list.name}</h3>
+            <h3>${escapeHTML(list.name)}</h3>
 
             <p>
-                ${list.recitations.length}
+                ${count}
                 تلاوة
             </p>
 
@@ -594,17 +580,28 @@ function showLists() {
 
 
         container.appendChild(div);
-
     }
-
 }
 
 
-
 /* =========================
-   فتح نافذة القائمة
+   حماية النص
 ========================= */
 
+function escapeHTML(text) {
+
+    var div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+
+/* =========================
+   نافذة إنشاء قائمة
+========================= */
 
 function showCreateList() {
 
@@ -613,31 +610,21 @@ function showCreateList() {
 
     document.getElementById("listName")
         .focus();
-
 }
-
-
-
-/* =========================
-   إغلاق النافذة
-========================= */
 
 
 function closeListModal() {
 
     document.getElementById("listModal")
         .classList.remove("show");
-
 }
 
 
-
 /* =========================
-   إنشاء القائمة
+   إنشاء قائمة
 ========================= */
 
-
-function createList() {
+async function createList() {
 
     var name =
         document.getElementById("listName")
@@ -650,102 +637,106 @@ function createList() {
         alert("اكتب اسم القائمة");
 
         return;
-
     }
 
 
-    var newList = {
+    var result =
+        await supabaseClient
+            .from("lists")
+            .insert({
 
-        id: Date.now(),
+                category_id:
+                    currentCategory,
 
-        name: name,
+                name:
+                    name
 
-        recitations: []
-
-    };
-
-
-    data[currentCategory].push(newList);
+            })
+            .select()
+            .single();
 
 
-    saveData();
+    if (result.error) {
+
+        console.error(result.error);
+
+        alert(
+            "حدث خطأ أثناء إنشاء القائمة"
+        );
+
+        return;
+    }
 
 
     document.getElementById("listName")
         .value = "";
 
-
     closeListModal();
 
-
-    showLists();
-
+    await showLists();
 }
-
 
 
 /* =========================
    حذف القائمة
 ========================= */
 
-
-function deleteList(id) {
+async function deleteList(id) {
 
     if (!confirm("هل تريد حذف القائمة؟"))
         return;
 
 
-    var lists =
-        data[currentCategory];
+    var result =
+        await supabaseClient
+            .from("lists")
+            .delete()
+            .eq("id", id);
 
 
-    for (var i = 0; i < lists.length; i++) {
+    if (result.error) {
 
-        if (lists[i].id === id) {
+        console.error(result.error);
 
-            lists.splice(i, 1);
+        alert(
+            "حدث خطأ أثناء حذف القائمة"
+        );
 
-            break;
-
-        }
-
+        return;
     }
 
 
-    saveData();
-
-    showLists();
-
+    await showLists();
 }
-
 
 
 /* =========================
    فتح القائمة
 ========================= */
 
+async function openList(id) {
 
-function openList(id) {
+    var result =
+        await supabaseClient
+            .from("lists")
+            .select("*")
+            .eq("id", id)
+            .single();
 
-    var lists =
-        data[currentCategory];
 
+    if (result.error) {
 
-    for (var i = 0; i < lists.length; i++) {
+        console.error(result.error);
 
-        if (lists[i].id === id) {
+        alert(
+            "تعذر فتح القائمة"
+        );
 
-            currentList = lists[i];
-
-            break;
-
-        }
-
+        return;
     }
 
 
-    if (!currentList)
-        return;
+    currentList = result.data;
 
 
     document.getElementById("categoryPage")
@@ -760,16 +751,13 @@ function openList(id) {
         currentList.name;
 
 
-    showRecitations();
-
+    await showRecitations();
 }
-
 
 
 /* =========================
    العودة للقوائم
 ========================= */
-
 
 function backToCategory() {
 
@@ -782,43 +770,30 @@ function backToCategory() {
         .style.display = "block";
 
     showLists();
-
 }
 
 
-
 /* =========================
-   نافذة التلاوة
+   إضافة تلاوة
 ========================= */
-
 
 function showAddRecitation() {
 
     document.getElementById("recitationModal")
         .classList.add("show");
-
 }
-
-
-
-/* =========================
-   إغلاق نافذة التلاوة
-========================= */
 
 
 function closeRecitationModal() {
 
     document.getElementById("recitationModal")
         .classList.remove("show");
-
 }
-
 
 
 /* =========================
    YouTube ID
 ========================= */
-
 
 function getYoutubeId(url) {
 
@@ -833,17 +808,14 @@ function getYoutubeId(url) {
 
 
     return null;
-
 }
-
 
 
 /* =========================
    إضافة التلاوة
 ========================= */
 
-
-function createRecitation() {
+async function createRecitation() {
 
     var name =
         document.getElementById("recitationName")
@@ -859,10 +831,11 @@ function createRecitation() {
 
     if (name === "" || url === "") {
 
-        alert("اكتب اسم التلاوة والرابط");
+        alert(
+            "اكتب اسم التلاوة والرابط"
+        );
 
         return;
-
     }
 
 
@@ -872,30 +845,50 @@ function createRecitation() {
 
     if (!videoId) {
 
-        alert("رابط YouTube غير صحيح");
+        alert(
+            "رابط YouTube غير صحيح"
+        );
 
         return;
-
     }
 
 
-    currentList.recitations.push({
-
-        id: Date.now(),
-
-        name: name,
-
-        url: url,
-
-        thumbnail:
-            "https://img.youtube.com/vi/"
-            + videoId +
-            "/hqdefault.jpg"
-
-    });
+    var thumbnail =
+        "https://img.youtube.com/vi/"
+        + videoId
+        + "/hqdefault.jpg";
 
 
-    saveData();
+    var result =
+        await supabaseClient
+            .from("recitations")
+            .insert({
+
+                list_id:
+                    currentList.id,
+
+                name:
+                    name,
+
+                url:
+                    url,
+
+                thumbnail:
+                    thumbnail
+
+            });
+
+
+    if (result.error) {
+
+        console.error(result.error);
+
+        alert(
+            "حدث خطأ أثناء إضافة التلاوة"
+        );
+
+        return;
+    }
 
 
     document.getElementById("recitationName")
@@ -908,27 +901,56 @@ function createRecitation() {
     closeRecitationModal();
 
 
-    showRecitations();
-
+    await showRecitations();
 }
-
 
 
 /* =========================
    عرض التلاوات
 ========================= */
 
-
-function showRecitations() {
+async function showRecitations() {
 
     var container =
         document.getElementById("recitations");
 
 
-    container.innerHTML = "";
+    container.innerHTML = `
+        <p class="subtitle">
+            جارٍ تحميل التلاوات...
+        </p>
+    `;
 
 
-    if (currentList.recitations.length === 0) {
+    var result =
+        await supabaseClient
+            .from("recitations")
+            .select("*")
+            .eq("list_id", currentList.id)
+            .order("created_at", {
+                ascending: false
+            });
+
+
+    if (result.error) {
+
+        console.error(result.error);
+
+        container.innerHTML = `
+            <p class="subtitle">
+                حدث خطأ أثناء تحميل التلاوات.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    var recitations =
+        result.data;
+
+
+    if (recitations.length === 0) {
 
         container.innerHTML = `
             <p class="subtitle">
@@ -937,43 +959,47 @@ function showRecitations() {
         `;
 
         return;
-
     }
+
+
+    container.innerHTML = "";
 
 
     for (
         var i = 0;
-        i < currentList.recitations.length;
+        i < recitations.length;
         i++
     ) {
 
         var rec =
-            currentList.recitations[i];
+            recitations[i];
 
 
         var div =
             document.createElement("div");
 
-        div.className = "recitation";
+        div.className =
+            "recitation";
 
 
         div.innerHTML = `
 
             <img
-                src="${rec.thumbnail}"
+                src="${escapeHTML(rec.thumbnail)}"
             >
 
             <div class="recitation-info">
 
                 <strong>
-                    ${rec.name}
+                    ${escapeHTML(rec.name)}
                 </strong>
 
                 <br>
 
                 <a
-                    href="${rec.url}"
+                    href="${escapeHTML(rec.url)}"
                     target="_blank"
+                    rel="noopener"
                 >
                     فتح YouTube
                 </a>
@@ -984,9 +1010,7 @@ function showRecitations() {
 
 
         container.appendChild(div);
-
     }
-
 }
 
 </script>
