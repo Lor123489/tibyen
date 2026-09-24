@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+```
 <title>لوحة تحكم تبيان</title>
 
 <link
@@ -14,463 +14,440 @@
     rel="stylesheet"
 >
 
-
 <style>
-
-* {
-    box-sizing: border-box;
-}
-
-
-body {
-    margin: 0;
-    font-family: Cairo, sans-serif;
-    background: #f5f5f5;
-    color: #111;
-}
-
-
-header {
-    background: #111;
-    color: white;
-    padding: 20px 8%;
-}
-
-
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-
-.logo span {
-    display: block;
-    font-size: 12px;
-    color: #aaa;
-}
-
-
-.container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-
-h1 {
-    margin-bottom: 5px;
-}
-
-
-.subtitle {
-    color: #777;
-}
-
-
-.categories {
-    display: grid;
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(240px, 1fr)
-        );
-
-    gap: 20px;
-
-    margin-top: 30px;
-}
-
-
-.category {
-    background: white;
-    padding: 25px;
-    border-radius: 18px;
-    box-shadow: 0 5px 20px #ddd;
-}
-
-
-button {
-    border: 0;
-    font-family: inherit;
-    cursor: pointer;
-    border-radius: 10px;
-    padding: 10px 18px;
-}
-
-
-.primary {
-    background: #111;
-    color: white;
-}
-
-
-.primary:hover {
-    background: #222;
-}
-
-
-.danger {
-    background: #222;
-    color: white;
-}
-
-
-.back {
-    background: #ddd;
-    margin-bottom: 20px;
-}
-
-
-.list {
-    background: white;
-    padding: 20px;
-    margin-top: 15px;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px #ddd;
-}
-
-
-.list h3 {
-    margin-top: 0;
-}
-
-
-input {
-    width: 100%;
-    padding: 13px;
-    margin: 8px 0 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-family: inherit;
-}
-
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.6);
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-
-.modal.show {
-    display: flex;
-}
-
-
-.modal-box {
-    background: white;
-    width: 100%;
-    max-width: 450px;
-    padding: 30px;
-    border-radius: 20px;
-}
-
-
-.recitation {
-    background: white;
-    padding: 15px;
-    border-radius: 15px;
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-
-.recitation img {
-    width: 130px;
-    height: 75px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-
-.recitation-info {
-    flex: 1;
-}
-
-
-/* =========================
-   الجوال
-========================= */
-
-@media (max-width: 700px) {
-
-    .container {
-        margin: 20px auto;
-        padding: 15px;
+    * {
+        box-sizing: border-box;
     }
 
+    body {
+        margin: 0;
+        font-family: Cairo, sans-serif;
+        background: #f5f5f5;
+        color: #111;
+    }
+
+    /* =========================
+       الهيدر
+    ========================= */
 
     header {
-        padding: 18px 20px;
+        background: #111;
+        color: white;
+        padding: 20px 8%;
     }
-
 
     .logo {
-        font-size: 24px;
+        font-size: 28px;
+        font-weight: bold;
     }
 
-
-    .categories {
-        grid-template-columns: 1fr;
+    .logo span {
+        display: block;
+        font-size: 12px;
+        color: #aaa;
     }
 
+    /* =========================
+       الحاوية
+    ========================= */
 
-    .category {
+    .container {
+        max-width: 1000px;
+        margin: 40px auto;
         padding: 20px;
     }
 
-
-    .category h2 {
-        font-size: 21px;
+    h1 {
+        margin-bottom: 5px;
     }
 
+    .subtitle {
+        color: #777;
+    }
+
+    /* =========================
+       الأقسام
+    ========================= */
+
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(240px, 1fr)
+        );
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .category {
+        background: white;
+        padding: 25px;
+        border-radius: 18px;
+        box-shadow: 0 5px 20px #ddd;
+    }
+
+    /* =========================
+       الأزرار
+    ========================= */
+
+    button {
+        border: 0;
+        font-family: inherit;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 10px 18px;
+    }
+
+    .primary {
+        background: #111;
+        color: white;
+    }
+
+    .primary:hover {
+        background: #222;
+    }
+
+    .danger {
+        background: #222;
+        color: white;
+    }
+
+    .danger:hover {
+        background: #000;
+    }
+
+    .back {
+        background: #ddd;
+        margin-bottom: 20px;
+    }
+
+    /* =========================
+       القوائم
+    ========================= */
 
     .list {
-        padding: 18px;
+        background: white;
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 15px;
+        box-shadow: 0 3px 10px #ddd;
     }
 
-
-    .list button {
-        margin-top: 5px;
+    .list h3 {
+        margin-top: 0;
     }
 
+    /* =========================
+       الإدخالات
+    ========================= */
+
+    input {
+        width: 100%;
+        padding: 13px;
+        margin: 8px 0 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-family: inherit;
+    }
+
+    /* =========================
+       النوافذ
+    ========================= */
+
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .modal.show {
+        display: flex;
+    }
+
+    .modal-box {
+        background: white;
+        width: 100%;
+        max-width: 450px;
+        padding: 30px;
+        border-radius: 20px;
+    }
+
+    /* =========================
+       التلاوات
+    ========================= */
 
     .recitation {
-        flex-direction: column;
-        align-items: stretch;
-    }
+        background: white;
+        padding: 15px;
+        border-radius: 15px;
+        margin-top: 15px;
 
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
 
     .recitation img {
-        width: 100%;
-        height: 180px;
+        width: 130px;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 10px;
     }
 
-}
+    .recitation-info {
+        flex: 1;
+    }
 
+    /* =========================
+       الجوال
+    ========================= */
+
+    @media (max-width: 700px) {
+        .container {
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        header {
+            padding: 18px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        .categories {
+            grid-template-columns: 1fr;
+        }
+
+        .category {
+            padding: 20px;
+        }
+
+        .category h2 {
+            font-size: 21px;
+        }
+
+        .list {
+            padding: 18px;
+        }
+
+        .list button {
+            margin-top: 5px;
+        }
+
+        .recitation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .recitation img {
+            width: 100%;
+            height: 180px;
+        }
+
+        .recitation .danger {
+            width: 100%;
+        }
+    }
 </style>
+```
 
 </head>
 
-
 <body>
 
+```
+<!-- =========================
+     الهيدر
+========================= -->
 
 <header>
-
     <div class="logo">
-
         تبيان
 
         <span>
             لوحة التحكم
         </span>
-
     </div>
-
 </header>
-
 
 
 <div class="container">
 
+    <!-- =========================
+         الصفحة الرئيسية
+    ========================= -->
 
-<!-- =========================
-     الصفحة الرئيسية
-========================= -->
+    <div id="home">
 
-<div id="home">
+        <h1>
+            لوحة التحكم
+        </h1>
 
-    <h1>
-        لوحة التحكم
-    </h1>
-
-
-    <p class="subtitle">
-        إدارة أقسام موقع تبيان
-    </p>
+        <p class="subtitle">
+            إدارة أقسام موقع تبيان
+        </p>
 
 
+        <div class="categories">
 
-    <div class="categories">
+            <!-- التراويح -->
 
+            <div class="category">
 
-        <!-- التراويح -->
+                <h2>
+                    التراويح
+                </h2>
 
-        <div class="category">
+                <p>
+                    إدارة قوائم التراويح
+                </p>
 
-            <h2>
-                التراويح
-            </h2>
+                <button
+                    class="primary"
+                    onclick="openCategory('tarawih')"
+                >
+                    إدارة التراويح
+                </button>
 
-            <p>
-                إدارة قوائم التراويح
-            </p>
-
-            <button
-                class="primary"
-                onclick="openCategory('tarawih')"
-            >
-                إدارة التراويح
-            </button>
-
-        </div>
+            </div>
 
 
+            <!-- الحرم -->
 
-        <!-- الحرم -->
+            <div class="category">
 
-        <div class="category">
+                <h2>
+                    الحرم
+                </h2>
 
-            <h2>
-                الحرم
-            </h2>
+                <p>
+                    إدارة قوائم الحرم
+                </p>
 
-            <p>
-                إدارة قوائم الحرم
-            </p>
+                <button
+                    class="primary"
+                    onclick="openCategory('haram')"
+                >
+                    إدارة الحرم
+                </button>
 
-            <button
-                class="primary"
-                onclick="openCategory('haram')"
-            >
-                إدارة الحرم
-            </button>
-
-        </div>
-
+            </div>
 
 
-        <!-- النوادر -->
+            <!-- النوادر -->
 
-        <div class="category">
+            <div class="category">
 
-            <h2>
-                النوادر
-            </h2>
+                <h2>
+                    النوادر
+                </h2>
 
-            <p>
-                إدارة التلاوات النادرة
-            </p>
+                <p>
+                    إدارة التلاوات النادرة
+                </p>
 
-            <button
-                class="primary"
-                onclick="openCategory('nawader')"
-            >
-                إدارة النوادر
-            </button>
+                <button
+                    class="primary"
+                    onclick="openCategory('nawader')"
+                >
+                    إدارة النوادر
+                </button>
 
-        </div>
+            </div>
 
 
+            <!-- المقامات -->
 
-        <!-- المقامات -->
+            <div class="category">
 
-        <div class="category">
+                <h2>
+                    المقامات
+                </h2>
 
-            <h2>
-                المقامات
-            </h2>
+                <p>
+                    إدارة التلاوات حسب المقام
+                </p>
 
-            <p>
-                إدارة التلاوات حسب المقام
-            </p>
+                <button
+                    class="primary"
+                    onclick="openCategory('maqamat')"
+                >
+                    إدارة المقامات
+                </button>
 
-            <button
-                class="primary"
-                onclick="openCategory('maqamat')"
-            >
-                إدارة المقامات
-            </button>
+            </div>
 
         </div>
 
+    </div>
+
+
+    <!-- =========================
+         صفحة القسم
+    ========================= -->
+
+    <div
+        id="categoryPage"
+        style="display: none;"
+    >
+
+        <button
+            class="back"
+            onclick="goHome()"
+        >
+            ← رجوع
+        </button>
+
+        <h1 id="categoryTitle"></h1>
+
+        <button
+            class="primary"
+            onclick="showCreateList()"
+        >
+            + إنشاء قائمة
+        </button>
+
+        <div id="lists"></div>
+
+    </div>
+
+
+    <!-- =========================
+         صفحة القائمة
+    ========================= -->
+
+    <div
+        id="listPage"
+        style="display: none;"
+    >
+
+        <button
+            class="back"
+            onclick="backToCategory()"
+        >
+            ← رجوع للقوائم
+        </button>
+
+        <h1 id="listTitle"></h1>
+
+        <button
+            class="primary"
+            onclick="showAddRecitation()"
+        >
+            + إضافة تلاوة
+        </button>
+
+        <div id="recitations"></div>
 
     </div>
 
 </div>
-
-
-
-<!-- =========================
-     صفحة القسم
-========================= -->
-
-<div
-    id="categoryPage"
-    style="display:none;"
->
-
-
-    <button
-        class="back"
-        onclick="goHome()"
-    >
-        ← رجوع
-    </button>
-
-
-    <h1 id="categoryTitle"></h1>
-
-
-    <button
-        class="primary"
-        onclick="showCreateList()"
-    >
-        + إنشاء قائمة
-    </button>
-
-
-    <div id="lists"></div>
-
-
-</div>
-
-
-
-<!-- =========================
-     صفحة القائمة
-========================= -->
-
-<div
-    id="listPage"
-    style="display:none;"
->
-
-
-    <button
-        class="back"
-        onclick="backToCategory()"
-    >
-        ← رجوع للقوائم
-    </button>
-
-
-    <h1 id="listTitle"></h1>
-
-
-    <button
-        class="primary"
-        onclick="showAddRecitation()"
-    >
-        + إضافة تلاوة
-    </button>
-
-
-    <div id="recitations"></div>
-
-
-</div>
-
-
-</div>
-
 
 
 <!-- =========================
@@ -482,21 +459,17 @@ input {
     class="modal"
 >
 
-
     <div class="modal-box">
-
 
         <h2>
             إنشاء قائمة
         </h2>
-
 
         <input
             id="listName"
             type="text"
             placeholder="مثال: مقام الصبا"
         >
-
 
         <button
             class="primary"
@@ -505,18 +478,15 @@ input {
             إنشاء
         </button>
 
-
         <button
             onclick="closeListModal()"
         >
             إلغاء
         </button>
 
-
     </div>
 
 </div>
-
 
 
 <!-- =========================
@@ -528,14 +498,11 @@ input {
     class="modal"
 >
 
-
     <div class="modal-box">
-
 
         <h2>
             إضافة تلاوة
         </h2>
-
 
         <input
             id="recitationName"
@@ -543,13 +510,11 @@ input {
             placeholder="اسم التلاوة"
         >
 
-
         <input
             id="youtubeUrl"
             type="text"
             placeholder="رابط YouTube"
         >
-
 
         <button
             class="primary"
@@ -558,18 +523,15 @@ input {
             إضافة
         </button>
 
-
         <button
             onclick="closeRecitationModal()"
         >
             إلغاء
         </button>
 
-
     </div>
 
 </div>
-
 
 
 <!-- =========================
@@ -583,915 +545,804 @@ input {
 
 <script>
 
-/* =========================
-   التحقق من دخول المشرف
-========================= */
-
-if (
-    localStorage.getItem("tibyanAdminLoggedIn")
-    !== "true"
-) {
-
-    location.href = "login.html";
-
-}
-
-
-
-/* =========================
-   المتغيرات
-========================= */
-
-var currentCategory = null;
-
-var currentList = null;
-
-
-
-/* =========================
-   أسماء الأقسام
-========================= */
-
-function getCategoryName(category) {
-
-
-    if (category === "tarawih")
-        return "التراويح";
-
-
-    if (category === "haram")
-        return "الحرم";
-
-
-    if (category === "nawader")
-        return "النوادر";
-
-
-    if (category === "maqamat")
-        return "المقامات";
-
-
-    return "";
-
-}
-
-
-
-/* =========================
-   فتح القسم
-========================= */
-
-async function openCategory(category) {
-
-
-    currentCategory = category;
-
-
-    document.getElementById("home")
-        .style.display = "none";
-
-
-    document.getElementById("listPage")
-        .style.display = "none";
-
-
-    document.getElementById("categoryPage")
-        .style.display = "block";
-
-
-    document.getElementById("categoryTitle")
-        .textContent =
-        getCategoryName(category);
-
-
-    await showLists();
-
-}
-
-
-
-/* =========================
-   الرئيسية
-========================= */
-
-function goHome() {
-
-
-    document.getElementById("home")
-        .style.display = "block";
-
-
-    document.getElementById("categoryPage")
-        .style.display = "none";
-
-
-    document.getElementById("listPage")
-        .style.display = "none";
-
-
-    currentCategory = null;
-
-}
-
-
-
-/* =========================
-   عرض القوائم
-========================= */
-
-async function showLists() {
-
-
-    var container =
-        document.getElementById("lists");
-
-
-    container.innerHTML = `
-
-        <p class="subtitle">
-
-            جارٍ تحميل القوائم...
-
-        </p>
-
-    `;
-
-
-    var result =
-        await supabaseClient
-
-            .from("lists")
-
-            .select("*")
-
-            .eq(
-                "category_id",
-                currentCategory
-            )
-
-            .order(
-                "created_at",
-                {
-                    ascending: false
-                }
-            );
-
-
-    if (result.error) {
-
-
-        console.error(
-            "SUPABASE ERROR:",
-            result.error
-        );
-
-
-        container.innerHTML = `
-
-            <p class="subtitle">
-
-                حدث خطأ أثناء تحميل القوائم.
-
-            </p>
-
-        `;
-
-
-        return;
-
-    }
-
-
-    var lists =
-        result.data || [];
-
-
-    if (lists.length === 0) {
-
-
-        container.innerHTML = `
-
-            <p class="subtitle">
-
-                لا توجد قوائم حتى الآن.
-
-            </p>
-
-        `;
-
-
-        return;
-
-    }
-
-
-    container.innerHTML = "";
-
-
-    for (
-        var i = 0;
-        i < lists.length;
-        i++
+    /* =========================
+       التحقق من دخول المشرف
+    ========================= */
+
+    if (
+        localStorage.getItem("tibyanAdminLoggedIn") !== "true"
     ) {
+        location.href = "login.html";
+    }
 
 
-        var list =
-            lists[i];
+    /* =========================
+       المتغيرات
+    ========================= */
+
+    var currentCategory = null;
+    var currentList = null;
 
 
-        var recitationsResult =
+    /* =========================
+       أسماء الأقسام
+    ========================= */
+
+    function getCategoryName(category) {
+
+        if (category === "tarawih")
+            return "التراويح";
+
+        if (category === "haram")
+            return "الحرم";
+
+        if (category === "nawader")
+            return "النوادر";
+
+        if (category === "maqamat")
+            return "المقامات";
+
+        return "";
+    }
+
+
+    /* =========================
+       فتح القسم
+    ========================= */
+
+    async function openCategory(category) {
+
+        currentCategory = category;
+
+        document.getElementById("home").style.display = "none";
+
+        document.getElementById("listPage").style.display = "none";
+
+        document.getElementById("categoryPage").style.display = "block";
+
+        document.getElementById("categoryTitle").textContent =
+            getCategoryName(category);
+
+        await showLists();
+    }
+
+
+    /* =========================
+       العودة للرئيسية
+    ========================= */
+
+    function goHome() {
+
+        document.getElementById("home").style.display = "block";
+
+        document.getElementById("categoryPage").style.display = "none";
+
+        document.getElementById("listPage").style.display = "none";
+
+        currentCategory = null;
+        currentList = null;
+    }
+
+
+    /* =========================
+       عرض القوائم
+    ========================= */
+
+    async function showLists() {
+
+        var container =
+            document.getElementById("lists");
+
+        container.innerHTML = `
+            <p class="subtitle">
+                جارٍ تحميل القوائم...
+            </p>
+        `;
+
+
+        var result =
             await supabaseClient
-
-                .from("recitations")
-
-                .select("id")
-
+                .from("lists")
+                .select("*")
                 .eq(
-                    "list_id",
-                    list.id
+                    "category_id",
+                    currentCategory
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
                 );
 
 
-        var count =
-            recitationsResult.data
-                ? recitationsResult.data.length
-                : 0;
+        if (result.error) {
 
+            console.error(
+                "SUPABASE ERROR:",
+                result.error
+            );
 
-        var div =
-            document.createElement("div");
+            container.innerHTML = `
+                <p class="subtitle">
+                    حدث خطأ أثناء تحميل القوائم.
+                </p>
+            `;
 
-
-        div.className =
-            "list";
-
-
-        div.innerHTML = `
-
-            <h3>
-                ${escapeHTML(list.name)}
-            </h3>
-
-
-            <p>
-                ${count} تلاوة
-            </p>
-
-
-            <button
-                class="primary"
-                onclick="openList(${list.id})"
-            >
-                فتح القائمة
-            </button>
-
-
-            <button
-                class="danger"
-                onclick="deleteList(${list.id})"
-            >
-                حذف
-            </button>
-
-        `;
-
-
-        container.appendChild(div);
-
-    }
-
-}
-
-
-
-/* =========================
-   حماية النص
-========================= */
-
-function escapeHTML(text) {
-
-
-    var div =
-        document.createElement("div");
-
-
-    div.textContent =
-        text ?? "";
-
-
-    return div.innerHTML;
-
-}
-
-
-
-/* =========================
-   نافذة إنشاء قائمة
-========================= */
-
-function showCreateList() {
-
-
-    document.getElementById("listModal")
-        .classList.add("show");
-
-
-    document.getElementById("listName")
-        .focus();
-
-}
-
-
-
-function closeListModal() {
-
-
-    document.getElementById("listModal")
-        .classList.remove("show");
-
-}
-
-
-
-/* =========================
-   إنشاء قائمة
-========================= */
-
-async function createList() {
-
-
-    var name =
-        document.getElementById("listName")
-            .value
-            .trim();
-
-
-    if (name === "") {
-
-        alert(
-            "اكتب اسم القائمة"
-        );
-
-        return;
-
-    }
-
-
-    if (!currentCategory) {
-
-        alert(
-            "لم يتم تحديد القسم"
-        );
-
-        return;
-
-    }
-
-
-    console.log(
-        "إرسال القائمة:",
-        {
-            category_id:
-                currentCategory,
-
-            name:
-                name
+            return;
         }
-    );
 
 
-    var result =
-        await supabaseClient
-
-            .from("lists")
-
-            .insert({
-
-                category_id:
-                    currentCategory,
-
-                name:
-                    name
-
-            })
-
-            .select()
-
-            .single();
+        var lists =
+            result.data || [];
 
 
-    if (result.error) {
+        if (lists.length === 0) {
+
+            container.innerHTML = `
+                <p class="subtitle">
+                    لا توجد قوائم حتى الآن.
+                </p>
+            `;
+
+            return;
+        }
 
 
-        console.error(
-            "SUPABASE ERROR:",
-            result.error
-        );
+        container.innerHTML = "";
 
 
-        alert(
+        for (
+            var i = 0;
+            i < lists.length;
+            i++
+        ) {
 
-            "خطأ Supabase:\n\n" +
-
-            result.error.message +
-
-            "\n\nالكود: " +
-
-            result.error.code
-
-        );
+            var list = lists[i];
 
 
-        return;
+            var recitationsResult =
+                await supabaseClient
+                    .from("recitations")
+                    .select("id")
+                    .eq(
+                        "list_id",
+                        list.id
+                    );
 
+
+            var count =
+                recitationsResult.data
+                    ? recitationsResult.data.length
+                    : 0;
+
+
+            var div =
+                document.createElement("div");
+
+            div.className = "list";
+
+
+            div.innerHTML = `
+
+                <h3>
+                    ${escapeHTML(list.name)}
+                </h3>
+
+                <p>
+                    ${count} تلاوة
+                </p>
+
+                <button
+                    class="primary"
+                    onclick="openList(${list.id})"
+                >
+                    فتح القائمة
+                </button>
+
+                <button
+                    class="danger"
+                    onclick="deleteList(${list.id})"
+                >
+                    حذف القائمة
+                </button>
+
+            `;
+
+
+            container.appendChild(div);
+        }
     }
 
 
-    console.log(
-        "تم إنشاء القائمة:",
-        result.data
-    );
-
-
-    document.getElementById("listName")
-        .value = "";
-
-
-    closeListModal();
-
-
-    await showLists();
-
-}
-
-
-
-/* =========================
-   حذف القائمة
-========================= */
-
-async function deleteList(id) {
-
-
-    if (
-        !confirm(
-            "هل تريد حذف القائمة؟"
-        )
-    )
-        return;
-
-
-    var result =
-        await supabaseClient
-
-            .from("lists")
-
-            .delete()
-
-            .eq(
-                "id",
-                id
-            );
-
-
-    if (result.error) {
-
-
-        console.error(
-            "SUPABASE ERROR:",
-            result.error
-        );
-
-
-        alert(
-
-            "حدث خطأ أثناء حذف القائمة:\n\n" +
-
-            result.error.message
-
-        );
-
-
-        return;
-
-    }
-
-
-    await showLists();
-
-}
-
-
-
-/* =========================
-   فتح القائمة
-========================= */
-
-async function openList(id) {
-
-
-    var result =
-        await supabaseClient
-
-            .from("lists")
-
-            .select("*")
-
-            .eq(
-                "id",
-                id
-            )
-
-            .single();
-
-
-    if (result.error) {
-
-
-        console.error(
-            "SUPABASE ERROR:",
-            result.error
-        );
-
-
-        alert(
-
-            "تعذر فتح القائمة:\n\n" +
-
-            result.error.message
-
-        );
-
-
-        return;
-
-    }
-
-
-    currentList =
-        result.data;
-
-
-    document.getElementById("categoryPage")
-        .style.display = "none";
-
-
-    document.getElementById("listPage")
-        .style.display = "block";
-
-
-    document.getElementById("listTitle")
-        .textContent =
-        currentList.name;
-
-
-    await showRecitations();
-
-}
-
-
-
-/* =========================
-   العودة للقوائم
-========================= */
-
-function backToCategory() {
-
-
-    currentList = null;
-
-
-    document.getElementById("listPage")
-        .style.display = "none";
-
-
-    document.getElementById("categoryPage")
-        .style.display = "block";
-
-
-    showLists();
-
-}
-
-
-
-/* =========================
-   إضافة تلاوة
-========================= */
-
-function showAddRecitation() {
-
-
-    document.getElementById("recitationModal")
-        .classList.add("show");
-
-}
-
-
-
-function closeRecitationModal() {
-
-
-    document.getElementById("recitationModal")
-        .classList.remove("show");
-
-}
-
-
-
-/* =========================
-   YouTube ID
-========================= */
-
-function getYoutubeId(url) {
-
-
-    var match =
-        url.match(
-            /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/
-        );
-
-
-    if (match)
-        return match[1];
-
-
-    return null;
-
-}
-
-
-
-/* =========================
-   إضافة التلاوة
-========================= */
-
-async function createRecitation() {
-
-
-    var name =
-        document.getElementById("recitationName")
-            .value
-            .trim();
-
-
-    var url =
-        document.getElementById("youtubeUrl")
-            .value
-            .trim();
-
-
-    if (
-        name === "" ||
-        url === ""
-    ) {
-
-        alert(
-            "اكتب اسم التلاوة والرابط"
-        );
-
-        return;
-
-    }
-
-
-    var videoId =
-        getYoutubeId(url);
-
-
-    if (!videoId) {
-
-        alert(
-            "رابط YouTube غير صحيح"
-        );
-
-        return;
-
-    }
-
-
-    var thumbnail =
-        "https://img.youtube.com/vi/" +
-
-        videoId +
-
-        "/hqdefault.jpg";
-
-
-    var result =
-        await supabaseClient
-
-            .from("recitations")
-
-            .insert({
-
-                list_id:
-                    currentList.id,
-
-                name:
-                    name,
-
-                url:
-                    url,
-
-                thumbnail:
-                    thumbnail
-
-            });
-
-
-    if (result.error) {
-
-
-        console.error(
-            "SUPABASE ERROR:",
-            result.error
-        );
-
-
-        alert(
-
-            "حدث خطأ أثناء إضافة التلاوة:\n\n" +
-
-            result.error.message
-
-        );
-
-
-        return;
-
-    }
-
-
-    document.getElementById("recitationName")
-        .value = "";
-
-
-    document.getElementById("youtubeUrl")
-        .value = "";
-
-
-    closeRecitationModal();
-
-
-    await showRecitations();
-
-}
-
-
-
-/* =========================
-   عرض التلاوات
-========================= */
-
-async function showRecitations() {
-
-
-    var container =
-        document.getElementById("recitations");
-
-
-    container.innerHTML = `
-
-        <p class="subtitle">
-
-            جارٍ تحميل التلاوات...
-
-        </p>
-
-    `;
-
-
-    var result =
-        await supabaseClient
-
-            .from("recitations")
-
-            .select("*")
-
-            .eq(
-                "list_id",
-                currentList.id
-            )
-
-            .order(
-                "created_at",
-                {
-                    ascending: false
-                }
-            );
-
-
-    if (result.error) {
-
-
-        console.error(
-            "SUPABASE ERROR:",
-            result.error
-        );
-
-
-        container.innerHTML = `
-
-            <p class="subtitle">
-
-                حدث خطأ أثناء تحميل التلاوات.
-
-            </p>
-
-        `;
-
-
-        return;
-
-    }
-
-
-    var recitations =
-        result.data || [];
-
-
-    if (
-        recitations.length === 0
-    ) {
-
-
-        container.innerHTML = `
-
-            <p class="subtitle">
-
-                لا توجد تلاوات حتى الآن.
-
-            </p>
-
-        `;
-
-
-        return;
-
-    }
-
-
-    container.innerHTML = "";
-
-
-    for (
-        var i = 0;
-        i < recitations.length;
-        i++
-    ) {
-
-
-        var rec =
-            recitations[i];
-
+    /* =========================
+       حماية النص
+    ========================= */
+
+    function escapeHTML(text) {
 
         var div =
             document.createElement("div");
 
+        div.textContent =
+            text ?? "";
 
-        div.className =
-            "recitation";
-
-
-        div.innerHTML = `
-
-            <img
-                src="${escapeHTML(rec.thumbnail)}"
-                alt=""
-            >
+        return div.innerHTML;
+    }
 
 
-            <div class="recitation-info">
+    /* =========================
+       نافذة إنشاء قائمة
+    ========================= */
 
-                <strong>
-                    ${escapeHTML(rec.name)}
-                </strong>
+    function showCreateList() {
 
-                <br>
+        document
+            .getElementById("listModal")
+            .classList
+            .add("show");
+
+        document
+            .getElementById("listName")
+            .focus();
+    }
 
 
-                <a
-                    href="${escapeHTML(rec.url)}"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    فتح YouTube
-                </a>
+    function closeListModal() {
 
-            </div>
+        document
+            .getElementById("listModal")
+            .classList
+            .remove("show");
+    }
 
+
+    /* =========================
+       إنشاء قائمة
+    ========================= */
+
+    async function createList() {
+
+        var name =
+            document
+                .getElementById("listName")
+                .value
+                .trim();
+
+
+        if (name === "") {
+
+            alert(
+                "اكتب اسم القائمة"
+            );
+
+            return;
+        }
+
+
+        if (!currentCategory) {
+
+            alert(
+                "لم يتم تحديد القسم"
+            );
+
+            return;
+        }
+
+
+        var result =
+            await supabaseClient
+                .from("lists")
+                .insert({
+                    category_id: currentCategory,
+                    name: name
+                })
+                .select()
+                .single();
+
+
+        if (result.error) {
+
+            console.error(
+                "SUPABASE ERROR:",
+                result.error
+            );
+
+            alert(
+                "خطأ Supabase:\n\n" +
+                result.error.message +
+                "\n\nالكود: " +
+                result.error.code
+            );
+
+            return;
+        }
+
+
+        document
+            .getElementById("listName")
+            .value = "";
+
+
+        closeListModal();
+
+        await showLists();
+    }
+
+
+    /* =========================
+       حذف القائمة
+    ========================= */
+
+    async function deleteList(id) {
+
+        if (
+            !confirm(
+                "هل تريد حذف القائمة؟\n\n" +
+                "إذا كانت التلاوات مرتبطة بها بـ CASCADE، " +
+                "فسيتم حذف تلاوات القائمة أيضًا."
+            )
+        ) {
+            return;
+        }
+
+
+        var result =
+            await supabaseClient
+                .from("lists")
+                .delete()
+                .eq(
+                    "id",
+                    id
+                );
+
+
+        if (result.error) {
+
+            console.error(
+                "SUPABASE ERROR:",
+                result.error
+            );
+
+            alert(
+                "حدث خطأ أثناء حذف القائمة:\n\n" +
+                result.error.message
+            );
+
+            return;
+        }
+
+
+        await showLists();
+    }
+
+
+    /* =========================
+       فتح القائمة
+    ========================= */
+
+    async function openList(id) {
+
+        var result =
+            await supabaseClient
+                .from("lists")
+                .select("*")
+                .eq(
+                    "id",
+                    id
+                )
+                .single();
+
+
+        if (result.error) {
+
+            console.error(
+                "SUPABASE ERROR:",
+                result.error
+            );
+
+            alert(
+                "تعذر فتح القائمة:\n\n" +
+                result.error.message
+            );
+
+            return;
+        }
+
+
+        currentList =
+            result.data;
+
+
+        document
+            .getElementById("categoryPage")
+            .style
+            .display = "none";
+
+
+        document
+            .getElementById("listPage")
+            .style
+            .display = "block";
+
+
+        document
+            .getElementById("listTitle")
+            .textContent =
+            currentList.name;
+
+
+        await showRecitations();
+    }
+
+
+    /* =========================
+       العودة للقوائم
+    ========================= */
+
+    function backToCategory() {
+
+        currentList = null;
+
+
+        document
+            .getElementById("listPage")
+            .style
+            .display = "none";
+
+
+        document
+            .getElementById("categoryPage")
+            .style
+            .display = "block";
+
+
+        showLists();
+    }
+
+
+    /* =========================
+       نافذة إضافة تلاوة
+    ========================= */
+
+    function showAddRecitation() {
+
+        document
+            .getElementById("recitationModal")
+            .classList
+            .add("show");
+
+        document
+            .getElementById("recitationName")
+            .focus();
+    }
+
+
+    function closeRecitationModal() {
+
+        document
+            .getElementById("recitationModal")
+            .classList
+            .remove("show");
+    }
+
+
+    /* =========================
+       استخراج YouTube ID
+    ========================= */
+
+    function getYoutubeId(url) {
+
+        var match =
+            url.match(
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/
+            );
+
+
+        if (match) {
+            return match[1];
+        }
+
+
+        return null;
+    }
+
+
+    /* =========================
+       إضافة التلاوة
+    ========================= */
+
+    async function createRecitation() {
+
+        if (!currentList) {
+
+            alert(
+                "لم يتم تحديد القائمة"
+            );
+
+            return;
+        }
+
+
+        var name =
+            document
+                .getElementById("recitationName")
+                .value
+                .trim();
+
+
+        var url =
+            document
+                .getElementById("youtubeUrl")
+                .value
+                .trim();
+
+
+        if (
+            name === "" ||
+            url === ""
+        ) {
+
+            alert(
+                "اكتب اسم التلاوة والرابط"
+            );
+
+            return;
+        }
+
+
+        var videoId =
+            getYoutubeId(url);
+
+
+        if (!videoId) {
+
+            alert(
+                "رابط YouTube غير صحيح"
+            );
+
+            return;
+        }
+
+
+        var thumbnail =
+            "https://img.youtube.com/vi/" +
+            videoId +
+            "/hqdefault.jpg";
+
+
+        var result =
+            await supabaseClient
+                .from("recitations")
+                .insert({
+                    list_id: currentList.id,
+                    name: name,
+                    url: url,
+                    thumbnail: thumbnail
+                });
+
+
+        if (result.error) {
+
+            console.error(
+                "SUPABASE ERROR:",
+                result.error
+            );
+
+            alert(
+                "حدث خطأ أثناء إضافة التلاوة:\n\n" +
+                result.error.message
+            );
+
+            return;
+        }
+
+
+        document
+            .getElementById("recitationName")
+            .value = "";
+
+
+        document
+            .getElementById("youtubeUrl")
+            .value = "";
+
+
+        closeRecitationModal();
+
+        await showRecitations();
+    }
+
+
+    /* =========================
+       عرض التلاوات
+    ========================= */
+
+    async function showRecitations() {
+
+        var container =
+            document.getElementById("recitations");
+
+
+        container.innerHTML = `
+            <p class="subtitle">
+                جارٍ تحميل التلاوات...
+            </p>
         `;
 
 
-        container.appendChild(div);
+        if (!currentList) {
 
+            container.innerHTML = `
+                <p class="subtitle">
+                    لم يتم تحديد القائمة.
+                </p>
+            `;
+
+            return;
+        }
+
+
+        var result =
+            await supabaseClient
+                .from("recitations")
+                .select("*")
+                .eq(
+                    "list_id",
+                    currentList.id
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                );
+
+
+        if (result.error) {
+
+            console.error(
+                "SUPABASE ERROR:",
+                result.error
+            );
+
+            container.innerHTML = `
+                <p class="subtitle">
+                    حدث خطأ أثناء تحميل التلاوات.
+                </p>
+            `;
+
+            return;
+        }
+
+
+        var recitations =
+            result.data || [];
+
+
+        if (
+            recitations.length === 0
+        ) {
+
+            container.innerHTML = `
+                <p class="subtitle">
+                    لا توجد تلاوات حتى الآن.
+                </p>
+            `;
+
+            return;
+        }
+
+
+        container.innerHTML = "";
+
+
+        for (
+            var i = 0;
+            i < recitations.length;
+            i++
+        ) {
+
+            var rec =
+                recitations[i];
+
+
+            var div =
+                document.createElement("div");
+
+            div.className =
+                "recitation";
+
+
+            div.innerHTML = `
+
+                <img
+                    src="${escapeHTML(rec.thumbnail)}"
+                    alt=""
+                >
+
+                <div class="recitation-info">
+
+                    <strong>
+                        ${escapeHTML(rec.name)}
+                    </strong>
+
+                    <br>
+
+                    <a
+                        href="${escapeHTML(rec.url)}"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        فتح YouTube
+                    </a>
+
+                </div>
+
+                <button
+                    class="danger"
+                    onclick="deleteRecitation(${rec.id})"
+                >
+                    حذف التلاوة
+                </button>
+
+            `;
+
+
+            container.appendChild(div);
+        }
     }
 
-}
+
+    /* =========================
+       حذف تلاوة واحدة فقط
+    ========================= */
+
+    async function deleteRecitation(id) {
+
+        if (
+            !confirm(
+                "هل تريد حذف هذه التلاوة فقط؟\n\n" +
+                "لن يتم حذف القائمة أو باقي التلاوات."
+            )
+        ) {
+            return;
+        }
+
+
+        var result =
+            await supabaseClient
+                .from("recitations")
+                .delete()
+                .eq(
+                    "id",
+                    id
+                );
+
+
+        if (result.error) {
+
+            console.error(
+                "SUPABASE ERROR:",
+                result.error
+            );
+
+            alert(
+                "حدث خطأ أثناء حذف التلاوة:\n\n" +
+                result.error.message +
+                "\n\nالكود: " +
+                result.error.code
+            );
+
+            return;
+        }
+
+
+        await showRecitations();
+    }
 
 </script>
-
+```
 
 </body>
 
