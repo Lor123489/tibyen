@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 
 <head>
 
-```
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,119 +12,272 @@
 <link rel="stylesheet" href="style.css">
 
 <link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
     rel="stylesheet"
 >
 
 <style>
 
-    .category-page {
-        max-width: 1100px;
-        margin: 50px auto;
-        padding: 20px;
-    }
+/* =========================
+   صفحة التصنيف
+========================= */
 
-    .category-page h1 {
-        text-align: center;
-        margin-bottom: 10px;
-    }
+.category-page {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 20px;
+}
 
-    .category-description {
-        text-align: center;
-        color: #777;
-        margin-bottom: 40px;
-    }
 
-    .lists {
-        display: grid;
-        grid-template-columns: repeat(
+/* العنوان */
+
+.category-page h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.category-description {
+    text-align: center;
+    color: #777;
+    margin-bottom: 40px;
+}
+
+
+/* =========================
+   القوائم
+========================= */
+
+.lists {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
             auto-fit,
             minmax(250px, 1fr)
         );
-        gap: 25px;
-    }
 
-    .list-card {
-        background: white;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 5px 20px #ddd;
-        cursor: pointer;
-        transition: .2s;
-    }
+    gap: 25px;
+}
 
-    .list-card:hover {
-        transform: translateY(-5px);
-    }
 
-    .list-card h2 {
-        margin-top: 0;
-    }
+.list-card {
 
-    .list-card p {
-        color: #777;
-    }
+    background: white;
 
-    .recitations {
-        display: grid;
-        grid-template-columns: repeat(
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 5px 20px #ddd;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+
+.list-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 25px #d5d5d5;
+}
+
+
+.list-card h2 {
+
+    margin-top: 0;
+
+}
+
+
+.list-card p {
+
+    color: #777;
+
+}
+
+
+/* =========================
+   التلاوات
+========================= */
+
+.recitations {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
             auto-fit,
             minmax(280px, 1fr)
         );
-        gap: 25px;
+
+    gap: 25px;
+}
+
+
+.recitation {
+
+    background: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: 0 5px 20px #ddd;
+}
+
+
+.recitation img {
+
+    width: 100%;
+
+    height: 180px;
+
+    object-fit: cover;
+}
+
+
+.recitation-content {
+
+    padding: 20px;
+}
+
+
+.listen {
+
+    display: inline-block;
+
+    margin-top: 10px;
+
+    background: #c5a45a;
+
+    color: #111;
+
+    text-decoration: none;
+
+    padding: 10px 22px;
+
+    border-radius: 25px;
+
+    transition: .2s;
+}
+
+
+.listen:hover {
+
+    transform: translateY(-2px);
+
+    opacity: .9;
+}
+
+
+/* =========================
+   زر العودة
+========================= */
+
+.back {
+
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   حالة عدم وجود محتوى
+========================= */
+
+.empty {
+
+    text-align: center;
+
+    color: #777;
+
+    padding: 50px;
+
+    grid-column: 1 / -1;
+}
+
+
+/* =========================
+   الجوال
+========================= */
+
+@media (max-width: 768px) {
+
+    .category-page {
+
+        margin: 25px auto;
+
+        padding: 15px;
     }
 
-    .recitation {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px #ddd;
+
+    .category-page h1 {
+
+        font-size: 28px;
     }
+
+
+    .category-description {
+
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+
+    .lists {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .list-card {
+
+        padding: 25px;
+    }
+
+
+    .recitations {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
 
     .recitation img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
+
+        height: 190px;
     }
 
-    .recitation-content {
-        padding: 20px;
-    }
-
-    .listen {
-        display: inline-block;
-        margin-top: 10px;
-        background: #c5a45a;
-        color: #111;
-        text-decoration: none;
-        padding: 10px 22px;
-        border-radius: 25px;
-    }
-
-    .back {
-        display: inline-block;
-        margin-bottom: 25px;
-        color: #111;
-        text-decoration: none;
-    }
-
-    .empty {
-        text-align: center;
-        color: #777;
-        padding: 50px;
-    }
+}
 
 </style>
-```
 
 </head>
 
+
 <body>
 
-```
+
 <!-- =========================
      الهيدر
-========================== -->
+========================= -->
 
 <header>
 
@@ -147,16 +298,26 @@
             الرئيسية
         </a>
 
+
         <a href="category.html?category=tarawih">
             التراويح
         </a>
+
 
         <a href="category.html?category=haram">
             الحرم
         </a>
 
+
         <a href="category.html?category=nawader">
             النوادر
+        </a>
+
+
+        <!-- المقامات -->
+
+        <a href="category.html?category=maqamat">
+            المقامات
         </a>
 
     </nav>
@@ -167,7 +328,7 @@
 
 <!-- =========================
      محتوى الصفحة
-========================== -->
+========================= -->
 
 <div class="category-page">
 
@@ -189,7 +350,9 @@
     ></p>
 
 
-    <!-- القوائم -->
+    <!-- =========================
+         القوائم
+    ========================== -->
 
     <div
         id="lists"
@@ -197,7 +360,9 @@
     ></div>
 
 
-    <!-- التلاوات -->
+    <!-- =========================
+         التلاوات
+    ========================== -->
 
     <div
         id="recitations"
@@ -212,7 +377,7 @@
 
 <!-- =========================
      Supabase
-========================== -->
+========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -220,307 +385,431 @@
 
 
 
-<!-- =========================
-     JavaScript
-========================== -->
-
 <script>
 
-    /* =========================
-       معرفة القسم الحالي
-    ========================== */
+/* =========================
+   معرفة القسم الحالي
+========================= */
 
-    const params =
-        new URLSearchParams(location.search);
-
-    const category =
-        params.get("category");
+const params =
+    new URLSearchParams(location.search);
 
 
-
-    /* =========================
-       أسماء الأقسام
-    ========================== */
-
-    const categoryNames = {
-
-        tarawih: "التراويح",
-
-        haram: "تلاوات الحرم",
-
-        nawader: "النوادر"
-
-    };
-
-
-    const descriptions = {
-
-        tarawih:
-            "تلاوات الشيخ ياسر الدوسري في صلاة التراويح",
-
-        haram:
-            "تلاوات الشيخ من المسجد الحرام",
-
-        nawader:
-            "تلاوات نادرة وقديمة"
-
-    };
+const category =
+    params.get("category");
 
 
 
-    /* =========================
-       عنوان الصفحة
-    ========================== */
+/* =========================
+   أسماء الأقسام
+========================= */
 
-    document.getElementById("categoryTitle")
-        .textContent =
-        categoryNames[category] || "تبيان";
+const categoryNames = {
+
+    tarawih:
+        "التراويح",
+
+    haram:
+        "تلاوات الحرم",
+
+    nawader:
+        "النوادر",
+
+    maqamat:
+        "المقامات"
+
+};
 
 
-    document.getElementById("categoryDescription")
-        .textContent =
-        descriptions[category] || "";
+
+/* =========================
+   أوصاف الأقسام
+========================= */
+
+const descriptions = {
+
+    tarawih:
+        "تلاوات الشيخ ياسر الدوسري في صلاة التراويح",
+
+    haram:
+        "تلاوات الشيخ من المسجد الحرام",
+
+    nawader:
+        "تلاوات نادرة وقديمة",
+
+    maqamat:
+        "تلاوات الشيخ ياسر الدوسري مرتبة حسب المقامات"
+
+};
 
 
 
-    /* =========================
-       حماية النصوص
-    ========================== */
+/* =========================
+   عنوان الصفحة
+========================= */
 
-    function escapeHTML(text) {
+document.getElementById("categoryTitle")
+    .textContent =
+    categoryNames[category] || "تبيان";
 
-        const div =
-            document.createElement("div");
 
-        div.textContent =
-            text ?? "";
+document.getElementById("categoryDescription")
+    .textContent =
+    descriptions[category] || "";
 
-        return div.innerHTML;
+
+
+/* =========================
+   حماية النصوص
+========================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text ?? "";
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =========================
+   تحميل القوائم
+========================= */
+
+async function loadLists() {
+
+    const listsContainer =
+        document.getElementById("lists");
+
+
+    const recitationsContainer =
+        document.getElementById("recitations");
+
+
+    listsContainer.style.display =
+        "grid";
+
+
+    recitationsContainer.style.display =
+        "none";
+
+
+    listsContainer.innerHTML = `
+
+        <div class="empty">
+
+            جارٍ تحميل القوائم...
+
+        </div>
+
+    `;
+
+
+    try {
+
+
+        const {
+            data: lists,
+            error
+        } = await supabaseClient
+
+            .from("lists")
+
+            .select(`
+                id,
+                name,
+                category_id
+            `)
+
+            .eq(
+                "category_id",
+                category
+            )
+
+            .order(
+                "id",
+                {
+                    ascending: true
+                }
+            );
+
+
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        listsContainer.innerHTML = "";
+
+
+        /* =========================
+           لا توجد قوائم
+        ========================== */
+
+        if (
+            !lists ||
+            lists.length === 0
+        ) {
+
+            listsContainer.innerHTML = `
+
+                <div class="empty">
+
+                    لا توجد قوائم في هذا القسم حتى الآن.
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        /* =========================
+           إنشاء بطاقات القوائم
+        ========================== */
+
+        for (const list of lists) {
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "list-card";
+
+
+
+            /* =========================
+               عدد التلاوات
+            ========================== */
+
+            const {
+                count,
+                error: countError
+            } = await supabaseClient
+
+                .from("recitations")
+
+                .select(
+                    "id",
+                    {
+                        count: "exact",
+                        head: true
+                    }
+                )
+
+                .eq(
+                    "list_id",
+                    list.id
+                );
+
+
+            if (countError) {
+
+                console.error(
+                    countError
+                );
+
+            }
+
+
+
+            card.innerHTML = `
+
+                <h2>
+                    ${escapeHTML(list.name)}
+                </h2>
+
+                <p>
+                    ${count ?? 0} تلاوة
+                </p>
+
+            `;
+
+
+            card.onclick =
+                function () {
+
+                    showRecitations(
+                        list.id
+                    );
+
+                };
+
+
+            listsContainer.appendChild(
+                card
+            );
+
+        }
 
     }
 
+    catch (error) {
 
-
-    /* =========================
-       تحميل القوائم
-    ========================== */
-
-    async function loadLists() {
-
-        const listsContainer =
-            document.getElementById("lists");
-
-        const recitationsContainer =
-            document.getElementById("recitations");
-
-
-        listsContainer.style.display =
-            "grid";
-
-        recitationsContainer.style.display =
-            "none";
+        console.error(
+            "خطأ في تحميل القوائم:",
+            error
+        );
 
 
         listsContainer.innerHTML = `
 
             <div class="empty">
 
-                جارٍ تحميل القوائم...
+                حدث خطأ أثناء تحميل القوائم.
 
             </div>
 
         `;
 
-
-        try {
-
-            const {
-                data: lists,
-                error
-            } = await supabaseClient
-
-                .from("lists")
-
-                .select(`
-                    id,
-                    name,
-                    category_id
-                `)
-
-                .eq(
-                    "category_id",
-                    category
-                )
-
-                .order(
-                    "id",
-                    {
-                        ascending: true
-                    }
-                );
-
-
-            if (error) {
-
-                throw error;
-
-            }
-
-
-            listsContainer.innerHTML = "";
-
-
-            /* =========================
-               لا توجد قوائم
-            ========================== */
-
-            if (
-                !lists ||
-                lists.length === 0
-            ) {
-
-                listsContainer.innerHTML = `
-
-                    <div class="empty">
-
-                        لا توجد قوائم في هذا القسم حتى الآن.
-
-                    </div>
-
-                `;
-
-                return;
-
-            }
-
-
-
-            /* =========================
-               إنشاء بطاقات القوائم
-            ========================== */
-
-            for (const list of lists) {
-
-                const card =
-                    document.createElement("div");
-
-
-                card.className =
-                    "list-card";
-
-
-
-                /* =========================
-                   عدد التلاوات
-                ========================== */
-
-                const {
-                    count,
-                    error: countError
-                } = await supabaseClient
-
-                    .from("recitations")
-
-                    .select(
-                        "id",
-                        {
-                            count: "exact",
-                            head: true
-                        }
-                    )
-
-                    .eq(
-                        "list_id",
-                        list.id
-                    );
-
-
-                if (countError) {
-
-                    console.error(
-                        countError
-                    );
-
-                }
-
-
-
-                card.innerHTML = `
-
-                    <h2>
-                        ${escapeHTML(list.name)}
-                    </h2>
-
-                    <p>
-                        ${count ?? 0} تلاوة
-                    </p>
-
-                `;
-
-
-                card.onclick =
-                    function () {
-
-                        showRecitations(
-                            list.id
-                        );
-
-                    };
-
-
-                listsContainer.appendChild(
-                    card
-                );
-
-            }
-
-        }
-
-        catch (error) {
-
-            console.error(
-                "خطأ في تحميل القوائم:",
-                error
-            );
-
-
-            listsContainer.innerHTML = `
-
-                <div class="empty">
-
-                    حدث خطأ أثناء تحميل القوائم.
-
-                </div>
-
-            `;
-
-        }
-
     }
 
+}
 
 
-    /* =========================
-       عرض التلاوات
-    ========================== */
 
-    async function showRecitations(listId) {
+/* =========================
+   عرض التلاوات
+========================= */
 
-        const listsContainer =
-            document.getElementById("lists");
+async function showRecitations(listId) {
 
-        const container =
-            document.getElementById(
-                "recitations"
+    const listsContainer =
+        document.getElementById("lists");
+
+
+    const container =
+        document.getElementById(
+            "recitations"
+        );
+
+
+    listsContainer.style.display =
+        "none";
+
+
+    container.style.display =
+        "grid";
+
+
+    container.innerHTML = `
+
+        <div
+            style="
+                grid-column: 1 / -1;
+                margin-bottom: 10px;
+            "
+        >
+
+            <a
+                href="#"
+                class="back"
+                onclick="
+                    loadLists();
+                    return false;
+                "
+            >
+                ← العودة للقوائم
+            </a>
+
+            <h2>
+                جارٍ تحميل التلاوات...
+            </h2>
+
+        </div>
+
+    `;
+
+
+    try {
+
+
+        /* =========================
+           جلب اسم القائمة
+        ========================== */
+
+        const {
+            data: list,
+            error: listError
+        } = await supabaseClient
+
+            .from("lists")
+
+            .select(`
+                id,
+                name
+            `)
+
+            .eq(
+                "id",
+                listId
+            )
+
+            .single();
+
+
+        if (listError) {
+
+            throw listError;
+
+        }
+
+
+
+        /* =========================
+           جلب التلاوات
+        ========================== */
+
+        const {
+            data: recitations,
+            error: recitationsError
+        } = await supabaseClient
+
+            .from("recitations")
+
+            .select(`
+                id,
+                name,
+                url,
+                thumbnail
+            `)
+
+            .eq(
+                "list_id",
+                listId
+            )
+
+            .order(
+                "id",
+                {
+                    ascending: true
+                }
             );
 
 
-        listsContainer.style.display =
-            "none";
+        if (recitationsError) {
 
-        container.style.display =
-            "grid";
+            throw recitationsError;
 
+        }
+
+
+
+        /* =========================
+           رأس القائمة
+        ========================== */
 
         container.innerHTML = `
 
@@ -543,7 +832,7 @@
                 </a>
 
                 <h2>
-                    جارٍ تحميل التلاوات...
+                    ${escapeHTML(list.name)}
                 </h2>
 
             </div>
@@ -551,236 +840,128 @@
         `;
 
 
-        try {
 
+        /* =========================
+           لا توجد تلاوات
+        ========================== */
 
-            /* =========================
-               جلب اسم القائمة
-            ========================== */
+        if (
+            !recitations ||
+            recitations.length === 0
+        ) {
 
-            const {
-                data: list,
-                error: listError
-            } = await supabaseClient
+            container.innerHTML += `
 
-                .from("lists")
+                <div class="empty">
 
-                .select(`
-                    id,
-                    name
-                `)
-
-                .eq(
-                    "id",
-                    listId
-                )
-
-                .single();
-
-
-            if (listError) {
-
-                throw listError;
-
-            }
-
-
-
-            /* =========================
-               جلب التلاوات
-            ========================== */
-
-            const {
-                data: recitations,
-                error: recitationsError
-            } = await supabaseClient
-
-                .from("recitations")
-
-                .select(`
-                    id,
-                    name,
-                    url,
-                    thumbnail
-                `)
-
-                .eq(
-                    "list_id",
-                    listId
-                )
-
-                .order(
-                    "id",
-                    {
-                        ascending: true
-                    }
-                );
-
-
-            if (recitationsError) {
-
-                throw recitationsError;
-
-            }
-
-
-
-            /* =========================
-               رأس القائمة
-            ========================== */
-
-            container.innerHTML = `
-
-                <div
-                    style="
-                        grid-column: 1 / -1;
-                        margin-bottom: 10px;
-                    "
-                >
-
-                    <a
-                        href="#"
-                        class="back"
-                        onclick="
-                            loadLists();
-                            return false;
-                        "
-                    >
-                        ← العودة للقوائم
-                    </a>
-
-                    <h2>
-                        ${escapeHTML(
-                            list.name
-                        )}
-                    </h2>
+                    لا توجد تلاوات في هذه القائمة.
 
                 </div>
 
             `;
 
+            return;
+
+        }
 
 
-            /* =========================
-               لا توجد تلاوات
-            ========================== */
 
-            if (
-                !recitations ||
-                recitations.length === 0
-            ) {
+        /* =========================
+           عرض التلاوات
+        ========================== */
 
-                container.innerHTML += `
+        recitations.forEach(
+            function (recitation) {
 
-                    <div class="empty">
 
-                        لا توجد تلاوات في هذه القائمة.
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "recitation";
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${escapeHTML(
+                            recitation.thumbnail
+                        )}"
+                        alt=""
+                    >
+
+
+                    <div
+                        class="recitation-content"
+                    >
+
+                        <h3>
+                            ${escapeHTML(
+                                recitation.name
+                            )}
+                        </h3>
+
+
+                        <a
+                            class="listen"
+                            href="${escapeHTML(
+                                recitation.url
+                            )}"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            استمع
+                        </a>
 
                     </div>
 
                 `;
 
-                return;
+
+                container.appendChild(
+                    card
+                );
 
             }
-
-
-
-            /* =========================
-               عرض التلاوات
-            ========================== */
-
-            recitations.forEach(
-                function (recitation) {
-
-                    const card =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    card.className =
-                        "recitation";
-
-
-                    card.innerHTML = `
-
-                        <img
-                            src="${escapeHTML(
-                                recitation.thumbnail
-                            )}"
-                            alt=""
-                        >
-
-
-                        <div
-                            class="recitation-content"
-                        >
-
-                            <h3>
-                                ${escapeHTML(
-                                    recitation.name
-                                )}
-                            </h3>
-
-
-                            <a
-                                class="listen"
-                                href="${escapeHTML(
-                                    recitation.url
-                                )}"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                استمع
-                            </a>
-
-                        </div>
-
-                    `;
-
-
-                    container.appendChild(
-                        card
-                    );
-
-                }
-            );
-
-        }
-
-        catch (error) {
-
-            console.error(
-                "خطأ في تحميل التلاوات:",
-                error
-            );
-
-
-            container.innerHTML = `
-
-                <div class="empty">
-
-                    حدث خطأ أثناء تحميل التلاوات.
-
-                </div>
-
-            `;
-
-        }
+        );
 
     }
 
+    catch (error) {
+
+        console.error(
+            "خطأ في تحميل التلاوات:",
+            error
+        );
 
 
-    /* =========================
-       تشغيل الصفحة
-    ========================== */
+        container.innerHTML = `
 
-    loadLists();
+            <div class="empty">
+
+                حدث خطأ أثناء تحميل التلاوات.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =========================
+   تشغيل الصفحة
+========================= */
+
+loadLists();
 
 </script>
-```
+
 
 </body>
 
