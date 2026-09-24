@@ -1,308 +1,322 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>لوحة تحكم تبيان</title>
+    <title>لوحة تحكم تبيان</title>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
-    rel="stylesheet"
->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-<style>
-    * {
-        box-sizing: border-box;
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    body {
-        margin: 0;
-        font-family: Cairo, sans-serif;
-        background: #f5f5f5;
-        color: #111;
-    }
-
-    /* =========================
-       الهيدر
-    ========================= */
-
-    header {
-        background: #111;
-        color: white;
-        padding: 20px 8%;
-    }
-
-    .logo {
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .logo span {
-        display: block;
-        font-size: 12px;
-        color: #aaa;
-    }
-
-    /* =========================
-       الحاوية
-    ========================= */
-
-    .container {
-        max-width: 1000px;
-        margin: 40px auto;
-        padding: 20px;
-    }
-
-    h1 {
-        margin-bottom: 5px;
-    }
-
-    .subtitle {
-        color: #777;
-    }
-
-    /* =========================
-       الأقسام
-    ========================= */
-
-    .categories {
-        display: grid;
-        grid-template-columns: repeat(
-            auto-fit,
-            minmax(240px, 1fr)
-        );
-        gap: 20px;
-        margin-top: 30px;
-    }
-
-    .category {
-        background: white;
-        padding: 25px;
-        border-radius: 18px;
-        box-shadow: 0 5px 20px #ddd;
-    }
-
-    /* =========================
-       الأزرار
-    ========================= */
-
-    button {
-        border: 0;
-        font-family: inherit;
-        cursor: pointer;
-        border-radius: 10px;
-        padding: 10px 18px;
-    }
-
-    .primary {
-        background: #111;
-        color: white;
-    }
-
-    .primary:hover {
-        background: #222;
-    }
-
-    .danger {
-        background: #222;
-        color: white;
-    }
-
-    .danger:hover {
-        background: #000;
-    }
-
-    .back {
-        background: #ddd;
-        margin-bottom: 20px;
-    }
-
-    /* =========================
-       القوائم
-    ========================= */
-
-    .list {
-        background: white;
-        padding: 20px;
-        margin-top: 15px;
-        border-radius: 15px;
-        box-shadow: 0 3px 10px #ddd;
-    }
-
-    .list h3 {
-        margin-top: 0;
-    }
-
-    /* =========================
-       الإدخالات
-    ========================= */
-
-    input {
-        width: 100%;
-        padding: 13px;
-        margin: 8px 0 15px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        font-family: inherit;
-    }
-
-    /* =========================
-       النوافذ
-    ========================= */
-
-    .modal {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-
-    .modal.show {
-        display: flex;
-    }
-
-    .modal-box {
-        background: white;
-        width: 100%;
-        max-width: 450px;
-        padding: 30px;
-        border-radius: 20px;
-    }
-
-    /* =========================
-       التلاوات
-    ========================= */
-
-    .recitation {
-        background: white;
-        padding: 15px;
-        border-radius: 15px;
-        margin-top: 15px;
-
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .recitation img {
-        width: 130px;
-        height: 75px;
-        object-fit: cover;
-        border-radius: 10px;
-    }
-
-    .recitation-info {
-        flex: 1;
-    }
-
-    /* =========================
-       الجوال
-    ========================= */
-
-    @media (max-width: 700px) {
-        .container {
-            margin: 20px auto;
-            padding: 15px;
+        body {
+            margin: 0;
+            font-family: Cairo, sans-serif;
+            background: #f5f5f5;
+            color: #111;
         }
 
         header {
-            padding: 18px 20px;
+            background: #111;
+            color: white;
+            padding: 20px 8%;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: bold;
         }
 
-        .categories {
-            grid-template-columns: 1fr;
+        .logo span {
+            display: block;
+            font-size: 12px;
+            color: #aaa;
         }
 
-        .category {
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
             padding: 20px;
         }
 
-        .category h2 {
-            font-size: 21px;
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #777;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(240px, 1fr)
+            );
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .category {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px #ddd;
+        }
+
+        button {
+            border: 0;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 10px 18px;
+        }
+
+        .primary {
+            background: #111;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #222;
+        }
+
+        .danger {
+            background: #222;
+            color: white;
+        }
+
+        .danger:hover {
+            background: #000;
+        }
+
+        .back {
+            background: #ddd;
+            margin-bottom: 20px;
         }
 
         .list {
-            padding: 18px;
+            background: white;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px #ddd;
         }
 
-        .list button {
-            margin-top: 5px;
+        .list h3 {
+            margin-top: 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .source-options {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .source-option {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 13px;
+            cursor: pointer;
+            text-align: center;
+            background: #fafafa;
+            transition: 0.2s;
+        }
+
+        .source-option:hover {
+            border-color: #111;
+        }
+
+        .source-option.active {
+            background: #111;
+            color: white;
+            border-color: #111;
+        }
+
+        .source-option input {
+            display: none;
+        }
+
+        .source-section {
+            display: none;
+        }
+
+        .source-section.active {
+            display: block;
+        }
+
+        .file-name {
+            color: #777;
+            font-size: 13px;
+            margin-top: -5px;
+            margin-bottom: 15px;
+        }
+
+        .upload-status {
+            display: none;
+            background: #f1f1f1;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .upload-status.show {
+            display: block;
         }
 
         .recitation {
-            flex-direction: column;
-            align-items: stretch;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .recitation img {
-            width: 100%;
-            height: 180px;
+            width: 130px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
-        .recitation .danger {
-            width: 100%;
+        .recitation-info {
+            flex: 1;
         }
-    }
-</style>
-```
 
+        .source-badge {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 4px 9px;
+            border-radius: 7px;
+            background: #eee;
+            color: #555;
+            font-size: 12px;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            header {
+                padding: 18px 20px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .category {
+                padding: 20px;
+            }
+
+            .category h2 {
+                font-size: 21px;
+            }
+
+            .list {
+                padding: 18px;
+            }
+
+            .list button {
+                margin-top: 5px;
+            }
+
+            .recitation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .recitation img {
+                width: 100%;
+                height: 180px;
+            }
+
+            .recitation .danger {
+                width: 100%;
+            }
+
+            .source-options {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-```
-<!-- =========================
-     الهيدر
-========================= -->
-
 <header>
     <div class="logo">
         تبيان
-
-        <span>
-            لوحة التحكم
-        </span>
+        <span>لوحة التحكم</span>
     </div>
 </header>
 
-
 <div class="container">
 
-    <!-- =========================
-         الصفحة الرئيسية
-    ========================= -->
+    <!-- الصفحة الرئيسية -->
 
     <div id="home">
 
-        <h1>
-            لوحة التحكم
-        </h1>
+        <h1>لوحة التحكم</h1>
 
         <p class="subtitle">
             إدارة أقسام موقع تبيان
         </p>
 
-
         <div class="categories">
 
-            <!-- التراويح -->
-
             <div class="category">
-
-                <h2>
-                    التراويح
-                </h2>
+                <h2>التراويح</h2>
 
                 <p>
                     إدارة قوائم التراويح
@@ -314,17 +328,10 @@
                 >
                     إدارة التراويح
                 </button>
-
             </div>
 
-
-            <!-- الحرم -->
-
             <div class="category">
-
-                <h2>
-                    الحرم
-                </h2>
+                <h2>الحرم</h2>
 
                 <p>
                     إدارة قوائم الحرم
@@ -336,17 +343,10 @@
                 >
                     إدارة الحرم
                 </button>
-
             </div>
 
-
-            <!-- النوادر -->
-
             <div class="category">
-
-                <h2>
-                    النوادر
-                </h2>
+                <h2>النوادر</h2>
 
                 <p>
                     إدارة التلاوات النادرة
@@ -358,17 +358,10 @@
                 >
                     إدارة النوادر
                 </button>
-
             </div>
 
-
-            <!-- المقامات -->
-
             <div class="category">
-
-                <h2>
-                    المقامات
-                </h2>
+                <h2>المقامات</h2>
 
                 <p>
                     إدارة التلاوات حسب المقام
@@ -380,7 +373,6 @@
                 >
                     إدارة المقامات
                 </button>
-
             </div>
 
         </div>
@@ -388,9 +380,7 @@
     </div>
 
 
-    <!-- =========================
-         صفحة القسم
-    ========================= -->
+    <!-- صفحة القسم -->
 
     <div
         id="categoryPage"
@@ -418,9 +408,7 @@
     </div>
 
 
-    <!-- =========================
-         صفحة القائمة
-    ========================= -->
+    <!-- صفحة القائمة -->
 
     <div
         id="listPage"
@@ -450,9 +438,7 @@
 </div>
 
 
-<!-- =========================
-     نافذة إنشاء قائمة
-========================= -->
+<!-- نافذة إنشاء قائمة -->
 
 <div
     id="listModal"
@@ -489,9 +475,7 @@
 </div>
 
 
-<!-- =========================
-     نافذة إضافة تلاوة
-========================= -->
+<!-- نافذة إضافة تلاوة -->
 
 <div
     id="recitationModal"
@@ -510,14 +494,99 @@
             placeholder="اسم التلاوة"
         >
 
-        <input
-            id="youtubeUrl"
-            type="text"
-            placeholder="رابط YouTube"
+
+        <!-- اختيار المصدر -->
+
+        <div class="source-options">
+
+            <label
+                class="source-option active"
+                id="youtubeOption"
+            >
+
+                <input
+                    type="radio"
+                    name="sourceType"
+                    value="youtube"
+                    checked
+                    onchange="changeSourceType('youtube')"
+                >
+
+                🎬 YouTube
+
+            </label>
+
+
+            <label
+                class="source-option"
+                id="audioOption"
+            >
+
+                <input
+                    type="radio"
+                    name="sourceType"
+                    value="audio"
+                    onchange="changeSourceType('audio')"
+                >
+
+                🎵 ملف صوتي
+
+            </label>
+
+        </div>
+
+
+        <!-- YouTube -->
+
+        <div
+            id="youtubeSection"
+            class="source-section active"
         >
+
+            <input
+                id="youtubeUrl"
+                type="text"
+                placeholder="رابط YouTube"
+            >
+
+        </div>
+
+
+        <!-- ملف صوتي -->
+
+        <div
+            id="audioSection"
+            class="source-section"
+        >
+
+            <input
+                id="audioFile"
+                type="file"
+                accept="audio/*"
+                onchange="showSelectedFile()"
+            >
+
+            <div
+                id="fileName"
+                class="file-name"
+            >
+                لم يتم اختيار ملف
+            </div>
+
+        </div>
+
+
+        <div
+            id="uploadStatus"
+            class="upload-status"
+        >
+            جاري تجهيز الملف...
+        </div>
+
 
         <button
             class="primary"
+            id="addRecitationButton"
             onclick="createRecitation()"
         >
             إضافة
@@ -534,9 +603,7 @@
 </div>
 
 
-<!-- =========================
-     Supabase
-========================= -->
+<!-- Supabase -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -561,7 +628,10 @@
     ========================= */
 
     var currentCategory = null;
+
     var currentList = null;
+
+    var currentSourceType = "youtube";
 
 
     /* =========================
@@ -620,6 +690,7 @@
         document.getElementById("listPage").style.display = "none";
 
         currentCategory = null;
+
         currentList = null;
     }
 
@@ -782,6 +853,7 @@
             .classList
             .add("show");
 
+
         document
             .getElementById("listName")
             .focus();
@@ -848,6 +920,7 @@
                 result.error
             );
 
+
             alert(
                 "خطأ Supabase:\n\n" +
                 result.error.message +
@@ -904,6 +977,7 @@
                 result.error
             );
 
+
             alert(
                 "حدث خطأ أثناء حذف القائمة:\n\n" +
                 result.error.message
@@ -940,6 +1014,7 @@
                 "SUPABASE ERROR:",
                 result.error
             );
+
 
             alert(
                 "تعذر فتح القائمة:\n\n" +
@@ -1007,10 +1082,44 @@
 
     function showAddRecitation() {
 
+        currentSourceType = "youtube";
+
+
         document
             .getElementById("recitationModal")
             .classList
             .add("show");
+
+
+        document
+            .getElementById("recitationName")
+            .value = "";
+
+
+        document
+            .getElementById("youtubeUrl")
+            .value = "";
+
+
+        document
+            .getElementById("audioFile")
+            .value = "";
+
+
+        document
+            .getElementById("fileName")
+            .textContent =
+            "لم يتم اختيار ملف";
+
+
+        document
+            .getElementById("uploadStatus")
+            .classList
+            .remove("show");
+
+
+        changeSourceType("youtube");
+
 
         document
             .getElementById("recitationName")
@@ -1024,6 +1133,91 @@
             .getElementById("recitationModal")
             .classList
             .remove("show");
+    }
+
+
+    /* =========================
+       تغيير نوع المصدر
+    ========================= */
+
+    function changeSourceType(type) {
+
+        currentSourceType = type;
+
+
+        var youtubeOption =
+            document.getElementById("youtubeOption");
+
+        var audioOption =
+            document.getElementById("audioOption");
+
+
+        var youtubeSection =
+            document.getElementById("youtubeSection");
+
+        var audioSection =
+            document.getElementById("audioSection");
+
+
+        if (type === "youtube") {
+
+            youtubeOption.classList.add("active");
+
+            audioOption.classList.remove("active");
+
+            youtubeSection.classList.add("active");
+
+            audioSection.classList.remove("active");
+
+        } else {
+
+            youtubeOption.classList.remove("active");
+
+            audioOption.classList.add("active");
+
+            youtubeSection.classList.remove("active");
+
+            audioSection.classList.add("active");
+        }
+    }
+
+
+    /* =========================
+       اسم الملف المختار
+    ========================= */
+
+    function showSelectedFile() {
+
+        var file =
+            document
+                .getElementById("audioFile")
+                .files[0];
+
+
+        var fileName =
+            document.getElementById("fileName");
+
+
+        if (!file) {
+
+            fileName.textContent =
+                "لم يتم اختيار ملف";
+
+            return;
+        }
+
+
+        var sizeMB =
+            file.size /
+            1024 /
+            1024;
+
+
+        fileName.textContent =
+            file.name +
+            " — " +
+            sizeMB.toFixed(2) +
+            " MB";
     }
 
 
@@ -1071,86 +1265,323 @@
                 .trim();
 
 
-        var url =
-            document
-                .getElementById("youtubeUrl")
-                .value
-                .trim();
-
-
-        if (
-            name === "" ||
-            url === ""
-        ) {
+        if (name === "") {
 
             alert(
-                "اكتب اسم التلاوة والرابط"
+                "اكتب اسم التلاوة"
             );
 
             return;
         }
 
 
-        var videoId =
-            getYoutubeId(url);
-
-
-        if (!videoId) {
-
-            alert(
-                "رابط YouTube غير صحيح"
+        var button =
+            document.getElementById(
+                "addRecitationButton"
             );
 
-            return;
-        }
+
+        var status =
+            document.getElementById(
+                "uploadStatus"
+            );
 
 
-        var thumbnail =
-            "https://img.youtube.com/vi/" +
-            videoId +
-            "/hqdefault.jpg";
+        button.disabled = true;
 
 
-        var result =
-            await supabaseClient
-                .from("recitations")
-                .insert({
-                    list_id: currentList.id,
-                    name: name,
-                    url: url,
-                    thumbnail: thumbnail
-                });
+        try {
+
+            /* =========================
+               YouTube
+            ========================= */
+
+            if (currentSourceType === "youtube") {
+
+                var url =
+                    document
+                        .getElementById("youtubeUrl")
+                        .value
+                        .trim();
 
 
-        if (result.error) {
+                if (url === "") {
+
+                    alert(
+                        "ضع رابط YouTube"
+                    );
+
+                    return;
+                }
+
+
+                var videoId =
+                    getYoutubeId(url);
+
+
+                if (!videoId) {
+
+                    alert(
+                        "رابط YouTube غير صحيح"
+                    );
+
+                    return;
+                }
+
+
+                var thumbnail =
+                    "https://img.youtube.com/vi/" +
+                    videoId +
+                    "/hqdefault.jpg";
+
+
+                var result =
+                    await supabaseClient
+                        .from("recitations")
+                        .insert({
+
+                            list_id:
+                                currentList.id,
+
+                            name:
+                                name,
+
+                            url:
+                                url,
+
+                            thumbnail:
+                                thumbnail,
+
+                            source_type:
+                                "youtube",
+
+                            audio_url:
+                                null
+                        });
+
+
+                if (result.error) {
+
+                    throw result.error;
+                }
+
+
+                alert(
+                    "تمت إضافة التلاوة بنجاح"
+                );
+
+
+                closeRecitationModal();
+
+                await showRecitations();
+
+                return;
+            }
+
+
+            /* =========================
+               ملف صوتي
+            ========================= */
+
+            var file =
+                document
+                    .getElementById("audioFile")
+                    .files[0];
+
+
+            if (!file) {
+
+                alert(
+                    "اختر ملفًا صوتيًا من جهازك"
+                );
+
+                return;
+            }
+
+
+            if (
+                !file.type.startsWith("audio/")
+            ) {
+
+                alert(
+                    "الملف المختار ليس ملفًا صوتيًا"
+                );
+
+                return;
+            }
+
+
+            status.textContent =
+                "جاري رفع الملف الصوتي...";
+
+
+            status.classList.add("show");
+
+
+            /*
+             * إنشاء اسم فريد للملف
+             */
+
+            var extension =
+                file.name.includes(".")
+                    ? file.name
+                        .split(".")
+                        .pop()
+                        .toLowerCase()
+                    : "mp3";
+
+
+            var safeName =
+                name
+                    .replace(
+                        /[^a-zA-Z0-9\u0600-\u06FF\s-_]/g,
+                        ""
+                    )
+                    .trim()
+                    .replace(/\s+/g, "-");
+
+
+            if (safeName === "") {
+                safeName = "recitation";
+            }
+
+
+            var filePath =
+                Date.now() +
+                "-" +
+                Math.random()
+                    .toString(36)
+                    .substring(2, 8) +
+                "-" +
+                safeName +
+                "." +
+                extension;
+
+
+            /*
+             * رفع الملف إلى Bucket audio
+             */
+
+            var uploadResult =
+                await supabaseClient
+                    .storage
+                    .from("audio")
+                    .upload(
+                        filePath,
+                        file,
+                        {
+                            cacheControl: "3600",
+                            upsert: false,
+                            contentType: file.type
+                        }
+                    );
+
+
+            if (uploadResult.error) {
+
+                throw uploadResult.error;
+            }
+
+
+            status.textContent =
+                "تم رفع الملف، جاري حفظ التلاوة...";
+
+
+            /*
+             * الحصول على الرابط العام
+             */
+
+            var publicResult =
+                supabaseClient
+                    .storage
+                    .from("audio")
+                    .getPublicUrl(filePath);
+
+
+            var audioUrl =
+                publicResult.data.publicUrl;
+
+
+            /*
+             * حفظ التلاوة في قاعدة البيانات
+             */
+
+            var insertResult =
+                await supabaseClient
+                    .from("recitations")
+                    .insert({
+
+                        list_id:
+                            currentList.id,
+
+                        name:
+                            name,
+
+                        url:
+                            null,
+
+                        thumbnail:
+                            null,
+
+                        source_type:
+                            "audio",
+
+                        audio_url:
+                            audioUrl
+                    });
+
+
+            if (insertResult.error) {
+
+                /*
+                 * إذا فشل حفظ قاعدة البيانات،
+                 * نحاول حذف الملف الذي تم رفعه.
+                 */
+
+                await supabaseClient
+                    .storage
+                    .from("audio")
+                    .remove([
+                        filePath
+                    ]);
+
+
+                throw insertResult.error;
+            }
+
+
+            alert(
+                "تم رفع التلاوة وإضافتها بنجاح"
+            );
+
+
+            closeRecitationModal();
+
+            await showRecitations();
+
+
+        } catch (error) {
 
             console.error(
-                "SUPABASE ERROR:",
-                result.error
+                "ERROR:",
+                error
             );
+
 
             alert(
-                "حدث خطأ أثناء إضافة التلاوة:\n\n" +
-                result.error.message
+                "حدث خطأ:\n\n" +
+                (
+                    error.message ||
+                    "خطأ غير معروف"
+                )
             );
 
-            return;
+        } finally {
+
+            button.disabled = false;
+
+            status.classList.remove("show");
         }
-
-
-        document
-            .getElementById("recitationName")
-            .value = "";
-
-
-        document
-            .getElementById("youtubeUrl")
-            .value = "";
-
-
-        closeRecitationModal();
-
-        await showRecitations();
     }
 
 
@@ -1161,7 +1592,9 @@
     async function showRecitations() {
 
         var container =
-            document.getElementById("recitations");
+            document.getElementById(
+                "recitations"
+            );
 
 
         container.innerHTML = `
@@ -1206,6 +1639,7 @@
                 result.error
             );
 
+
             container.innerHTML = `
                 <p class="subtitle">
                     حدث خطأ أثناء تحميل التلاوات.
@@ -1248,45 +1682,96 @@
 
 
             var div =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             div.className =
                 "recitation";
 
 
-            div.innerHTML = `
+            var isAudio =
+                rec.source_type === "audio";
 
-                <img
-                    src="${escapeHTML(rec.thumbnail)}"
-                    alt=""
-                >
 
-                <div class="recitation-info">
+            if (isAudio) {
 
-                    <strong>
-                        ${escapeHTML(rec.name)}
-                    </strong>
+                div.innerHTML = `
 
-                    <br>
+                    <div class="recitation-info">
 
-                    <a
-                        href="${escapeHTML(rec.url)}"
-                        target="_blank"
-                        rel="noopener"
+                        <strong>
+                            ${escapeHTML(rec.name)}
+                        </strong>
+
+                        <br>
+
+                        <span class="source-badge">
+                            🎵 ملف صوتي
+                        </span>
+
+                        <br><br>
+
+                        <audio
+                            controls
+                            style="width: 100%;"
+                            src="${escapeHTML(rec.audio_url || "")}"
+                        ></audio>
+
+                    </div>
+
+                    <button
+                        class="danger"
+                        onclick="deleteRecitation(${rec.id})"
                     >
-                        فتح YouTube
-                    </a>
+                        حذف التلاوة
+                    </button>
 
-                </div>
+                `;
 
-                <button
-                    class="danger"
-                    onclick="deleteRecitation(${rec.id})"
-                >
-                    حذف التلاوة
-                </button>
+            } else {
 
-            `;
+                div.innerHTML = `
+
+                    <img
+                        src="${escapeHTML(rec.thumbnail || "")}"
+                        alt=""
+                    >
+
+                    <div class="recitation-info">
+
+                        <strong>
+                            ${escapeHTML(rec.name)}
+                        </strong>
+
+                        <br>
+
+                        <span class="source-badge">
+                            🎬 YouTube
+                        </span>
+
+                        <br>
+
+                        <a
+                            href="${escapeHTML(rec.url || "")}"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            فتح YouTube
+                        </a>
+
+                    </div>
+
+                    <button
+                        class="danger"
+                        onclick="deleteRecitation(${rec.id})"
+                    >
+                        حذف التلاوة
+                    </button>
+
+                `;
+            }
 
 
             container.appendChild(div);
@@ -1310,6 +1795,41 @@
         }
 
 
+        /*
+         * نقرأ التلاوة أولًا لمعرفة
+         * هل هي ملف صوتي أم YouTube.
+         */
+
+        var recitationResult =
+            await supabaseClient
+                .from("recitations")
+                .select("*")
+                .eq(
+                    "id",
+                    id
+                )
+                .single();
+
+
+        if (recitationResult.error) {
+
+            alert(
+                "تعذر العثور على التلاوة:\n\n" +
+                recitationResult.error.message
+            );
+
+            return;
+        }
+
+
+        var rec =
+            recitationResult.data;
+
+
+        /*
+         * حذف سجل التلاوة من قاعدة البيانات
+         */
+
         var result =
             await supabaseClient
                 .from("recitations")
@@ -1327,6 +1847,7 @@
                 result.error
             );
 
+
             alert(
                 "حدث خطأ أثناء حذف التلاوة:\n\n" +
                 result.error.message +
@@ -1338,12 +1859,58 @@
         }
 
 
+        /*
+         * إذا كانت ملفًا صوتيًا،
+         * نحاول حذف الملف من Storage أيضًا.
+         */
+
+        if (
+            rec.source_type === "audio" &&
+            rec.audio_url
+        ) {
+
+            try {
+
+                var marker =
+                    "/storage/v1/object/public/audio/";
+
+                var index =
+                    rec.audio_url.indexOf(marker);
+
+
+                if (index !== -1) {
+
+                    var filePath =
+                        decodeURIComponent(
+                            rec.audio_url.substring(
+                                index +
+                                marker.length
+                            )
+                        );
+
+
+                    await supabaseClient
+                        .storage
+                        .from("audio")
+                        .remove([
+                            filePath
+                        ]);
+                }
+
+            } catch (storageError) {
+
+                console.error(
+                    "STORAGE DELETE ERROR:",
+                    storageError
+                );
+            }
+        }
+
+
         await showRecitations();
     }
 
 </script>
-```
 
 </body>
-
 </html>
