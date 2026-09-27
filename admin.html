@@ -1410,16 +1410,28 @@
                 return;
             }
 
+            if (file.size <= 0) {
+                alert("الملف الصوتي فارغ.");
+                return;
+            }
+
 
             status.textContent =
-                "جاري رفع الملف الصوتي...";
+                "جاري رفع الملف الصوتي... قد يستغرق الرفع وقتًا حسب حجم الملف وسرعة الاتصال.";
 
 
             status.classList.add("show");
 
 
             /*
-             * إنشاء اسم فريد للملف
+             * إنشاء اسم آمن للملف داخل Storage
+             *
+             * لا نستخدم اسم التلاوة العربي أو اسم الملف الأصلي
+             * داخل Storage؛ لأن بعض الأحرف العربية والرموز قد
+             * تسبب خطأ Invalid key.
+             *
+             * اسم التلاوة الحقيقي يبقى في قاعدة البيانات،
+             * أما الملف نفسه فيأخذ اسمًا إنجليزيًا/رقميًا آمنًا.
              */
 
             var extension =
@@ -1428,32 +1440,34 @@
                         .split(".")
                         .pop()
                         .toLowerCase()
+                        .replace(/[^a-z0-9]/g, "")
                     : "mp3";
 
+            var allowedExtensions = [
+                "mp3",
+                "m4a",
+                "aac",
+                "wav",
+                "ogg",
+                "oga",
+                "webm",
+                "flac"
+            ];
 
-            var safeName =
-                name
-                    .replace(
-                        /[^a-zA-Z0-9\u0600-\u06FF\s-_]/g,
-                        ""
-                    )
-                    .trim()
-                    .replace(/\s+/g, "-");
-
-
-            if (safeName === "") {
-                safeName = "recitation";
+            if (!allowedExtensions.includes(extension)) {
+                extension = "mp3";
             }
 
-
-            var filePath =
-                Date.now() +
-                "-" +
+            var randomPart =
                 Math.random()
                     .toString(36)
-                    .substring(2, 8) +
+                    .substring(2, 10);
+
+            var filePath =
+                "audio-" +
+                Date.now() +
                 "-" +
-                safeName +
+                randomPart +
                 "." +
                 extension;
 
