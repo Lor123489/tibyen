@@ -2,244 +2,380 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>دخول المشرفين | تبيان</title>
+    <title>دخول المشرفين | تبيان</title>
 
-<link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
 
-<style>
+        :root {
+            --bg: #f5f5f5;
+            --surface: #ffffff;
+            --text: #111111;
+            --muted: #777777;
+            --border: #e5e5e5;
+            --accent: #c5a45a;
+        }
 
-body {
-    background: #f5f5f5;
-}
+        body.dark {
+            --bg: #0d0f11;
+            --surface: #15181b;
+            --text: #f1f1f1;
+            --muted: #a4a8ad;
+            --border: #292e33;
+            --accent: #d4b66a;
+        }
 
-.login-page {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.login-box {
-    width: 100%;
-    max-width: 430px;
-    background: white;
-    padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 10px 35px rgba(0,0,0,.08);
-}
+        body {
+            margin: 0;
+            min-height: 100vh;
 
-.login-logo {
-    text-align: center;
-    margin-bottom: 30px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.login-logo h1 {
-    margin: 0;
-    font-size: 38px;
-}
+            background: var(--bg);
+            color: var(--text);
 
-.login-logo p {
-    color: #777;
-    margin-top: 5px;
-}
+            font-family: "Cairo", sans-serif;
 
-.input-group {
-    margin-bottom: 20px;
-}
+            transition:
+                background .3s,
+                color .3s;
+        }
 
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
+        .login-box {
+            width: min(420px, calc(100% - 32px));
 
-.input-group input {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    font-family: inherit;
-    font-size: 16px;
-    outline: none;
-}
+            background: var(--surface);
 
-.input-group input:focus {
-    border-color: #c5a45a;
-}
+            border: 1px solid var(--border);
 
-.login-button {
-    width: 100%;
-    border: none;
-    background: #111;
-    color: white;
-    padding: 14px;
-    border-radius: 12px;
-    font-family: inherit;
-    font-size: 17px;
-    cursor: pointer;
-}
+            border-radius: 22px;
 
-.login-button:hover {
-    background: #222;
-}
+            padding: 35px 30px;
 
-.error {
-    display: none;
-    background: #ffecec;
-    color: #b00000;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-}
+            box-shadow:
+                0 15px 45px rgba(0,0,0,.08);
 
-.back-home {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #777;
-    text-decoration: none;
-}
+            text-align: center;
+        }
 
-</style>
+        .logo {
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--text);
+        }
 
+        .subtitle {
+            margin-top: 3px;
+            margin-bottom: 30px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+        h1 {
+            margin: 0 0 25px;
+
+            font-size: 22px;
+        }
+
+        .input-group {
+            text-align: right;
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        input {
+            width: 100%;
+
+            height: 50px;
+
+            padding: 0 15px;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            background: var(--bg);
+            color: var(--text);
+
+            font-family: inherit;
+            font-size: 14px;
+
+            outline: none;
+
+            transition: border .2s;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+        }
+
+        .login-button {
+            width: 100%;
+
+            height: 50px;
+
+            margin-top: 8px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: var(--accent);
+            color: #fff;
+
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform .15s,
+                opacity .2s;
+        }
+
+        .login-button:hover {
+            opacity: .9;
+        }
+
+        .login-button:active {
+            transform: scale(.98);
+        }
+
+        .error {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 11px;
+
+            border-radius: 10px;
+
+            background: rgba(180, 40, 40, .1);
+
+            color: #c0392b;
+
+            font-size: 13px;
+        }
+
+        .back {
+            display: inline-block;
+
+            margin-top: 22px;
+
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 13px;
+        }
+
+        .back:hover {
+            color: var(--accent);
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<header>
-
-    <div class="logo">
-        تبيان
-        <span>تلاوات الشيخ ياسر الدوسري</span>
-    </div>
-
-</header>
-
-
-<div class="login-page">
-
     <div class="login-box">
 
-        <div class="login-logo">
+        <div class="logo">
+            تبيان
+        </div>
 
-            <h1>تبيان</h1>
-
-            <p>لوحة تحكم المشرفين</p>
-
+        <div class="subtitle">
+            تلاوات الشيخ ياسر الدوسري
         </div>
 
 
-        <div
-            id="error"
-            class="error"
-        >
-            اسم المستخدم أو كلمة المرور غير صحيحة
-        </div>
+        <h1>
+            دخول المشرفين
+        </h1>
 
 
-        <div class="input-group">
+        <form id="loginForm">
 
-            <label>
-                اسم المستخدم
-            </label>
+            <div class="input-group">
 
-            <input
-                type="text"
-                id="username"
-                placeholder="اكتب اسم المستخدم"
+                <label for="username">
+                    اسم المستخدم
+                </label>
+
+                <input
+                    id="username"
+                    type="text"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="password">
+                    كلمة المرور
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-button"
             >
+                تسجيل الدخول
+            </button>
 
-        </div>
 
-
-        <div class="input-group">
-
-            <label>
-                كلمة المرور
-            </label>
-
-            <input
-                type="password"
-                id="password"
-                placeholder="اكتب كلمة المرور"
+            <div
+                id="error"
+                class="error"
             >
+                اسم المستخدم أو كلمة المرور غير صحيحة
+            </div>
 
-        </div>
-
-
-        <button
-            class="login-button"
-            onclick="login()"
-        >
-            تسجيل الدخول
-        </button>
+        </form>
 
 
         <a
             href="index.html"
-            class="back-home"
+            class="back"
         >
-            ← العودة للموقع
+            العودة إلى الرئيسية
         </a>
 
     </div>
 
-</div>
-
 
 <script>
 
-function login() {
+/*
+    ================================
+    بيانات الدخول
+    ================================
 
-    const username =
-        document.getElementById("username").value.trim();
+    غيّر القيمتين إلى بياناتك.
+*/
 
-    const password =
-        document.getElementById("password").value;
-
-
-    /*
-        بيانات الدخول التجريبية
-    */
-
-    const adminUsername = "admin";
-
-    const adminPassword = "123456";
+const ADMIN_USERNAME = "admin";
+const ADMIN_PASSWORD = "123456";
 
 
-    if (
-        username === adminUsername &&
-        password === adminPassword
-    ) {
+/*
+    تسجيل الدخول
+*/
 
-        localStorage.setItem(
-            "tibyanAdminLoggedIn",
-            "true"
+document
+    .getElementById("loginForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const username =
+            document
+                .getElementById("username")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        const error =
+            document.getElementById("error");
+
+
+        if (
+            username === ADMIN_USERNAME &&
+            password === ADMIN_PASSWORD
+        ) {
+
+            /*
+                تسجيل دخول المشرف
+            */
+
+            localStorage.setItem(
+                "tibyanAdminLoggedIn",
+                "true"
+            );
+
+
+            /*
+                الانتقال إلى لوحة التحكم
+            */
+
+            window.location.href = "admin.html";
+
+        } else {
+
+            error.style.display = "block";
+
+        }
+
+    });
+
+
+/*
+    الوضع الداكن
+*/
+
+function applySavedTheme() {
+
+    const saved =
+        localStorage.getItem(
+            "tibyanDarkMode"
         );
 
-        location.href = "admin.html";
+
+    if (saved === "dark") {
+
+        document.body.classList.add("dark");
 
     } else {
 
-        document.getElementById("error")
-        .style.display = "block";
+        document.body.classList.remove("dark");
 
     }
 
 }
 
+
+applySavedTheme();
+
 </script>
-
-</body>
-
-</html>
 
 </body>
 

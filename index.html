@@ -9,29 +9,751 @@
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   الوضع العام
+========================= */
+
+:root {
+    --bg: #f5f5f5;
+    --surface: #ffffff;
+    --text: #111111;
+    --muted: #777777;
+    --border: #e5e5e5;
+    --accent: #c5a45a;
+    --shadow: rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   الوضع الداكن
+========================= */
+
+body.dark {
+    --bg: #0d0f11;
+    --surface: #15181b;
+    --text: #f1f1f1;
+    --muted: #a4a8ad;
+    --border: #292e33;
+    --accent: #d4b66a;
+    --shadow: rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================
+   الجسم
+========================= */
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition:
+        background .3s ease,
+        color .3s ease;
+}
+
+
+/* =========================
+   الهيدر
+========================= */
+
+header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+
+    transition:
+        background .3s ease,
+        border-color .3s ease;
+
+    position: relative;
+    z-index: 100;
+}
+
+
+/* الشعار */
+
+.logo {
+    color: var(--text);
+}
+
+.logo span {
+    color: var(--muted);
+}
+
+
+/* الروابط */
+
+nav a {
+    color: var(--text);
+    transition: color .2s;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+
+/* =========================
+   زر الوضع الداكن PC
+========================= */
+
+.theme-button {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+
+    border-radius: 10px;
+    padding: 8px 13px;
+
+    font-family: inherit;
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   زر القائمة للجوال
+========================= */
+
+.menu-button {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================
+   القائمة الجانبية
+========================= */
+
+.side-menu {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: min(310px, 85vw);
+    height: 100vh;
+
+    background: var(--surface);
+
+    z-index: 1000;
+
+    padding: 25px;
+
+    transform: translateX(100%);
+
+    transition:
+        transform .3s ease;
+
+    box-shadow:
+        -10px 0 35px rgba(0,0,0,.15);
+}
+
+
+.side-menu.open {
+    transform: translateX(0);
+}
+
+
+.side-menu-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+}
+
+
+.side-menu-title {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+.close-menu {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    background: var(--bg);
+    color: var(--text);
+
+    border-radius: 10px;
+
+    font-size: 23px;
+
+    cursor: pointer;
+}
+
+
+.side-menu a {
+    display: flex;
+
+    align-items: center;
+
+    min-height: 52px;
+
+    padding: 0 15px;
+
+    margin-bottom: 8px;
+
+    border-radius: 12px;
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    transition: background .2s;
+}
+
+
+.side-menu a:hover {
+    background: var(--bg);
+}
+
+
+/* زر الوضع الداكن داخل القائمة */
+
+.side-theme-button {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 13px 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    text-align: right;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   خلفية القائمة
+========================= */
+
+.menu-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.45);
+
+    z-index: 999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .25s;
+}
+
+
+.menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================
+   Hero
+========================= */
+
+.hero {
+    background: var(--surface);
+
+    transition:
+        background .3s ease;
+}
+
+
+/* =========================
+   البطاقات
+========================= */
+
+.card {
+    background: var(--surface);
+
+    color: var(--text);
+
+    box-shadow:
+        0 5px 20px var(--shadow);
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .2s,
+        box-shadow .2s;
+}
+
+
+.card p {
+    color: var(--muted);
+}
+
+
+.card:hover {
+    box-shadow:
+        0 10px 25px var(--shadow);
+}
+
+
+/* =========================
+   الفوتر
+========================= */
+
+footer {
+    color: var(--muted);
+
+    transition:
+        background .3s ease,
+        color .3s ease;
+}
+
+
+/* =========================
+   الجوال
+========================= */
+
+@media (max-width: 768px) {
+
+    header {
+        min-height: 72px;
+
+        padding:
+            0 16px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    header nav {
+        display: none;
+    }
+
+
+    .logo {
+        font-size: 25px;
+    }
+
+
+    .logo span {
+        font-size: 9px;
+    }
+
+
+    .menu-button {
+        display: flex;
+    }
+
+
+    .theme-button {
+        display: none;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        display: flex;
+
+        flex-direction: column-reverse;
+
+        text-align: center;
+
+        padding:
+            35px 20px 25px;
+
+        gap: 20px;
+    }
+
+
+    .hero-text {
+        width: 100%;
+    }
+
+
+    .hero-text h1 {
+        font-size: 26px;
+
+        line-height: 1.7;
+
+        margin-bottom: 10px;
+    }
+
+
+    .hero-text p {
+        font-size: 14px;
+
+        line-height: 1.8;
+
+        color: var(--muted);
+
+        margin-bottom: 20px;
+    }
+
+
+    .hero-text button {
+        width: 100%;
+
+        max-width: 280px;
+
+        min-height: 48px;
+    }
+
+
+    .image {
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+    }
+
+
+    .image img {
+        width: min(75vw, 300px);
+
+        height: auto;
+
+        max-height: 320px;
+
+        object-fit: contain;
+    }
+
+
+    /* البطاقات */
+
+    .cards {
+        padding:
+            20px 16px 35px;
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+
+    .card {
+        width: 100%;
+
+        min-height: 125px;
+
+        padding: 22px 20px;
+
+        border-radius: 18px;
+
+        text-align: center;
+    }
+
+
+    .card h2 {
+        font-size: 19px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .card p {
+        font-size: 13px;
+
+        line-height: 1.7;
+
+        margin: 0;
+    }
+
+
+    footer {
+        padding:
+            20px 15px;
+
+        text-align: center;
+
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================
+   شاشات صغيرة جدًا
+========================= */
+
+@media (max-width: 400px) {
+
+    .hero {
+        padding-top: 25px;
+    }
+
+
+    .hero-text h1 {
+        font-size: 23px;
+    }
+
+
+    .image img {
+        width: 230px;
+    }
+
+
+    .card {
+        min-height: 115px;
+
+        padding: 18px;
+    }
+
+}
+
+/* إصلاح ألوان النص في الوضع الفاتح والداكن */
+
+body,
+.hero,
+.hero-text,
+.hero h1,
+.hero p,
+.cards,
+.card,
+.card h2,
+.card p,
+footer {
+    color: var(--text);
+}
+
+.hero p,
+.card p,
+footer {
+    color: var(--muted);
+}
+
+body.dark {
+    color: var(--text);
+}
+
+body.dark .hero h1,
+body.dark .card h2 {
+    color: var(--text);
+}
+
+body.dark .hero p,
+body.dark .card p,
+body.dark footer {
+    color: var(--muted);
+}
+
+</style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     الهيدر
+========================= -->
 
 <header>
 
     <div class="logo">
+
         تبيان
-        <span>تلاوات الشيخ ياسر الدوسري</span>
+
+        <span>
+            تلاوات الشيخ ياسر الدوسري
+        </span>
+
     </div>
 
+
+    <!-- زر الجوال -->
+
+    <button
+        class="menu-button"
+        onclick="openMenu()"
+        aria-label="فتح القائمة"
+    >
+        ☰
+    </button>
+
+
+    <!-- روابط PC -->
+
     <nav>
-        <a href="contact.html">تواصل معنا</a>
-        <a href="login.html">تحكم المشرفين</a>
-        <a href="index.html">الرئيسية</a>
-        <a href="category.html?category=tarawih">التراويح</a>
-        <a href="category.html?category=haram">الحرم</a>
-        <a href="category.html?category=nawader">النوادر</a>
+
+        <a href="contact.html">
+            تواصل معنا
+        </a>
+
+        <a href="login.html">
+            تحكم المشرفين
+        </a>
+
+        <a href="index.html">
+            الرئيسية
+        </a>
+
+        <a href="category.html?category=tarawih">
+            التراويح
+        </a>
+
+        <a href="category.html?category=haram">
+            الحرم
+        </a>
+
+        <a href="category.html?category=nawader">
+            النوادر
+        </a>
+
+        <button
+            id="desktopThemeButton"
+            class="theme-button"
+            onclick="toggleDarkMode()"
+        >
+            🌙 الوضع الداكن
+        </button>
+
     </nav>
 
 </header>
 
+
+<!-- =========================
+     القائمة الجانبية للجوال
+========================= -->
+
+<div
+    id="menuOverlay"
+    class="menu-overlay"
+    onclick="closeMenu()"
+></div>
+
+
+<aside
+    id="sideMenu"
+    class="side-menu"
+>
+
+    <div class="side-menu-header">
+
+        <div class="side-menu-title">
+            تبيان
+        </div>
+
+        <button
+            class="close-menu"
+            onclick="closeMenu()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        onclick="closeMenu()"
+    >
+         الرئيسية
+    </a>
+
+
+    <a
+        href="category.html?category=tarawih"
+        onclick="closeMenu()"
+    >
+        التراويح
+    </a>
+
+
+    <a
+        href="category.html?category=haram"
+        onclick="closeMenu()"
+    >
+         الحرم
+    </a>
+
+
+    <a
+        href="category.html?category=nawader"
+        onclick="closeMenu()"
+    >
+         النوادر
+    </a>
+
+
+    <a
+        href="category.html?category=maqamat"
+        onclick="closeMenu()"
+    >
+         المقامات
+    </a>
+
+
+    <a
+        href="contact.html"
+        onclick="closeMenu()"
+    >
+         تواصل معنا
+    </a>
+
+
+    <a
+        href="login.html"
+        onclick="closeMenu()"
+    >
+         تحكم المشرفين
+    </a>
+
+
+    <button
+        id="mobileThemeButton"
+        class="side-theme-button"
+        onclick="toggleDarkMode()"
+    >
+        🌙 الوضع الداكن
+    </button>
+
+</aside>
+
+
+
+<!-- =========================
+     Hero
+========================= -->
 
 <section class="hero">
 
@@ -43,29 +765,49 @@
             الشيخ ياسر الدوسري
         </h1>
 
+
         <p>
             أرشيف شامل للتلاوات القديمة والحديثة
         </p>
 
-        <button onclick="location.href='category.html?category=tarawih'">
+
+        <button
+            onclick="location.href='category.html?category=tarawih'"
+        >
             استمع الآن
         </button>
 
     </div>
 
+
     <div class="image">
-        <img src="yasser.png">
+
+        <img
+            src="yasser.png"
+            alt="الشيخ ياسر الدوسري"
+        >
+
     </div>
 
 </section>
 
 
+
+<!-- =========================
+     البطاقات
+========================= -->
+
 <section class="cards">
 
-    <div class="card"
-         onclick="location.href='category.html?category=tarawih'">
 
-        <h2>تلاوات التراويح</h2>
+    <div
+        class="card"
+        onclick="location.href='category.html?category=tarawih'"
+    >
+
+        <h2>
+            تلاوات التراويح
+        </h2>
 
         <p>
             تلاوات الشيخ في صلاة التراويح
@@ -74,10 +816,15 @@
     </div>
 
 
-    <div class="card"
-         onclick="location.href='category.html?category=haram'">
 
-        <h2>تلاوات الحرم</h2>
+    <div
+        class="card"
+        onclick="location.href='category.html?category=haram'"
+    >
+
+        <h2>
+            تلاوات الحرم
+        </h2>
 
         <p>
             تلاوات الشيخ من المسجد الحرام
@@ -86,10 +833,15 @@
     </div>
 
 
-    <div class="card"
-         onclick="location.href='category.html?category=nawader'">
 
-        <h2>النوادر</h2>
+    <div
+        class="card"
+        onclick="location.href='category.html?category=nawader'"
+    >
+
+        <h2>
+            النوادر
+        </h2>
 
         <p>
             تلاوات نادرة وقديمة
@@ -97,7 +849,9 @@
 
     </div>
 
-     <div
+
+
+    <div
         class="card"
         onclick="location.href='category.html?category=maqamat'"
     >
@@ -116,11 +870,142 @@
 </section>
 
 
+
+<!-- =========================
+     الفوتر
+========================= -->
+
 <footer>
 
     © تبيان - جميع الحقوق محفوظة
 
 </footer>
 
+
+
+<script>
+
+/* =========================
+   القائمة الجانبية
+========================= */
+
+function openMenu() {
+
+    document
+        .getElementById("sideMenu")
+        .classList
+        .add("open");
+
+    document
+        .getElementById("menuOverlay")
+        .classList
+        .add("show");
+}
+
+
+function closeMenu() {
+
+    document
+        .getElementById("sideMenu")
+        .classList
+        .remove("open");
+
+    document
+        .getElementById("menuOverlay")
+        .classList
+        .remove("show");
+}
+
+
+/* =========================
+   الوضع الداكن
+========================= */
+
+function updateThemeButtons() {
+
+    const dark =
+        document.body.classList.contains("dark");
+
+
+    const text =
+        dark
+            ? "☀️ الوضع الفاتح"
+            : "🌙 الوضع الداكن";
+
+
+    document
+        .getElementById("desktopThemeButton")
+        .textContent = text;
+
+
+    document
+        .getElementById("mobileThemeButton")
+        .textContent = text;
+}
+
+
+function applySavedTheme() {
+
+    const saved =
+        localStorage.getItem(
+            "tibyanDarkMode"
+        );
+
+
+    if (saved === "dark") {
+
+        document.body.classList.add("dark");
+
+    } else {
+
+        document.body.classList.remove("dark");
+
+    }
+
+
+    updateThemeButtons();
+}
+
+
+function toggleDarkMode() {
+
+    const dark =
+        document.body.classList.toggle("dark");
+
+
+    localStorage.setItem(
+        "tibyanDarkMode",
+        dark ? "dark" : "light"
+    );
+
+
+    updateThemeButtons();
+}
+
+
+/* تشغيل الثيم المحفوظ */
+
+applySavedTheme();
+
+
+/* إغلاق القائمة بزر Escape */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+</script>
+
+
 </body>
+
 </html>
