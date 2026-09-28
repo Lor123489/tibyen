@@ -1,181 +1,1386 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>تبيان</title>
+
 <link rel="stylesheet" href="style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-.category-page{max-width:1100px;margin:50px auto;padding:20px}
-:root{--bg:#f5f5f5;--surface:#fff;--surface-2:#fafafa;--text:#111;--muted:#777;--border:#e5e5e5;--shadow:rgba(0,0,0,.08);--accent:#c5a45a}
-body{background:var(--bg);color:var(--text);transition:background .3s ease,color .3s ease}
-header{height:85px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:relative;z-index:100;transition:background .3s ease,border-color .3s ease}
-header .logo{font-size:30px;font-weight:700;line-height:1.1}
-header .logo span{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:5px}
-header nav{display:flex;align-items:center;gap:25px}
-header nav a{color:var(--text);text-decoration:none;font-size:14px;transition:color .2s}
-header nav a:hover{color:var(--accent)}
-.theme-button{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:10px;padding:9px 13px;font-family:inherit;cursor:pointer;font-size:13px}
-.menu-button{display:none;width:45px;height:45px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);font-size:25px;cursor:pointer;align-items:center;justify-content:center}
-.side-menu{position:fixed;top:0;left:0;width:290px;height:100vh;background:var(--surface);z-index:1000;padding:25px;transform:translateX(-100%);transition:transform .3s ease;box-shadow:10px 0 35px rgba(0,0,0,.12)}
-.side-menu.open{transform:translateX(0)}
-.side-menu-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:35px}
-.side-menu-title{font-size:25px;font-weight:700}
-.close-menu{width:40px;height:40px;border:none;background:var(--surface-2);color:var(--text);border-radius:10px;font-size:23px;cursor:pointer}
-.side-menu a{display:flex;align-items:center;min-height:52px;padding:0 15px;margin-bottom:8px;border-radius:12px;color:var(--text);text-decoration:none;transition:.2s}
-.side-menu a:hover{background:var(--surface-2)}
-.side-theme-button{width:100%;margin-top:20px;padding:13px 15px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);font-family:inherit;cursor:pointer;text-align:right;font-size:14px}
-.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:999;opacity:0;visibility:hidden;transition:.25s}
-.menu-overlay.show{opacity:1;visibility:visible}
-body.dark{--bg:#0d0f11;--surface:#15181b;--surface-2:#1d2125;--text:#f1f1f1;--muted:#a4a8ad;--border:#292e33;--shadow:rgba(0,0,0,.35);--accent:#d4b66a}
-.category-page h1{text-align:center;margin-bottom:10px}
-.category-description{text-align:center;color:var(--muted);margin-bottom:40px}
-.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-.list-card{background:var(--surface);padding:30px;border-radius:20px;box-shadow:0 5px 20px var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s}
-.list-card:hover{transform:translateY(-5px);box-shadow:0 10px 25px var(--shadow)}
-.list-card h2{margin-top:0}.list-card p{color:var(--muted)}
-.recitations{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
-.recitation{background:var(--surface);border-radius:20px;overflow:hidden;box-shadow:0 5px 20px var(--shadow)}
-.recitation img{width:100%;height:180px;object-fit:cover}
-.recitation-content{padding:20px}
-.recitation-content h3{margin-top:0;margin-bottom:12px}
-.source-label{display:inline-block;font-size:12px;color:var(--muted);margin-bottom:8px}
 
-/* ===== بطاقة التلاوة الصوتية الجديدة ===== */
-.audio-recitation-card{padding:20px;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
-.audio-recitation-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px var(--shadow)}
-.audio-recitation-card .recitation-content{padding:0}
-.audio-play-box{display:flex;align-items:center;gap:16px;min-height:82px}
-.audio-play-icon{flex:0 0 58px;width:58px;height:58px;border-radius:50%;background:var(--accent);color:#111;display:flex;align-items:center;justify-content:center;font-size:22px;padding-right:2px;box-shadow:0 8px 18px rgba(197,164,90,.2)}
-.audio-info{min-width:0}
-.audio-info h3{margin:0 0 5px;font-size:17px;line-height:1.7}
-.audio-info p{margin:0;color:var(--muted);font-size:12px}
-.audio-arrow{margin-right:auto;color:var(--muted);font-size:18px;transition:.2s}
-.audio-recitation-card:hover .audio-arrow{color:var(--accent);transform:translateX(-3px)}
-.youtube-button{display:inline-block;margin-top:12px;background:#111;color:#fff;text-decoration:none;padding:10px 20px;border-radius:25px;transition:.2s}
-.youtube-button:hover{background:#222;transform:translateY(-2px)}
-.listen{display:inline-block;margin-top:10px;background:#c5a45a;color:var(--text);text-decoration:none;padding:10px 22px;border-radius:25px;transition:.2s}
-.listen:hover{transform:translateY(-2px);opacity:.9}
-.back{display:inline-block;margin-bottom:25px;color:var(--text);text-decoration:none;font-weight:600}
-.empty{text-align:center;color:var(--muted);padding:50px;grid-column:1/-1}
-@media(max-width:768px){
-header{height:72px;padding:0 18px}header nav{display:none}header .logo{font-size:25px;text-align:right}header .logo span{font-size:9px}.menu-button{display:flex;order:-1}header .theme-button{display:none}
-.category-page{margin:25px auto;padding:15px}.category-page h1{font-size:28px}.category-description{font-size:14px;line-height:1.8}
-.lists{grid-template-columns:1fr;gap:18px}.list-card{padding:25px}.recitations{grid-template-columns:1fr;gap:18px}.recitation img{height:190px}
+.category-page{
+max-width:1100px;
+margin:50px auto;
+padding:20px
 }
-</style>
-</head>
-<body>
-<header>
-<div class="logo">تبيان<span>تلاوات الشيخ ياسر الدوسري</span></div>
-<button class="menu-button" onclick="openMenu()" aria-label="فتح القائمة">☰</button>
-<nav>
-<a href="index.html">الرئيسية</a>
-<a href="category.html?category=tarawih">التراويح</a>
-<a href="category.html?category=haram">الحرم</a>
-<a href="category.html?category=nawader">النوادر</a>
-<a href="category.html?category=maqamat">المقامات</a>
-<button id="desktopThemeButton" class="theme-button" onclick="toggleDarkMode()">🌙 الوضع الداكن</button>
-</nav>
-</header>
-<div id="menuOverlay" class="menu-overlay" onclick="closeMenu()"></div>
-<aside id="sideMenu" class="side-menu">
-<div class="side-menu-header"><div class="side-menu-title">تبيان</div><button class="close-menu" onclick="closeMenu()">×</button></div>
-<a href="index.html" onclick="closeMenu()">الرئيسية</a>
-<a href="category.html?category=tarawih" onclick="closeMenu()">التراويح</a>
-<a href="category.html?category=haram" onclick="closeMenu()">الحرم</a>
-<a href="category.html?category=nawader" onclick="closeMenu()">النوادر</a>
-<a href="category.html?category=maqamat" onclick="closeMenu()">المقامات</a>
-<button id="mobileThemeButton" class="side-theme-button" onclick="toggleDarkMode()">🌙 الوضع الداكن</button>
-</aside>
 
-<div class="category-page">
-<a class="back" href="index.html">← العودة للرئيسية</a>
-<h1 id="categoryTitle"></h1>
-<p class="category-description" id="categoryDescription"></p>
-<div id="lists" class="lists"></div>
-<div id="recitations" class="recitations" style="display:none;"></div>
+:root{
+--bg:#f5f5f5;
+--surface:#fff;
+--surface-2:#fafafa;
+--text:#111;
+--muted:#777;
+--border:#e5e5e5;
+--shadow:rgba(0,0,0,.08);
+--accent:#c5a45a
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+transition:background .3s ease,color .3s ease
+}
+
+header{
+height:85px;
+background:var(--surface);
+border-bottom:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 7%;
+position:relative;
+z-index:100;
+transition:background .3s ease,border-color .3s ease
+}
+
+header .logo{
+font-size:30px;
+font-weight:700;
+line-height:1.1
+}
+
+header .logo span{
+display:block;
+font-size:11px;
+font-weight:400;
+color:var(--muted);
+margin-top:5px
+}
+
+header nav{
+display:flex;
+align-items:center;
+gap:25px
+}
+
+header nav a{
+color:var(--text);
+text-decoration:none;
+font-size:14px;
+transition:color .2s
+}
+
+header nav a:hover{
+color:var(--accent)
+}
+
+.theme-button{
+border:1px solid var(--border);
+background:var(--surface);
+color:var(--text);
+border-radius:10px;
+padding:9px 13px;
+font-family:inherit;
+cursor:pointer;
+font-size:13px
+}
+
+.menu-button{
+display:none;
+width:45px;
+height:45px;
+border:1px solid var(--border);
+border-radius:12px;
+background:var(--surface);
+color:var(--text);
+font-size:25px;
+cursor:pointer;
+align-items:center;
+justify-content:center
+}
+
+.side-menu{
+position:fixed;
+top:0;
+left:0;
+width:290px;
+height:100vh;
+background:var(--surface);
+z-index:1000;
+padding:25px;
+transform:translateX(-100%);
+transition:transform .3s ease;
+box-shadow:10px 0 35px rgba(0,0,0,.12)
+}
+
+.side-menu.open{
+transform:translateX(0)
+}
+
+.side-menu-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:35px
+}
+
+.side-menu-title{
+font-size:25px;
+font-weight:700
+}
+
+.close-menu{
+width:40px;
+height:40px;
+border:none;
+background:var(--surface-2);
+color:var(--text);
+border-radius:10px;
+font-size:23px;
+cursor:pointer
+}
+
+.side-menu a{
+display:flex;
+align-items:center;
+min-height:52px;
+padding:0 15px;
+margin-bottom:8px;
+border-radius:12px;
+color:var(--text);
+text-decoration:none;
+transition:.2s
+}
+
+.side-menu a:hover{
+background:var(--surface-2)
+}
+
+.side-theme-button{
+width:100%;
+margin-top:20px;
+padding:13px 15px;
+border:1px solid var(--border);
+border-radius:12px;
+background:var(--surface);
+color:var(--text);
+font-family:inherit;
+cursor:pointer;
+text-align:right;
+font-size:14px
+}
+
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+z-index:999;
+opacity:0;
+visibility:hidden;
+transition:.25s
+}
+
+.menu-overlay.show{
+opacity:1;
+visibility:visible
+}
+
+body.dark{
+--bg:#0d0f11;
+--surface:#15181b;
+--surface-2:#1d2125;
+--text:#f1f1f1;
+--muted:#a4a8ad;
+--border:#292e33;
+--shadow:rgba(0,0,0,.35);
+--accent:#d4b66a
+}
+
+.category-page h1{
+text-align:center;
+margin-bottom:10px
+}
+
+.category-description{
+text-align:center;
+color:var(--muted);
+margin-bottom:40px
+}
+
+.lists{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px
+}
+
+.list-card{
+background:var(--surface);
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 20px var(--shadow);
+cursor:pointer;
+transition:transform .2s,box-shadow .2s
+}
+
+.list-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px var(--shadow)
+}
+
+.list-card h2{
+margin-top:0
+}
+
+.list-card p{
+color:var(--muted)
+}
+
+.recitations{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px
+}
+
+.recitation{
+background:var(--surface);
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 20px var(--shadow)
+}
+
+.recitation img{
+width:100%;
+height:180px;
+object-fit:cover
+}
+
+.recitation-content{
+padding:20px
+}
+
+.recitation-content h3{
+margin-top:0;
+margin-bottom:12px
+}
+
+.source-label{
+display:inline-block;
+font-size:12px;
+color:var(--muted);
+margin-bottom:8px
+}
+
+
+/* ===== بطاقة التلاوة الصوتية ===== */
+
+.audio-recitation-card{
+padding:20px;
+cursor:pointer;
+transition:transform .2s,box-shadow .2s,border-color .2s
+}
+
+.audio-recitation-card:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 28px var(--shadow)
+}
+
+.audio-recitation-card .recitation-content{
+padding:0
+}
+
+.audio-play-box{
+display:flex;
+align-items:center;
+gap:16px;
+min-height:82px
+}
+
+.audio-play-icon{
+flex:0 0 58px;
+width:58px;
+height:58px;
+border-radius:50%;
+background:var(--accent);
+color:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+padding-right:2px;
+box-shadow:0 8px 18px rgba(197,164,90,.2)
+}
+
+.audio-info{
+min-width:0
+}
+
+.audio-info h3{
+margin:0 0 5px;
+font-size:17px;
+line-height:1.7
+}
+
+.audio-info p{
+margin:0;
+color:var(--muted);
+font-size:12px
+}
+
+.audio-arrow{
+margin-right:auto;
+color:var(--muted);
+font-size:18px;
+transition:.2s
+}
+
+.audio-recitation-card:hover .audio-arrow{
+color:var(--accent);
+transform:translateX(-3px)
+}
+
+
+/* ===== بطاقة YouTube ===== */
+
+.youtube-recitation-card{
+padding:20px;
+cursor:pointer;
+transition:transform .2s,box-shadow .2s
+}
+
+.youtube-recitation-card:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 28px var(--shadow)
+}
+
+.youtube-recitation-card .recitation-content{
+padding:0
+}
+
+.youtube-play-box{
+display:flex;
+align-items:center;
+gap:16px;
+min-height:82px
+}
+
+.youtube-play-icon{
+flex:0 0 58px;
+width:58px;
+height:58px;
+border-radius:50%;
+background:var(--accent);
+color:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+padding-right:2px;
+box-shadow:0 8px 18px rgba(197,164,90,.2)
+}
+
+.youtube-info{
+min-width:0
+}
+
+.youtube-info h3{
+margin:0 0 5px;
+font-size:17px;
+line-height:1.7
+}
+
+.youtube-info p{
+margin:0;
+color:var(--muted);
+font-size:12px
+}
+
+.youtube-arrow{
+margin-right:auto;
+color:var(--muted);
+font-size:18px;
+transition:.2s
+}
+
+.youtube-recitation-card:hover .youtube-arrow{
+color:var(--accent);
+transform:translateX(-3px)
+}
+
+
+.back{
+display:inline-block;
+margin-bottom:25px;
+color:var(--text);
+text-decoration:none;
+font-weight:600
+}
+
+.empty{
+text-align:center;
+color:var(--muted);
+padding:50px;
+grid-column:1/-1
+}
+
+
+@media(max-width:768px){
+
+header{
+height:72px;
+padding:0 18px
+}
+
+header nav{
+display:none
+}
+
+header .logo{
+font-size:25px;
+text-align:right
+}
+
+header .logo span{
+font-size:9px
+}
+
+.menu-button{
+display:flex;
+order:-1
+}
+
+header .theme-button{
+display:none
+}
+
+.category-page{
+margin:25px auto;
+padding:15px
+}
+
+.category-page h1{
+font-size:28px
+}
+
+.category-description{
+font-size:14px;
+line-height:1.8
+}
+
+.lists{
+grid-template-columns:1fr;
+gap:18px
+}
+
+.list-card{
+padding:25px
+}
+
+.recitations{
+grid-template-columns:1fr;
+gap:18px
+}
+
+.recitation img{
+height:190px
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+تبيان
+<span>تلاوات الشيخ ياسر الدوسري</span>
 </div>
 
+
+<button
+class="menu-button"
+onclick="openMenu()"
+aria-label="فتح القائمة"
+>
+☰
+</button>
+
+
+<nav>
+
+<a href="index.html">
+الرئيسية
+</a>
+
+<a href="category.html?category=tarawih">
+التراويح
+</a>
+
+<a href="category.html?category=haram">
+الحرم
+</a>
+
+<a href="category.html?category=nawader">
+الفروض
+</a>
+
+<a href="category.html?category=maqamat">
+المصحف المرتل
+</a>
+
+<button
+id="desktopThemeButton"
+class="theme-button"
+onclick="toggleDarkMode()"
+>
+🌙 الوضع الداكن
+</button>
+
+</nav>
+
+</header>
+
+
+<div
+id="menuOverlay"
+class="menu-overlay"
+onclick="closeMenu()"
+></div>
+
+
+<aside
+id="sideMenu"
+class="side-menu"
+>
+
+<div class="side-menu-header">
+
+<div class="side-menu-title">
+تبيان
+</div>
+
+<button
+class="close-menu"
+onclick="closeMenu()"
+>
+×
+</button>
+
+</div>
+
+
+<a
+href="index.html"
+onclick="closeMenu()"
+>
+الرئيسية
+</a>
+
+<a
+href="category.html?category=tarawih"
+onclick="closeMenu()"
+>
+التراويح
+</a>
+
+<a
+href="category.html?category=haram"
+onclick="closeMenu()"
+>
+الحرم
+</a>
+
+<a
+href="category.html?category=nawader"
+onclick="closeMenu()"
+>
+الفروض
+</a>
+
+<a
+href="category.html?category=maqamat"
+onclick="closeMenu()"
+>
+المصحف المرتل
+</a>
+
+
+<button
+id="mobileThemeButton"
+class="side-theme-button"
+onclick="toggleDarkMode()"
+>
+🌙 الوضع الداكن
+</button>
+
+</aside>
+
+
+<div class="category-page">
+
+<a
+class="back"
+href="index.html"
+>
+← العودة للرئيسية
+</a>
+
+
+<h1 id="categoryTitle"></h1>
+
+<p
+class="category-description"
+id="categoryDescription"
+></p>
+
+
+<div
+id="lists"
+class="lists"
+></div>
+
+
+<div
+id="recitations"
+class="recitations"
+style="display:none;"
+></div>
+
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script src="supabase.js"></script>
+
+
 <script>
-const params=new URLSearchParams(location.search);
-const category=params.get("category");
 
-const categoryNames={tarawih:"التراويح",haram:"تلاوات الحرم",nawader:"النوادر",maqamat:"المقامات"};
-const descriptions={tarawih:"تلاوات الشيخ ياسر الدوسري في صلاة التراويح",haram:"تلاوات الشيخ من المسجد الحرام",nawader:"تلاوات نادرة وقديمة",maqamat:"تلاوات الشيخ ياسر الدوسري مرتبة حسب المقامات"};
+const params =
+new URLSearchParams(location.search);
 
-document.getElementById("categoryTitle").textContent=categoryNames[category]||"تبيان";
-document.getElementById("categoryDescription").textContent=descriptions[category]||"";
+const category =
+params.get("category");
 
-function escapeHTML(text){const div=document.createElement("div");div.textContent=text??"";return div.innerHTML}
+
+const categoryNames = {
+
+tarawih:"التراويح",
+
+haram:"تلاوات الحرم",
+
+nawader:"الفروض",
+
+maqamat:"المصحف المرتل"
+
+};
+
+
+const descriptions = {
+
+tarawih:"تلاوات الشيخ ياسر الدوسري في صلاة التراويح",
+
+haram:"تلاوات الشيخ من المسجد الحرام",
+
+nawader:"فروض الشيخ ياسر الدوسري",
+
+maqamat:"المصاحف المرتلة بصوت الشيخ ياسر الدوسري"
+
+};
+
+
+document.getElementById(
+"categoryTitle"
+).textContent =
+categoryNames[category] || "تبيان";
+
+
+document.getElementById(
+"categoryDescription"
+).textContent =
+descriptions[category] || "";
+
+
+/* =========================
+   حماية النصوص
+========================= */
+
+function escapeHTML(text){
+
+const div =
+document.createElement("div");
+
+div.textContent =
+text ?? "";
+
+return div.innerHTML;
+
+}
+
+
+/* =========================
+   تحميل القوائم
+========================= */
 
 async function loadLists(){
-const listsContainer=document.getElementById("lists"),recitationsContainer=document.getElementById("recitations");
-listsContainer.style.display="grid";recitationsContainer.style.display="none";
-listsContainer.innerHTML='<div class="empty">جارٍ تحميل القوائم...</div>';
+
+const listsContainer =
+document.getElementById("lists");
+
+const recitationsContainer =
+document.getElementById("recitations");
+
+
+listsContainer.style.display =
+"grid";
+
+recitationsContainer.style.display =
+"none";
+
+
+listsContainer.innerHTML =
+'<div class="empty">جارٍ تحميل القوائم...</div>';
+
+
 try{
-const {data:lists,error}=await supabaseClient.from("lists").select("id,name,category_id").eq("category_id",category).order("id",{ascending:true});
-if(error)throw error;
-listsContainer.innerHTML="";
-if(!lists||!lists.length){listsContainer.innerHTML='<div class="empty">لا توجد قوائم في هذا القسم حتى الآن.</div>';return}
-for(const list of lists){
-const card=document.createElement("div");card.className="list-card";
-const {count,error:countError}=await supabaseClient.from("recitations").select("id",{count:"exact",head:true}).eq("list_id",list.id);
-if(countError)console.error(countError);
-card.innerHTML=`<h2>${escapeHTML(list.name)}</h2><p>${count??0} تلاوة</p>`;
-card.onclick=()=>showRecitations(list.id);
+
+const {
+data:lists,
+error
+} =
+await supabaseClient
+.from("lists")
+.select(
+"id,name,category_id"
+)
+.eq(
+"category_id",
+category
+)
+.order(
+"id",
+{
+ascending:true
+}
+);
+
+
+if(error)
+throw error;
+
+
+listsContainer.innerHTML = "";
+
+
+if(
+!lists ||
+!lists.length
+){
+
+listsContainer.innerHTML =
+'<div class="empty">لا توجد قوائم في هذا القسم حتى الآن.</div>';
+
+return;
+
+}
+
+
+for(
+const list of lists
+){
+
+const card =
+document.createElement("div");
+
+card.className =
+"list-card";
+
+
+const {
+count,
+error:countError
+} =
+await supabaseClient
+.from("recitations")
+.select(
+"id",
+{
+count:"exact",
+head:true
+}
+)
+.eq(
+"list_id",
+list.id
+);
+
+
+if(countError)
+console.error(countError);
+
+
+card.innerHTML = `
+
+<h2>
+${escapeHTML(list.name)}
+</h2>
+
+<p>
+${count ?? 0} تلاوة
+</p>
+
+`;
+
+
+card.onclick =
+()=>{
+showRecitations(list.id);
+};
+
+
 listsContainer.appendChild(card);
+
 }
-}catch(error){console.error("خطأ في تحميل القوائم:",error);listsContainer.innerHTML='<div class="empty">حدث خطأ أثناء تحميل القوائم.</div>'}
+
+}catch(error){
+
+console.error(
+"خطأ في تحميل القوائم:",
+error
+);
+
+listsContainer.innerHTML =
+'<div class="empty">حدث خطأ أثناء تحميل القوائم.</div>';
+
 }
+
+}
+
+
+/* =========================
+   عرض التلاوات
+========================= */
 
 async function showRecitations(listId){
-const listsContainer=document.getElementById("lists"),container=document.getElementById("recitations");
-listsContainer.style.display="none";container.style.display="grid";
-container.innerHTML='<div style="grid-column:1/-1;margin-bottom:10px"><a href="#" class="back" onclick="loadLists();return false;">← العودة للقوائم</a><h2>جارٍ تحميل التلاوات...</h2></div>';
+
+const listsContainer =
+document.getElementById("lists");
+
+const container =
+document.getElementById("recitations");
+
+
+listsContainer.style.display =
+"none";
+
+container.style.display =
+"grid";
+
+
+container.innerHTML = `
+
+<div
+style="grid-column:1/-1;margin-bottom:10px"
+>
+
+<a
+href="#"
+class="back"
+onclick="loadLists();return false;"
+>
+← العودة للقوائم
+</a>
+
+<h2>
+جارٍ تحميل التلاوات...
+</h2>
+
+</div>
+
+`;
+
+
 try{
-const {data:list,error:listError}=await supabaseClient.from("lists").select("id,name").eq("id",listId).single();
-if(listError)throw listError;
 
-const {data:recitations,error:recitationsError}=await supabaseClient.from("recitations").select("id,name,url,thumbnail,source_type,audio_url").eq("list_id",listId).order("id",{ascending:true});
-if(recitationsError)throw recitationsError;
 
-container.innerHTML=`<div style="grid-column:1/-1;margin-bottom:10px"><a href="#" class="back" onclick="loadLists();return false;">← العودة للقوائم</a><h2>${escapeHTML(list.name)}</h2></div>`;
+/* جلب اسم القائمة */
 
-if(!recitations||!recitations.length){container.innerHTML+='<div class="empty">لا توجد تلاوات في هذه القائمة.</div>';return}
+const {
+data:list,
+error:listError
+} =
+await supabaseClient
+.from("lists")
+.select(
+"id,name"
+)
+.eq(
+"id",
+listId
+)
+.single();
 
-recitations.forEach(recitation=>{
-const card=document.createElement("div");
-card.className="recitation";
 
-if(recitation.source_type==="audio"){
-card.classList.add("audio-recitation-card");
-card.setAttribute("role","button");
-card.setAttribute("tabindex","0");
-card.setAttribute("aria-label","تشغيل "+recitation.name);
-card.innerHTML=`<div class="recitation-content"><span class="source-label">🎵 تلاوة صوتية</span><div class="audio-play-box"><div class="audio-play-icon">▶</div><div class="audio-info"><h3>${escapeHTML(recitation.name)}</h3><p>اضغط للاستماع إلى التلاوة</p></div><div class="audio-arrow">←</div></div></div>`;
-const openPlayer=()=>{location.href="player.html?id="+encodeURIComponent(recitation.id)};
-card.addEventListener("click",openPlayer);
-card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openPlayer()}});
-}else{
-card.innerHTML=`<img src="${escapeHTML(recitation.thumbnail||"")}" alt=""><div class="recitation-content"><span class="source-label">🎬 YouTube</span><h3>${escapeHTML(recitation.name)}</h3><a class="listen" href="${escapeHTML(recitation.url||"#")}" target="_blank" rel="noopener">استمع</a><br><a class="youtube-button" href="${escapeHTML(recitation.url||"#")}" target="_blank" rel="noopener">🔗 فتح على YouTube</a></div>`;
+if(listError)
+throw listError;
+
+
+/* جلب التلاوات */
+
+const {
+data:recitations,
+error:recitationsError
+} =
+await supabaseClient
+.from("recitations")
+.select(
+"id,name,url,thumbnail,source_type,audio_url"
+)
+.eq(
+"list_id",
+listId
+)
+.order(
+"id",
+{
+ascending:true
 }
+);
+
+
+if(recitationsError)
+throw recitationsError;
+
+
+container.innerHTML = `
+
+<div
+style="grid-column:1/-1;margin-bottom:10px"
+>
+
+<a
+href="#"
+class="back"
+onclick="loadLists();return false;"
+>
+← العودة للقوائم
+</a>
+
+<h2>
+${escapeHTML(list.name)}
+</h2>
+
+</div>
+
+`;
+
+
+if(
+!recitations ||
+!recitations.length
+){
+
+container.innerHTML +=
+'<div class="empty">لا توجد تلاوات في هذه القائمة.</div>';
+
+return;
+
+}
+
+
+/* =========================
+   إنشاء البطاقات
+========================= */
+
+recitations.forEach(
+recitation=>{
+
+const card =
+document.createElement("div");
+
+
+/* =========================
+   AUDIO
+========================= */
+
+if(
+recitation.source_type === "audio"
+){
+
+card.className =
+"recitation audio-recitation-card";
+
+
+card.setAttribute(
+"role",
+"button"
+);
+
+card.setAttribute(
+"tabindex",
+"0"
+);
+
+card.setAttribute(
+"aria-label",
+"تشغيل " +
+recitation.name
+);
+
+
+card.innerHTML = `
+
+<div class="recitation-content">
+
+<span class="source-label">
+🎵 تلاوة صوتية
+</span>
+
+<div class="audio-play-box">
+
+<div class="audio-play-icon">
+▶
+</div>
+
+<div class="audio-info">
+
+<h3>
+${escapeHTML(recitation.name)}
+</h3>
+
+<p>
+اضغط للاستماع إلى التلاوة
+</p>
+
+</div>
+
+<div class="audio-arrow">
+←
+</div>
+
+</div>
+
+</div>
+
+`;
+
+
+/*
+   الصوت يفتح player.html
+*/
+
+const openPlayer =
+()=>{
+
+location.href =
+"player.html?id=" +
+encodeURIComponent(
+recitation.id
+);
+
+};
+
+
+card.addEventListener(
+"click",
+openPlayer
+);
+
+
+card.addEventListener(
+"keydown",
+e=>{
+
+if(
+e.key === "Enter" ||
+e.key === " "
+){
+
+e.preventDefault();
+
+openPlayer();
+
+}
+
+}
+);
+
+}
+
+
+/* =========================
+   YOUTUBE
+========================= */
+
+else if(
+recitation.source_type === "youtube"
+){
+
+card.className =
+"recitation youtube-recitation-card";
+
+
+card.setAttribute(
+"role",
+"button"
+);
+
+card.setAttribute(
+"tabindex",
+"0"
+);
+
+card.setAttribute(
+"aria-label",
+"تشغيل " +
+recitation.name
+);
+
+
+card.innerHTML = `
+
+<div class="recitation-content">
+
+<span class="source-label">
+🎬 YouTube
+</span>
+
+<div class="youtube-play-box">
+
+<div class="youtube-play-icon">
+▶
+</div>
+
+<div class="youtube-info">
+
+<h3>
+${escapeHTML(recitation.name)}
+</h3>
+
+<p>
+اضغط لمشاهدة التلاوة
+</p>
+
+</div>
+
+<div class="youtube-arrow">
+←
+</div>
+
+</div>
+
+</div>
+
+`;
+
+
+/*
+   YouTube أيضًا يفتح player.html
+*/
+
+const openPlayer =
+()=>{
+
+location.href =
+"player.html?id=" +
+encodeURIComponent(
+recitation.id
+);
+
+};
+
+
+card.addEventListener(
+"click",
+openPlayer
+);
+
+
+card.addEventListener(
+"keydown",
+e=>{
+
+if(
+e.key === "Enter" ||
+e.key === " "
+){
+
+e.preventDefault();
+
+openPlayer();
+
+}
+
+}
+);
+
+}
+
+
 container.appendChild(card);
+
 });
-}catch(error){console.error("خطأ في تحميل التلاوات:",error);container.innerHTML='<div class="empty">حدث خطأ أثناء تحميل التلاوات.</div>'}
+
+
+}catch(error){
+
+console.error(
+"خطأ في تحميل التلاوات:",
+error
+);
+
+container.innerHTML =
+'<div class="empty">حدث خطأ أثناء تحميل التلاوات.</div>';
+
 }
 
-function openMenu(){document.getElementById("sideMenu").classList.add("open");document.getElementById("menuOverlay").classList.add("show")}
-function closeMenu(){document.getElementById("sideMenu").classList.remove("open");document.getElementById("menuOverlay").classList.remove("show")}
-function updateThemeButtons(){const dark=document.body.classList.contains("dark"),text=dark?"☀️ الوضع الفاتح":"🌙 الوضع الداكن";document.getElementById("desktopThemeButton").textContent=text;document.getElementById("mobileThemeButton").textContent=text}
-function applySavedTheme(){document.body.classList.toggle("dark",localStorage.getItem("tibyanDarkMode")==="dark");updateThemeButtons()}
-function toggleDarkMode(){const dark=document.body.classList.toggle("dark");localStorage.setItem("tibyanDarkMode",dark?"dark":"light");updateThemeButtons()}
+}
+
+
+/* =========================
+   القائمة
+========================= */
+
+function openMenu(){
+
+document.getElementById(
+"sideMenu"
+).classList.add(
+"open"
+);
+
+document.getElementById(
+"menuOverlay"
+).classList.add(
+"show"
+);
+
+}
+
+
+function closeMenu(){
+
+document.getElementById(
+"sideMenu"
+).classList.remove(
+"open"
+);
+
+document.getElementById(
+"menuOverlay"
+).classList.remove(
+"show"
+);
+
+}
+
+
+/* =========================
+   الوضع الداكن
+========================= */
+
+function updateThemeButtons(){
+
+const dark =
+document.body.classList.contains(
+"dark"
+);
+
+const text =
+dark
+?
+"☀️ الوضع الفاتح"
+:
+"🌙 الوضع الداكن";
+
+
+document.getElementById(
+"desktopThemeButton"
+).textContent =
+text;
+
+
+document.getElementById(
+"mobileThemeButton"
+).textContent =
+text;
+
+}
+
+
+function applySavedTheme(){
+
+document.body.classList.toggle(
+"dark",
+localStorage.getItem(
+"tibyanDarkMode"
+) === "dark"
+);
+
+updateThemeButtons();
+
+}
+
+
+function toggleDarkMode(){
+
+const dark =
+document.body.classList.toggle(
+"dark"
+);
+
+localStorage.setItem(
+"tibyanDarkMode",
+dark
+?
+"dark"
+:
+"light"
+);
+
+updateThemeButtons();
+
+}
+
+
+/* =========================
+   تشغيل
+========================= */
+
 applySavedTheme();
-document.addEventListener("keydown",event=>{if(event.key==="Escape")closeMenu()});
+
+document.addEventListener(
+"keydown",
+event=>{
+
+if(
+event.key === "Escape"
+){
+
+closeMenu();
+
+}
+
+});
+
+
 loadLists();
+
 </script>
+
 </body>
+
 </html>
