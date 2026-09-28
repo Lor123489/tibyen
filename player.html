@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تبيان | التلاوة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f5f5;--surface:#fff;--surface2:#fafafa;--text:#111;--muted:#777;--border:#e5e5e5;--shadow:rgba(0,0,0,.08);--accent:#c5a45a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:var(--bg);color:var(--text);font-family:Cairo,sans-serif;transition:.3s}
+body.dark{--bg:#111;--surface:#191919;--surface2:#202020;--text:#f5f5f5;--muted:#999;--border:#303030;--shadow:rgba(0,0,0,.35)}
+header{height:85px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:relative;z-index:100;transition:.3s}
+.logo{font-size:30px;font-weight:700;line-height:1.1}.logo span{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:5px}
+nav{display:flex;align-items:center;gap:25px}nav a{color:var(--text);text-decoration:none;font-size:14px}nav a:hover{color:var(--accent)}
+.theme-button,.menu-button{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:10px;font-family:inherit;cursor:pointer}.theme-button{padding:9px 13px;font-size:13px}.menu-button{display:none;width:45px;height:45px;font-size:24px;align-items:center;justify-content:center}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;visibility:hidden;transition:.25s;z-index:199}.menu-overlay.show{opacity:1;visibility:visible}
+.side-menu{position:fixed;top:0;right:-310px;width:290px;height:100vh;background:var(--surface);border-left:1px solid var(--border);z-index:200;padding:25px;transition:right .3s ease}.side-menu.open{right:0}
+.side-menu-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.side-menu-title{font-size:25px;font-weight:700}.close-menu{border:0;background:transparent;color:var(--text);font-size:30px;cursor:pointer}
+.side-menu>a,.side-theme-button{display:block;width:100%;padding:14px 8px;margin-bottom:6px;border:0;border-radius:10px;background:transparent;color:var(--text);text-align:right;text-decoration:none;font:inherit;cursor:pointer}
+.side-menu>a:hover,.side-theme-button:hover{background:var(--surface2)}
+.player-page{width:min(900px,calc(100% - 30px));margin:55px auto 80px}
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:14px;margin-bottom:28px}.back:hover{color:var(--accent)}
+.player-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:28px;padding:55px 60px 48px;box-shadow:0 18px 55px var(--shadow);overflow:hidden}
+.player-card:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(197,164,90,.07);top:-150px;left:-80px}
+.player-label{position:relative;color:var(--accent);font-size:13px;font-weight:600;margin-bottom:15px}
+.player-title{position:relative;font-size:clamp(25px,4vw,38px);line-height:1.7;font-weight:700;margin-bottom:8px}
+.player-subtitle{position:relative;color:var(--muted);font-size:14px;margin-bottom:34px}.divider{height:1px;background:var(--border);margin-bottom:38px}
+.visualizer{width:190px;height:190px;margin:0 auto 40px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;background:var(--surface2)}
+.visualizer:before,.visualizer:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(197,164,90,.35)}.visualizer:before{inset:17px}.visualizer:after{inset:35px}
+.play-main{position:relative;z-index:2;width:82px;height:82px;border:0;border-radius:50%;background:var(--accent);color:#111;cursor:pointer;font-size:29px;padding:0 0 0 4px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(197,164,90,.25);transition:.2s}.play-main:hover{transform:scale(1.05)}.play-main.playing{padding-left:0}
+.progress{width:100%;height:6px;appearance:none;-webkit-appearance:none;background:var(--border);border-radius:10px;cursor:pointer;direction:ltr}.progress::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:17px;height:17px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);box-shadow:0 0 0 1px var(--accent)}
+.time-row{display:flex;direction:ltr;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:10px}
+.controls{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:32px}.control-button{min-width:75px;height:43px;border:1px solid var(--border);border-radius:13px;background:var(--surface2);color:var(--text);font-family:inherit;cursor:pointer;font-size:13px}.control-button:hover{border-color:var(--accent);color:var(--accent)}
+.download{display:flex;align-items:center;justify-content:center;width:100%;height:48px;margin-top:34px;border:1px solid var(--border);border-radius:14px;background:transparent;color:var(--text);text-decoration:none;font-size:14px}.download:hover{border-color:var(--accent);color:var(--accent)}
+.status,.error{text-align:center;color:var(--muted);padding:60px 20px}.error{padding:45px 20px}.error strong{display:block;color:var(--text);font-size:20px;margin-bottom:8px}
+@media(max-width:700px){header{height:72px;padding:0 18px}.logo{font-size:25px}.logo span{font-size:9px}nav{display:none}.menu-button{display:flex;order:-1}.player-page{width:calc(100% - 22px);margin:28px auto 55px}.player-card{padding:38px 20px 28px;border-radius:22px}.player-title{font-size:25px}.visualizer{width:165px;height:165px;margin-bottom:34px}.play-main{width:72px;height:72px}.controls{gap:12px}.control-button{min-width:70px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">تبيان<span>تلاوات الشيخ ياسر الدوسري</span></div>
+<button class="menu-button" onclick="openMenu()">☰</button>
+<nav>
+<a href="index.html">الرئيسية</a><a href="category.html?category=tarawih">التراويح</a><a href="category.html?category=haram">الحرم</a><a href="category.html?category=nawader">النوادر</a><a href="category.html?category=maqamat">المقامات</a>
+<button id="desktopThemeButton" class="theme-button" onclick="toggleDarkMode()">🌙 الوضع الداكن</button>
+</nav>
+</header>
+<div id="menuOverlay" class="menu-overlay" onclick="closeMenu()"></div>
+<aside id="sideMenu" class="side-menu">
+<div class="side-menu-header"><div class="side-menu-title">تبيان</div><button class="close-menu" onclick="closeMenu()">×</button></div>
+<a href="index.html">الرئيسية</a><a href="category.html?category=tarawih">التراويح</a><a href="category.html?category=haram">الحرم</a><a href="category.html?category=nawader">النوادر</a><a href="category.html?category=maqamat">المقامات</a>
+<button id="mobileThemeButton" class="side-theme-button" onclick="toggleDarkMode()">🌙 الوضع الداكن</button>
+</aside>
+<main class="player-page">
+<a class="back" href="javascript:history.back()">→ العودة للتلاوات</a>
+<section class="player-card">
+<div id="loading" class="status">جاري تحميل التلاوة...</div>
+<div id="playerContent" style="display:none">
+<div class="player-label">🎵 تلاوة صوتية</div>
+<h1 id="title" class="player-title"></h1>
+<p class="player-subtitle">تلاوات الشيخ ياسر الدوسري · تبيان</p>
+<div class="divider"></div>
+<div class="visualizer"><button id="playButton" class="play-main">▶</button></div>
+<input id="progress" class="progress" type="range" min="0" max="100" value="0">
+<div class="time-row"><span id="currentTime">00:00</span><span id="duration">00:00</span></div>
+<div class="controls"><button class="control-button" onclick="seek(-10)">↶ 10 ثوانٍ</button><button class="control-button" onclick="togglePlay()">تشغيل / إيقاف</button><button class="control-button" onclick="seek(10)">10 ثوانٍ ↷</button></div>
+<a id="downloadButton" class="download" href="#" target="_blank" rel="noopener">تحميل التلاوة</a>
+<audio id="audio" preload="metadata"></audio>
+</div>
+<div id="error" class="error" style="display:none"></div>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script>
+const params=new URLSearchParams(location.search),recitationId=params.get("id"),audio=document.getElementById("audio"),playButton=document.getElementById("playButton"),progress=document.getElementById("progress"),currentTimeEl=document.getElementById("currentTime"),durationEl=document.getElementById("duration");
+function formatTime(s){if(!Number.isFinite(s))return"00:00";return String(Math.floor(s/60)).padStart(2,"0")+":"+String(Math.floor(s%60)).padStart(2,"0")}
+function togglePlay(){if(!audio.src)return;audio.paused?audio.play():audio.pause()}
+function seek(s){if(Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(audio.duration,audio.currentTime+s))}
+function updatePlayButton(){const p=!audio.paused;playButton.textContent=p?"Ⅱ":"▶";playButton.classList.toggle("playing",p)}
+playButton.addEventListener("click",togglePlay);audio.addEventListener("play",updatePlayButton);audio.addEventListener("pause",updatePlayButton);
+audio.addEventListener("loadedmetadata",()=>durationEl.textContent=formatTime(audio.duration));
+audio.addEventListener("timeupdate",()=>{if(audio.duration)progress.value=audio.currentTime/audio.duration*100;currentTimeEl.textContent=formatTime(audio.currentTime)});
+progress.addEventListener("input",()=>{if(audio.duration)audio.currentTime=progress.value/100*audio.duration});
+async function loadRecitation(){
+if(!recitationId)return showError("لم يتم تحديد التلاوة.");
+const {data,error}=await supabaseClient.from("recitations").select("id,name,source_type,audio_url").eq("id",recitationId).single();
+if(error||!data)return showError("تعذر العثور على التلاوة.");
+if(data.source_type!=="audio"||!data.audio_url)return showError("هذه ليست تلاوة صوتية قابلة للتشغيل هنا.");
+document.title=data.name+" | تبيان";document.getElementById("title").textContent=data.name;audio.src=data.audio_url;document.getElementById("downloadButton").href=data.audio_url;
+document.getElementById("loading").style.display="none";document.getElementById("playerContent").style.display="block";
+}
+function showError(m){document.getElementById("loading").style.display="none";const e=document.getElementById("error");e.innerHTML="<strong>تعذر تشغيل التلاوة</strong>"+m;e.style.display="block"}
+function openMenu(){document.getElementById("sideMenu").classList.add("open");document.getElementById("menuOverlay").classList.add("show")}
+function closeMenu(){document.getElementById("sideMenu").classList.remove("open");document.getElementById("menuOverlay").classList.remove("show")}
+function updateThemeButtons(){const d=document.body.classList.contains("dark"),t=d?"☀️ الوضع الفاتح":"🌙 الوضع الداكن";document.getElementById("desktopThemeButton").textContent=t;document.getElementById("mobileThemeButton").textContent=t}
+function applySavedTheme(){document.body.classList.toggle("dark",localStorage.getItem("tibyanDarkMode")==="dark");updateThemeButtons()}
+function toggleDarkMode(){const d=document.body.classList.toggle("dark");localStorage.setItem("tibyanDarkMode",d?"dark":"light");updateThemeButtons()}
+applySavedTheme();loadRecitation();
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu();if(e.code==="Space"&&e.target.tagName!=="INPUT"&&e.target.tagName!=="BUTTON"){e.preventDefault();togglePlay()}if(e.code==="ArrowLeft")seek(-10);if(e.code==="ArrowRight")seek(10)});
+</script>
+</body>
+</html>
