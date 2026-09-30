@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 
 <head>
+    
     <button onclick="location.href='index.html'">الرئيسية</button>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1243,6 +1244,131 @@
     }
 
 
+
+    /* =========================
+       رفع مباشر سريع وآمن
+       بدون TUS وبدون Authorization كـ JWT
+    ========================= */
+
+    async function uploadAudioFast(file, filePath, onProgress) {
+
+        /*
+         * ننشئ رابط رفع موقّع من Supabase.
+         * هذا الرابط يحمل صلاحية الرفع داخل URL،
+         * لذلك لا نرسل sb_publishable كـ Bearer JWT.
+         */
+        var signedResult =
+            await supabaseClient
+                .storage
+                .from("audio")
+                .createSignedUploadUrl(
+                    filePath,
+                    {
+                        upsert: false
+                    }
+                );
+
+        if (signedResult.error) {
+            throw signedResult.error;
+        }
+
+        var signedUrl =
+            signedResult.data &&
+            signedResult.data.signedUrl;
+
+        if (!signedUrl) {
+            throw new Error("تعذر إنشاء رابط الرفع الآمن.");
+        }
+
+        /*
+         * XHR يعطي تقدمًا حقيقيًا أثناء الرفع.
+         * نرفع الملف مباشرة إلى رابط Supabase الموقّع.
+         */
+        return new Promise(function(resolve, reject) {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("PUT", signedUrl, true);
+
+            xhr.setRequestHeader(
+                "Content-Type",
+                file.type || "audio/mpeg"
+            );
+
+            xhr.setRequestHeader(
+                "Cache-Control",
+                "max-age=3600"
+            );
+
+            xhr.upload.onprogress = function(event) {
+
+                if (!event.lengthComputable) {
+                    return;
+                }
+
+                var percent =
+                    (event.loaded / event.total) * 100;
+
+                if (typeof onProgress === "function") {
+                    onProgress(
+                        percent,
+                        event.loaded,
+                        event.total
+                    );
+                }
+            };
+
+            xhr.onload = function() {
+
+                if (xhr.status >= 200 && xhr.status < 300) {
+
+                    resolve({
+                        path: filePath
+                    });
+
+                    return;
+                }
+
+                var message =
+                    "فشل رفع الملف. HTTP " +
+                    xhr.status;
+
+                try {
+                    var response =
+                        JSON.parse(xhr.responseText);
+
+                    if (response.message) {
+                        message +=
+                            ": " +
+                            response.message;
+                    }
+                } catch (_) {}
+
+                reject(
+                    new Error(message)
+                );
+            };
+
+            xhr.onerror = function() {
+                reject(
+                    new Error(
+                        "انقطع الاتصال أثناء رفع الملف."
+                    )
+                );
+            };
+
+            xhr.onabort = function() {
+                reject(
+                    new Error(
+                        "تم إلغاء رفع الملف."
+                    )
+                );
+            };
+
+            xhr.send(file);
+        });
+    }
+
     /* =========================
        إضافة التلاوة
     ========================= */
@@ -1478,24 +1604,31 @@
              */
 
             var uploadResult =
-                await supabaseClient
-                    .storage
-                    .from("audio")
-                    .upload(
-                        filePath,
-                        file,
-                        {
-                            cacheControl: "3600",
-                            upsert: false,
-                            contentType: file.type
-                        }
-                    );
+                await uploadAudioFast(
+                    file,
+                    filePath,
+                    function(percent, bytesUploaded, bytesTotal) {
 
+                        var uploadedMB =
+                            bytesUploaded /
+                            1024 /
+                            1024;
 
-            if (uploadResult.error) {
+                        var totalMB =
+                            bytesTotal /
+                            1024 /
+                            1024;
 
-                throw uploadResult.error;
-            }
+                        status.textContent =
+                            "جاري رفع الملف... " +
+                            percent.toFixed(1) +
+                            "% — " +
+                            uploadedMB.toFixed(1) +
+                            " / " +
+                            totalMB.toFixed(1) +
+                            " MB";
+                    }
+                );
 
 
             status.textContent =
