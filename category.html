@@ -2,16 +2,16 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>تبيان</title>
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -278,9 +278,6 @@ color:var(--muted);
 margin-bottom:8px
 }
 
-
-/* ===== بطاقة التلاوة الصوتية ===== */
-
 .audio-recitation-card{
 padding:20px;
 cursor:pointer;
@@ -345,9 +342,6 @@ transition:.2s
 color:var(--accent);
 transform:translateX(-3px)
 }
-
-
-/* ===== بطاقة YouTube ===== */
 
 .youtube-recitation-card{
 padding:20px;
@@ -414,7 +408,6 @@ color:var(--accent);
 transform:translateX(-3px)
 }
 
-
 .back{
 display:inline-block;
 margin-bottom:25px;
@@ -429,7 +422,6 @@ color:var(--muted);
 padding:50px;
 grid-column:1/-1
 }
-
 
 @media(max-width:768px){
 
@@ -495,12 +487,10 @@ height:190px
 }
 
 </style>
-
 </head>
 
 
 <body>
-
 
 <header>
 
@@ -509,7 +499,6 @@ height:190px
 <span>تلاوات الشيخ ياسر الدوسري</span>
 </div>
 
-
 <button
 class="menu-button"
 onclick="openMenu()"
@@ -517,7 +506,6 @@ aria-label="فتح القائمة"
 >
 ☰
 </button>
-
 
 <nav>
 
@@ -638,7 +626,6 @@ href="index.html"
 ← العودة للرئيسية
 </a>
 
-
 <h1 id="categoryTitle"></h1>
 
 <p
@@ -679,11 +666,8 @@ params.get("category");
 const categoryNames = {
 
 tarawih:"التراويح",
-
 haram:"المزيد",
-
 nawader:"الفروض",
-
 maqamat:"المصحف المرتل"
 
 };
@@ -692,11 +676,8 @@ maqamat:"المصحف المرتل"
 const descriptions = {
 
 tarawih:"تلاوات الشيخ ياسر الدوسري في صلاة التراويح",
-
 haram:"محاضرات والخ....",
-
 nawader:"فروض الشيخ ياسر الدوسري",
-
 maqamat:"المصاحف المرتلة بصوت الشيخ ياسر الدوسري"
 
 };
@@ -847,7 +828,9 @@ ${count ?? 0} تلاوة
 
 card.onclick =
 ()=>{
+
 showRecitations(list.id);
+
 };
 
 
@@ -914,7 +897,6 @@ onclick="loadLists();return false;"
 
 
 try{
-
 
 /* جلب اسم القائمة */
 
@@ -1006,6 +988,7 @@ return;
 ========================= */
 
 recitations.forEach(
+
 recitation=>{
 
 const card =
@@ -1116,6 +1099,7 @@ openPlayer();
 }
 
 }
+
 );
 
 }
@@ -1187,10 +1171,6 @@ ${escapeHTML(recitation.name)}
 `;
 
 
-/*
-   YouTube أيضًا يفتح player.html
-*/
-
 const openPlayer =
 ()=>{
 
@@ -1225,6 +1205,7 @@ openPlayer();
 }
 
 }
+
 );
 
 }
@@ -1299,6 +1280,7 @@ document.body.classList.contains(
 "dark"
 );
 
+
 const text =
 dark
 ?
@@ -1362,6 +1344,7 @@ updateThemeButtons();
 
 applySavedTheme();
 
+
 document.addEventListener(
 "keydown",
 event=>{
@@ -1382,5 +1365,4 @@ loadLists();
 </script>
 
 </body>
-
 </html>

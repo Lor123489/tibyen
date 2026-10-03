@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    
     <button onclick="location.href='index.html'">الرئيسية</button>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -82,22 +82,19 @@
             padding: 10px 18px;
         }
 
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .primary {
             background: #111;
             color: white;
         }
 
-        .primary:hover {
-            background: #222;
-        }
-
         .danger {
             background: #222;
             color: white;
-        }
-
-        .danger:hover {
-            background: #000;
         }
 
         .back {
@@ -135,6 +132,7 @@
             justify-content: center;
             padding: 20px;
             z-index: 1000;
+            overflow-y: auto;
         }
 
         .modal.show {
@@ -144,9 +142,11 @@
         .modal-box {
             background: white;
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
             padding: 30px;
             border-radius: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .source-options {
@@ -208,6 +208,25 @@
             display: block;
         }
 
+        .part-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            background: #fafafa;
+        }
+
+        .part-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .part-size {
+            font-size: 12px;
+            color: #777;
+            margin-top: -5px;
+        }
+
         .recitation {
             background: white;
             padding: 15px;
@@ -237,6 +256,12 @@
             background: #eee;
             color: #555;
             font-size: 12px;
+        }
+
+        .parts-list {
+            margin-top: 10px;
+            color: #666;
+            font-size: 13px;
         }
 
         @media (max-width: 700px) {
@@ -319,10 +344,7 @@
 
             <div class="category">
                 <h2>التراويح</h2>
-
-                <p>
-                    إدارة قوائم التراويح
-                </p>
+                <p>إدارة قوائم التراويح</p>
 
                 <button
                     class="primary"
@@ -334,10 +356,7 @@
 
             <div class="category">
                 <h2>المزيد</h2>
-
-                <p>
-                    إدارة قوائم المزيد
-                </p>
+                <p>إدارة قوائم المزيد</p>
 
                 <button
                     class="primary"
@@ -349,10 +368,7 @@
 
             <div class="category">
                 <h2>الفروض</h2>
-
-                <p>
-                    إدارة الفروض
-                </p>
+                <p>إدارة الفروض</p>
 
                 <button
                     class="primary"
@@ -364,10 +380,7 @@
 
             <div class="category">
                 <h2>المصحف المرتل</h2>
-
-                <p>
-                    إدارة المصحف المرتل
-                </p>
+                <p>إدارة المصحف المرتل</p>
 
                 <button
                     class="primary"
@@ -378,7 +391,6 @@
             </div>
 
         </div>
-
     </div>
 
 
@@ -554,25 +566,115 @@
         </div>
 
 
-        <!-- ملف صوتي -->
+        <!-- ملفات صوتية -->
 
         <div
             id="audioSection"
             class="source-section"
         >
 
-            <input
-                id="audioFile"
-                type="file"
-                accept="audio/*"
-                onchange="showSelectedFile()"
-            >
+            <p class="subtitle">
+                ارفع التلاوة على أجزاء. الحد الأقصى لكل جزء 50 MB.
+            </p>
 
-            <div
-                id="fileName"
-                class="file-name"
-            >
-                لم يتم اختيار ملف
+
+            <!-- الجزء الأول -->
+
+            <div class="part-box">
+
+                <div class="part-title">
+                    الجزء 1
+                </div>
+
+                <input
+                    id="audioPart1"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(1)"
+                >
+
+                <div
+                    id="part1Name"
+                    class="file-name"
+                >
+                    لم يتم اختيار ملف
+                </div>
+
+            </div>
+
+
+            <!-- الجزء الثاني -->
+
+            <div class="part-box">
+
+                <div class="part-title">
+                    الجزء 2
+                </div>
+
+                <input
+                    id="audioPart2"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(2)"
+                >
+
+                <div
+                    id="part2Name"
+                    class="file-name"
+                >
+                    لم يتم اختيار ملف
+                </div>
+
+            </div>
+
+
+            <!-- الجزء الثالث -->
+
+            <div class="part-box">
+
+                <div class="part-title">
+                    الجزء 3
+                </div>
+
+                <input
+                    id="audioPart3"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(3)"
+                >
+
+                <div
+                    id="part3Name"
+                    class="file-name"
+                >
+                    لم يتم اختيار ملف
+                </div>
+
+            </div>
+
+
+            <!-- الجزء الرابع -->
+
+            <div class="part-box">
+
+                <div class="part-title">
+                    الجزء 4
+                </div>
+
+                <input
+                    id="audioPart4"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(4)"
+                >
+
+                <div
+                    id="part4Name"
+                    class="file-name"
+                >
+                    لم يتم اختيار ملف
+                </div>
+
             </div>
 
         </div>
@@ -582,7 +684,7 @@
             id="uploadStatus"
             class="upload-status"
         >
-            جاري تجهيز الملف...
+            جاري تجهيز الملفات...
         </div>
 
 
@@ -634,6 +736,8 @@
     var currentList = null;
 
     var currentSourceType = "youtube";
+
+    var MAX_PART_SIZE = 50 * 1024 * 1024;
 
 
     /* =========================
@@ -797,7 +901,6 @@
 
 
             div.innerHTML = `
-
                 <h3>
                     ${escapeHTML(list.name)}
                 </h3>
@@ -819,7 +922,6 @@
                 >
                     حذف القائمة
                 </button>
-
             `;
 
 
@@ -1103,15 +1205,21 @@
             .value = "";
 
 
-        document
-            .getElementById("audioFile")
-            .value = "";
+        for (
+            var i = 1;
+            i <= 4;
+            i++
+        ) {
 
+            document
+                .getElementById("audioPart" + i)
+                .value = "";
 
-        document
-            .getElementById("fileName")
-            .textContent =
-            "لم يتم اختيار ملف";
+            document
+                .getElementById("part" + i + "Name")
+                .textContent =
+                "لم يتم اختيار ملف";
+        }
 
 
         document
@@ -1185,24 +1293,28 @@
 
 
     /* =========================
-       اسم الملف المختار
+       عرض اسم الجزء
     ========================= */
 
-    function showSelectedFile() {
+    function showPartFile(partNumber) {
 
         var file =
             document
-                .getElementById("audioFile")
+                .getElementById(
+                    "audioPart" + partNumber
+                )
                 .files[0];
 
 
-        var fileName =
-            document.getElementById("fileName");
+        var element =
+            document.getElementById(
+                "part" + partNumber + "Name"
+            );
 
 
         if (!file) {
 
-            fileName.textContent =
+            element.textContent =
                 "لم يتم اختيار ملف";
 
             return;
@@ -1215,7 +1327,7 @@
             1024;
 
 
-        fileName.textContent =
+        element.textContent =
             file.name +
             " — " +
             sizeMB.toFixed(2) +
@@ -1236,6 +1348,7 @@
 
 
         if (match) {
+
             return match[1];
         }
 
@@ -1244,19 +1357,17 @@
     }
 
 
-
     /* =========================
-       رفع مباشر سريع وآمن
-       بدون TUS وبدون Authorization كـ JWT
+       رفع ملف واحد
+       باستخدام Signed Upload URL
     ========================= */
 
-    async function uploadAudioFast(file, filePath, onProgress) {
+    async function uploadAudioFast(
+        file,
+        filePath,
+        onProgress
+    ) {
 
-        /*
-         * ننشئ رابط رفع موقّع من Supabase.
-         * هذا الرابط يحمل صلاحية الرفع داخل URL،
-         * لذلك لا نرسل sb_publishable كـ Bearer JWT.
-         */
         var signedResult =
             await supabaseClient
                 .storage
@@ -1268,106 +1379,335 @@
                     }
                 );
 
+
         if (signedResult.error) {
+
             throw signedResult.error;
         }
+
 
         var signedUrl =
             signedResult.data &&
             signedResult.data.signedUrl;
 
+
         if (!signedUrl) {
-            throw new Error("تعذر إنشاء رابط الرفع الآمن.");
+
+            throw new Error(
+                "تعذر إنشاء رابط الرفع الآمن."
+            );
         }
 
-        /*
-         * XHR يعطي تقدمًا حقيقيًا أثناء الرفع.
-         * نرفع الملف مباشرة إلى رابط Supabase الموقّع.
-         */
-        return new Promise(function(resolve, reject) {
 
-            var xhr = new XMLHttpRequest();
+        return new Promise(
+            function(resolve, reject) {
 
-            xhr.open("PUT", signedUrl, true);
+                var xhr =
+                    new XMLHttpRequest();
 
-            xhr.setRequestHeader(
-                "Content-Type",
-                file.type || "audio/mpeg"
-            );
 
-            xhr.setRequestHeader(
-                "Cache-Control",
-                "max-age=3600"
-            );
-
-            xhr.upload.onprogress = function(event) {
-
-                if (!event.lengthComputable) {
-                    return;
-                }
-
-                var percent =
-                    (event.loaded / event.total) * 100;
-
-                if (typeof onProgress === "function") {
-                    onProgress(
-                        percent,
-                        event.loaded,
-                        event.total
-                    );
-                }
-            };
-
-            xhr.onload = function() {
-
-                if (xhr.status >= 200 && xhr.status < 300) {
-
-                    resolve({
-                        path: filePath
-                    });
-
-                    return;
-                }
-
-                var message =
-                    "فشل رفع الملف. HTTP " +
-                    xhr.status;
-
-                try {
-                    var response =
-                        JSON.parse(xhr.responseText);
-
-                    if (response.message) {
-                        message +=
-                            ": " +
-                            response.message;
-                    }
-                } catch (_) {}
-
-                reject(
-                    new Error(message)
+                xhr.open(
+                    "PUT",
+                    signedUrl,
+                    true
                 );
-            };
 
-            xhr.onerror = function() {
-                reject(
-                    new Error(
-                        "انقطع الاتصال أثناء رفع الملف."
-                    )
+
+                xhr.setRequestHeader(
+                    "Content-Type",
+                    file.type || "audio/mpeg"
                 );
-            };
 
-            xhr.onabort = function() {
-                reject(
-                    new Error(
-                        "تم إلغاء رفع الملف."
-                    )
+
+                xhr.setRequestHeader(
+                    "Cache-Control",
+                    "max-age=3600"
                 );
-            };
 
-            xhr.send(file);
-        });
+
+                xhr.upload.onprogress =
+                    function(event) {
+
+                        if (
+                            !event.lengthComputable
+                        ) {
+                            return;
+                        }
+
+
+                        var percent =
+                            (
+                                event.loaded /
+                                event.total
+                            ) * 100;
+
+
+                        if (
+                            typeof onProgress ===
+                            "function"
+                        ) {
+
+                            onProgress(
+                                percent,
+                                event.loaded,
+                                event.total
+                            );
+                        }
+                    };
+
+
+                xhr.onload =
+                    function() {
+
+                        if (
+                            xhr.status >= 200 &&
+                            xhr.status < 300
+                        ) {
+
+                            resolve({
+                                path: filePath
+                            });
+
+                            return;
+                        }
+
+
+                        var message =
+                            "فشل رفع الملف. HTTP " +
+                            xhr.status;
+
+
+                        try {
+
+                            var response =
+                                JSON.parse(
+                                    xhr.responseText
+                                );
+
+
+                            if (
+                                response.message
+                            ) {
+
+                                message +=
+                                    ": " +
+                                    response.message;
+                            }
+
+                        } catch (_) {}
+
+
+                        reject(
+                            new Error(message)
+                        );
+                    };
+
+
+                xhr.onerror =
+                    function() {
+
+                        reject(
+                            new Error(
+                                "انقطع الاتصال أثناء رفع الملف."
+                            )
+                        );
+                    };
+
+
+                xhr.onabort =
+                    function() {
+
+                        reject(
+                            new Error(
+                                "تم إلغاء رفع الملف."
+                            )
+                        );
+                    };
+
+
+                xhr.send(file);
+            }
+        );
     }
+
+
+    /* =========================
+       إنشاء اسم ملف آمن
+    ========================= */
+
+    function createSafeFilePath(
+        partNumber,
+        extension
+    ) {
+
+        var randomPart =
+            Math.random()
+                .toString(36)
+                .substring(2, 10);
+
+
+        return (
+            "recitations/" +
+            Date.now() +
+            "-" +
+            randomPart +
+            "-part-" +
+            partNumber +
+            "." +
+            extension
+        );
+    }
+
+
+    /* =========================
+       استخراج امتداد الملف
+    ========================= */
+
+    function getExtension(file) {
+
+        if (
+            !file ||
+            !file.name ||
+            !file.name.includes(".")
+        ) {
+
+            return "mp3";
+        }
+
+
+        var extension =
+            file.name
+                .split(".")
+                .pop()
+                .toLowerCase()
+                .replace(
+                    /[^a-z0-9]/g,
+                    ""
+                );
+
+
+        var allowedExtensions = [
+            "mp3",
+            "m4a",
+            "aac",
+            "wav",
+            "ogg",
+            "oga",
+            "webm",
+            "flac"
+        ];
+
+
+        if (
+            !allowedExtensions.includes(
+                extension
+            )
+        ) {
+
+            return "mp3";
+        }
+
+
+        return extension;
+    }
+
+
+    /* =========================
+       التحقق من الأجزاء
+    ========================= */
+
+    function getAudioParts() {
+
+        var parts = [];
+
+
+        for (
+            var i = 1;
+            i <= 4;
+            i++
+        ) {
+
+            var input =
+                document.getElementById(
+                    "audioPart" + i
+                );
+
+
+            var file =
+                input.files[0];
+
+
+            if (!file) {
+                continue;
+            }
+
+
+            if (
+                !file.type.startsWith(
+                    "audio/"
+                )
+            ) {
+
+                throw new Error(
+                    "الجزء " +
+                    i +
+                    " ليس ملفًا صوتيًا."
+                );
+            }
+
+
+            if (
+                file.size <= 0
+            ) {
+
+                throw new Error(
+                    "الجزء " +
+                    i +
+                    " فارغ."
+                );
+            }
+
+
+            if (
+                file.size >
+                MAX_PART_SIZE
+            ) {
+
+                throw new Error(
+                    "الجزء " +
+                    i +
+                    " أكبر من 50 MB.\n\n" +
+                    "حجم الجزء: " +
+                    (
+                        file.size /
+                        1024 /
+                        1024
+                    ).toFixed(2) +
+                    " MB"
+                );
+            }
+
+
+            parts.push({
+                partNumber: i,
+                file: file
+            });
+        }
+
+
+        if (
+            parts.length === 0
+        ) {
+
+            throw new Error(
+                "اختر جزءًا صوتيًا واحدًا على الأقل."
+            );
+        }
+
+
+        return parts;
+    }
+
 
     /* =========================
        إضافة التلاوة
@@ -1387,7 +1727,9 @@
 
         var name =
             document
-                .getElementById("recitationName")
+                .getElementById(
+                    "recitationName"
+                )
                 .value
                 .trim();
 
@@ -1423,11 +1765,16 @@
                YouTube
             ========================= */
 
-            if (currentSourceType === "youtube") {
+            if (
+                currentSourceType ===
+                "youtube"
+            ) {
 
                 var url =
                     document
-                        .getElementById("youtubeUrl")
+                        .getElementById(
+                            "youtubeUrl"
+                        )
                         .value
                         .trim();
 
@@ -1464,7 +1811,9 @@
 
                 var result =
                     await supabaseClient
-                        .from("recitations")
+                        .from(
+                            "recitations"
+                        )
                         .insert({
 
                             list_id:
@@ -1484,6 +1833,7 @@
 
                             audio_url:
                                 null
+
                         });
 
 
@@ -1507,156 +1857,30 @@
 
 
             /* =========================
-               ملف صوتي
+               الملفات الصوتية
             ========================= */
 
-            var file =
-                document
-                    .getElementById("audioFile")
-                    .files[0];
-
-
-            if (!file) {
-
-                alert(
-                    "اختر ملفًا صوتيًا من جهازك"
-                );
-
-                return;
-            }
-
-
-            if (
-                !file.type.startsWith("audio/")
-            ) {
-
-                alert(
-                    "الملف المختار ليس ملفًا صوتيًا"
-                );
-
-                return;
-            }
-
-            if (file.size <= 0) {
-                alert("الملف الصوتي فارغ.");
-                return;
-            }
+            var parts =
+                getAudioParts();
 
 
             status.textContent =
-                "جاري رفع الملف الصوتي... قد يستغرق الرفع وقتًا حسب حجم الملف وسرعة الاتصال.";
+                "جاري إنشاء التلاوة...";
 
 
             status.classList.add("show");
 
 
             /*
-             * إنشاء اسم آمن للملف داخل Storage
-             *
-             * لا نستخدم اسم التلاوة العربي أو اسم الملف الأصلي
-             * داخل Storage؛ لأن بعض الأحرف العربية والرموز قد
-             * تسبب خطأ Invalid key.
-             *
-             * اسم التلاوة الحقيقي يبقى في قاعدة البيانات،
-             * أما الملف نفسه فيأخذ اسمًا إنجليزيًا/رقميًا آمنًا.
+             * ننشئ سجل التلاوة أولًا.
+             * بعد ذلك نربط الأجزاء به.
              */
 
-            var extension =
-                file.name.includes(".")
-                    ? file.name
-                        .split(".")
-                        .pop()
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]/g, "")
-                    : "mp3";
-
-            var allowedExtensions = [
-                "mp3",
-                "m4a",
-                "aac",
-                "wav",
-                "ogg",
-                "oga",
-                "webm",
-                "flac"
-            ];
-
-            if (!allowedExtensions.includes(extension)) {
-                extension = "mp3";
-            }
-
-            var randomPart =
-                Math.random()
-                    .toString(36)
-                    .substring(2, 10);
-
-            var filePath =
-                "audio-" +
-                Date.now() +
-                "-" +
-                randomPart +
-                "." +
-                extension;
-
-
-            /*
-             * رفع الملف إلى Bucket audio
-             */
-
-            var uploadResult =
-                await uploadAudioFast(
-                    file,
-                    filePath,
-                    function(percent, bytesUploaded, bytesTotal) {
-
-                        var uploadedMB =
-                            bytesUploaded /
-                            1024 /
-                            1024;
-
-                        var totalMB =
-                            bytesTotal /
-                            1024 /
-                            1024;
-
-                        status.textContent =
-                            "جاري رفع الملف... " +
-                            percent.toFixed(1) +
-                            "% — " +
-                            uploadedMB.toFixed(1) +
-                            " / " +
-                            totalMB.toFixed(1) +
-                            " MB";
-                    }
-                );
-
-
-            status.textContent =
-                "تم رفع الملف، جاري حفظ التلاوة...";
-
-
-            /*
-             * الحصول على الرابط العام
-             */
-
-            var publicResult =
-                supabaseClient
-                    .storage
-                    .from("audio")
-                    .getPublicUrl(filePath);
-
-
-            var audioUrl =
-                publicResult.data.publicUrl;
-
-
-            /*
-             * حفظ التلاوة في قاعدة البيانات
-             */
-
-            var insertResult =
+            var recitationInsert =
                 await supabaseClient
-                    .from("recitations")
+                    .from(
+                        "recitations"
+                    )
                     .insert({
 
                         list_id:
@@ -1675,38 +1899,215 @@
                             "audio",
 
                         audio_url:
-                            audioUrl
-                    });
+                            null
+
+                    })
+                    .select()
+                    .single();
 
 
-            if (insertResult.error) {
+            if (
+                recitationInsert.error
+            ) {
 
-                /*
-                 * إذا فشل حفظ قاعدة البيانات،
-                 * نحاول حذف الملف الذي تم رفعه.
-                 */
-
-                await supabaseClient
-                    .storage
-                    .from("audio")
-                    .remove([
-                        filePath
-                    ]);
-
-
-                throw insertResult.error;
+                throw recitationInsert.error;
             }
 
 
-            alert(
-                "تم رفع التلاوة وإضافتها بنجاح"
-            );
+            var recitation =
+                recitationInsert.data;
 
 
-            closeRecitationModal();
+            var uploadedFiles = [];
 
-            await showRecitations();
 
+            try {
+
+                /*
+                 * رفع الأجزاء واحدًا واحدًا
+                 */
+
+                for (
+                    var i = 0;
+                    i < parts.length;
+                    i++
+                ) {
+
+                    var part =
+                        parts[i];
+
+
+                    var extension =
+                        getExtension(
+                            part.file
+                        );
+
+
+                    var filePath =
+                        createSafeFilePath(
+                            part.partNumber,
+                            extension
+                        );
+
+
+                    status.textContent =
+                        "جاري رفع الجزء " +
+                        part.partNumber +
+                        " من " +
+                        parts.length +
+                        "...";
+
+
+                    var uploadResult =
+                        await uploadAudioFast(
+                            part.file,
+                            filePath,
+                            function(
+                                percent,
+                                bytesUploaded,
+                                bytesTotal
+                            ) {
+
+                                var uploadedMB =
+                                    bytesUploaded /
+                                    1024 /
+                                    1024;
+
+
+                                var totalMB =
+                                    bytesTotal /
+                                    1024 /
+                                    1024;
+
+
+                                status.textContent =
+                                    "جاري رفع الجزء " +
+                                    part.partNumber +
+                                    " من " +
+                                    parts.length +
+                                    "... " +
+                                    percent.toFixed(1) +
+                                    "% — " +
+                                    uploadedMB.toFixed(1) +
+                                    " / " +
+                                    totalMB.toFixed(1) +
+                                    " MB";
+                            }
+                        );
+
+
+                    uploadedFiles.push(
+                        uploadResult.path
+                    );
+
+
+                    /*
+                     * الرابط العام للجزء
+                     */
+
+                    var publicResult =
+                        supabaseClient
+                            .storage
+                            .from("audio")
+                            .getPublicUrl(
+                                uploadResult.path
+                            );
+
+
+                    var audioUrl =
+                        publicResult
+                            .data
+                            .publicUrl;
+
+
+                    /*
+                     * حفظ الجزء في recitation_parts
+                     */
+
+                    var partInsert =
+                        await supabaseClient
+                            .from(
+                                "recitation_parts"
+                            )
+                            .insert({
+
+                                recitation_id:
+                                    recitation.id,
+
+                                part_number:
+                                    part.partNumber,
+
+                                audio_url:
+                                    audioUrl
+
+                            });
+
+
+                    if (
+                        partInsert.error
+                    ) {
+
+                        throw partInsert.error;
+                    }
+                }
+
+
+                status.textContent =
+                    "تم رفع جميع الأجزاء وحفظ التلاوة.";
+
+
+                alert(
+                    "تمت إضافة التلاوة بجميع أجزائها بنجاح"
+                );
+
+
+                closeRecitationModal();
+
+                await showRecitations();
+
+            } catch (uploadError) {
+
+                /*
+                 * إذا حصل خطأ أثناء الرفع:
+                 * نحذف الملفات التي تم رفعها.
+                 */
+
+                for (
+                    var j = 0;
+                    j < uploadedFiles.length;
+                    j++
+                ) {
+
+                    try {
+
+                        await supabaseClient
+                            .storage
+                            .from("audio")
+                            .remove([
+                                uploadedFiles[j]
+                            ]);
+
+                    } catch (_) {}
+                }
+
+
+                /*
+                 * نحذف سجل التلاوة
+                 */
+
+                await supabaseClient
+                    .from(
+                        "recitations"
+                    )
+                    .delete()
+                    .eq(
+                        "id",
+                        recitation.id
+                    );
+
+
+                throw uploadError;
+            }
 
         } catch (error) {
 
@@ -1728,7 +2129,9 @@
 
             button.disabled = false;
 
-            status.classList.remove("show");
+            status.classList.remove(
+                "show"
+            );
         }
     }
 
@@ -1840,13 +2243,56 @@
 
 
             var isAudio =
-                rec.source_type === "audio";
+                rec.source_type ===
+                "audio";
 
 
             if (isAudio) {
 
-                div.innerHTML = `
+                /*
+                 * جلب عدد الأجزاء
+                 */
 
+                var partsResult =
+                    await supabaseClient
+                        .from(
+                            "recitation_parts"
+                        )
+                        .select(
+                            "part_number"
+                        )
+                        .eq(
+                            "recitation_id",
+                            rec.id
+                        )
+                        .order(
+                            "part_number",
+                            {
+                                ascending: true
+                            }
+                        );
+
+
+                var parts =
+                    partsResult.data ||
+                    [];
+
+
+                var partsText =
+                    parts.length +
+                    " أجزاء";
+
+
+                if (
+                    parts.length === 1
+                ) {
+
+                    partsText =
+                        "جزء واحد";
+                }
+
+
+                div.innerHTML = `
                     <div class="recitation-info">
 
                         <strong>
@@ -1859,13 +2305,9 @@
                             🎵 ملف صوتي
                         </span>
 
-                        <br><br>
-
-                        <audio
-                            controls
-                            style="width: 100%;"
-                            src="${escapeHTML(rec.audio_url || "")}"
-                        ></audio>
+                        <div class="parts-list">
+                            ${partsText}
+                        </div>
 
                     </div>
 
@@ -1875,15 +2317,15 @@
                     >
                         حذف التلاوة
                     </button>
-
                 `;
 
             } else {
 
                 div.innerHTML = `
-
                     <img
-                        src="${escapeHTML(rec.thumbnail || "")}"
+                        src="${escapeHTML(
+                            rec.thumbnail || ""
+                        )}"
                         alt=""
                     >
 
@@ -1902,7 +2344,9 @@
                         <br>
 
                         <a
-                            href="${escapeHTML(rec.url || "")}"
+                            href="${escapeHTML(
+                                rec.url || ""
+                            )}"
                             target="_blank"
                             rel="noopener"
                         >
@@ -1917,7 +2361,6 @@
                     >
                         حذف التلاوة
                     </button>
-
                 `;
             }
 
@@ -1939,13 +2382,13 @@
                 "لن يتم حذف القائمة أو باقي التلاوات."
             )
         ) {
+
             return;
         }
 
 
         /*
-         * نقرأ التلاوة أولًا لمعرفة
-         * هل هي ملف صوتي أم YouTube.
+         * أولًا نقرأ التلاوة
          */
 
         var recitationResult =
@@ -1959,7 +2402,9 @@
                 .single();
 
 
-        if (recitationResult.error) {
+        if (
+            recitationResult.error
+        ) {
 
             alert(
                 "تعذر العثور على التلاوة:\n\n" +
@@ -1975,7 +2420,154 @@
 
 
         /*
-         * حذف سجل التلاوة من قاعدة البيانات
+         * إذا كانت صوتية:
+         * نجلب الأجزاء وروابطها
+         */
+
+        var parts = [];
+
+
+        if (
+            rec.source_type ===
+            "audio"
+        ) {
+
+            var partsResult =
+                await supabaseClient
+                    .from(
+                        "recitation_parts"
+                    )
+                    .select(
+                        "*"
+                    )
+                    .eq(
+                        "recitation_id",
+                        id
+                    );
+
+
+            if (
+                !partsResult.error
+            ) {
+
+                parts =
+                    partsResult.data ||
+                    [];
+            }
+        }
+
+
+        /*
+         * حذف ملفات Storage
+         */
+
+        if (
+            parts.length > 0
+        ) {
+
+            var paths = [];
+
+
+            var marker =
+                "/storage/v1/object/public/audio/";
+
+
+            for (
+                var i = 0;
+                i < parts.length;
+                i++
+            ) {
+
+                var audioUrl =
+                    parts[i].audio_url;
+
+
+                if (
+                    !audioUrl
+                ) {
+                    continue;
+                }
+
+
+                var index =
+                    audioUrl.indexOf(
+                        marker
+                    );
+
+
+                if (
+                    index !== -1
+                ) {
+
+                    var filePath =
+                        decodeURIComponent(
+                            audioUrl.substring(
+                                index +
+                                marker.length
+                            )
+                        );
+
+
+                    paths.push(
+                        filePath
+                    );
+                }
+            }
+
+
+            if (
+                paths.length > 0
+            ) {
+
+                try {
+
+                    await supabaseClient
+                        .storage
+                        .from("audio")
+                        .remove(paths);
+
+                } catch (
+                    storageError
+                ) {
+
+                    console.error(
+                        "STORAGE DELETE ERROR:",
+                        storageError
+                    );
+                }
+            }
+        }
+
+
+        /*
+         * حذف أجزاء التلاوة
+         */
+
+        var partsDelete =
+            await supabaseClient
+                .from(
+                    "recitation_parts"
+                )
+                .delete()
+                .eq(
+                    "recitation_id",
+                    id
+                );
+
+
+        if (
+            partsDelete.error
+        ) {
+
+            console.error(
+                "PARTS DELETE ERROR:",
+                partsDelete.error
+            );
+        }
+
+
+        /*
+         * حذف سجل التلاوة فقط
          */
 
         var result =
@@ -1988,7 +2580,9 @@
                 );
 
 
-        if (result.error) {
+        if (
+            result.error
+        ) {
 
             console.error(
                 "SUPABASE ERROR:",
@@ -2004,54 +2598,6 @@
             );
 
             return;
-        }
-
-
-        /*
-         * إذا كانت ملفًا صوتيًا،
-         * نحاول حذف الملف من Storage أيضًا.
-         */
-
-        if (
-            rec.source_type === "audio" &&
-            rec.audio_url
-        ) {
-
-            try {
-
-                var marker =
-                    "/storage/v1/object/public/audio/";
-
-                var index =
-                    rec.audio_url.indexOf(marker);
-
-
-                if (index !== -1) {
-
-                    var filePath =
-                        decodeURIComponent(
-                            rec.audio_url.substring(
-                                index +
-                                marker.length
-                            )
-                        );
-
-
-                    await supabaseClient
-                        .storage
-                        .from("audio")
-                        .remove([
-                            filePath
-                        ]);
-                }
-
-            } catch (storageError) {
-
-                console.error(
-                    "STORAGE DELETE ERROR:",
-                    storageError
-                );
-            }
         }
 
 

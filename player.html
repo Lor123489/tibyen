@@ -252,11 +252,6 @@ background:var(--border);
 margin-bottom:38px
 }
 
-
-/* =========================
-   MP3 PLAYER
-========================= */
-
 .visualizer{
 width:190px;
 height:190px;
@@ -312,11 +307,6 @@ transform:scale(1.05)
 .play-main.playing{
 padding-left:0
 }
-
-
-/* =========================
-   YOUTUBE
-========================= */
 
 .youtube-container{
 width:100%;
@@ -394,11 +384,6 @@ font-size:14px
 border-color:var(--accent);
 color:var(--accent)
 }
-
-
-/* =========================
-   PROGRESS
-========================= */
 
 .progress{
 width:100%;
@@ -576,7 +561,7 @@ padding:0 12px
 <header>
 
 <div class="logo">
-       تبيان
+تبيان
 <span>تلاوات الشيخ ياسر الدوسري</span>
 </div>
 
@@ -586,21 +571,13 @@ padding:0 12px
 
 <a href="index.html">الرئيسية</a>
 
-<a href="category.html?category=tarawih">
-التراويح
-</a>
+<a href="category.html?category=tarawih">التراويح</a>
 
-<a href="category.html?category=haram">
-المزيد
-</a>
+<a href="category.html?category=haram">المزيد</a>
 
-<a href="category.html?category=nawader">
-الفروض
-</a>
+<a href="category.html?category=nawader">الفروض</a>
 
-<a href="category.html?category=maqamat">
-المصحف المرتل
-</a>
+<a href="category.html?category=maqamat">المصحف المرتل</a>
 
 <button
 id="desktopThemeButton"
@@ -614,13 +591,11 @@ onclick="toggleDarkMode()"
 
 </header>
 
-
 <div
 id="menuOverlay"
 class="menu-overlay"
 onclick="closeMenu()"
 ></div>
-
 
 <aside
 id="sideMenu"
@@ -642,25 +617,15 @@ onclick="closeMenu()"
 
 </div>
 
-<a href="index.html">
-الرئيسية
-</a>
+<a href="index.html">الرئيسية</a>
 
-<a href="category.html?category=tarawih">
-التراويح
-</a>
+<a href="category.html?category=tarawih">التراويح</a>
 
-<a href="category.html?category=haram">
-المزيد
-</a>
+<a href="category.html?category=haram">المزيد</a>
 
-<a href="category.html?category=nawader">
-الفروض
-</a>
+<a href="category.html?category=nawader">الفروض</a>
 
-<a href="category.html?category=maqamat">
-المصحف المرتل
-</a>
+<a href="category.html?category=maqamat">المصحف المرتل</a>
 
 <button
 id="mobileThemeButton"
@@ -672,7 +637,6 @@ onclick="toggleDarkMode()"
 
 </aside>
 
-
 <main class="player-page">
 
 <a
@@ -682,7 +646,6 @@ href="javascript:history.back()"
 → العودة للتلاوات
 </a>
 
-
 <section class="player-card">
 
 <div
@@ -691,7 +654,6 @@ class="status"
 >
 جاري تحميل التلاوة...
 </div>
-
 
 <div
 id="playerContent"
@@ -705,28 +667,18 @@ class="player-label"
 🎵 تلاوة صوتية
 </div>
 
-
 <h1
 id="title"
 class="player-title"
 ></h1>
 
-
 <p class="player-subtitle">
 تلاوات الشيخ ياسر الدوسري · تبيان
 </p>
 
-
 <div class="divider"></div>
 
-
-<!-- =========================
-     MP3
-========================= -->
-
-<div
-id="audioPlayerArea"
->
+<div id="audioPlayerArea">
 
 <div class="visualizer">
 
@@ -739,7 +691,6 @@ class="play-main"
 
 </div>
 
-
 <input
 id="progress"
 class="progress"
@@ -748,7 +699,6 @@ min="0"
 max="100"
 value="0"
 >
-
 
 <div class="time-row">
 
@@ -761,7 +711,6 @@ value="0"
 </span>
 
 </div>
-
 
 <div class="controls">
 
@@ -788,7 +737,6 @@ onclick="seek(10)"
 
 </div>
 
-
 <a
 id="downloadButton"
 class="download"
@@ -799,18 +747,12 @@ rel="noopener"
 تحميل التلاوة
 </a>
 
-
 <audio
 id="audio"
 preload="metadata"
 ></audio>
 
 </div>
-
-
-<!-- =========================
-     YOUTUBE
-========================= -->
 
 <div
 id="youtubePlayerArea"
@@ -823,7 +765,6 @@ class="hidden"
 
 </div>
 
-
 <div class="youtube-buttons">
 
 <button
@@ -834,14 +775,12 @@ onclick="toggleYouTube()"
 ▶ تشغيل
 </button>
 
-
 <button
 class="youtube-seek"
 onclick="seekYouTube(-10)"
 >
 ↶ 10 ثوانٍ
 </button>
-
 
 <button
 class="youtube-seek"
@@ -851,7 +790,6 @@ onclick="seekYouTube(10)"
 </button>
 
 </div>
-
 
 <a
 id="youtubeOpenButton"
@@ -867,7 +805,6 @@ rel="noopener"
 
 </div>
 
-
 <div
 id="error"
 class="error"
@@ -878,22 +815,23 @@ style="display:none"
 
 </main>
 
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script src="supabase.js"></script>
 
-
 <script>
+
+/* =========================================================
+   البيانات الأساسية
+========================================================= */
 
 const params =
 new URLSearchParams(location.search);
 
 const recitationId =
 params.get("id");
-
 
 const audio =
 document.getElementById("audio");
@@ -914,17 +852,31 @@ document.getElementById("duration");
 let playerMode = "audio";
 
 let youtubePlayer = null;
-
 let youtubeApiReady = false;
-
 let youtubeVideoId = null;
-
 let youtubeProgressInterval = null;
 
 
-/* =========================
+/* =========================================================
+   نظام الأجزاء الصوتية
+========================================================= */
+
+let audioParts = [];
+
+let currentPartIndex = 0;
+
+let partDurations = [];
+
+let totalDuration = 0;
+
+let partStartTimes = [];
+
+let loadingParts = false;
+
+
+/* =========================================================
    الوقت
-========================= */
+========================================================= */
 
 function formatTime(seconds){
 
@@ -944,9 +896,9 @@ Math.floor(seconds % 60)
 }
 
 
-/* =========================
-   استخراج ID من YouTube
-========================= */
+/* =========================================================
+   استخراج YouTube ID
+========================================================= */
 
 function getYouTubeVideoId(url){
 
@@ -965,7 +917,6 @@ return parsed.pathname
 
 }
 
-
 if(
 parsed.hostname.includes("youtube.com")
 ){
@@ -976,10 +927,8 @@ parsed.searchParams.get("v");
 if(watchId)
 return watchId;
 
-
 const parts =
 parsed.pathname.split("/");
-
 
 const embedIndex =
 parts.indexOf("embed");
@@ -992,7 +941,6 @@ parts[embedIndex + 1]
 return parts[embedIndex + 1];
 
 }
-
 
 const shortsIndex =
 parts.indexOf("shorts");
@@ -1022,9 +970,9 @@ return null;
 }
 
 
-/* =========================
+/* =========================================================
    YouTube API
-========================= */
+========================================================= */
 
 window.onYouTubeIframeAPIReady =
 function(){
@@ -1048,10 +996,8 @@ if(
 )
 return;
 
-
 if(youtubePlayer)
 return;
-
 
 youtubePlayer =
 new YT.Player(
@@ -1081,7 +1027,6 @@ document.getElementById(
 "youtubePlayButton"
 );
 
-
 if(
 event.data ===
 YT.PlayerState.PLAYING
@@ -1090,9 +1035,7 @@ YT.PlayerState.PLAYING
 button.textContent =
 "Ⅱ إيقاف";
 
-}
-
-else{
+}else{
 
 button.textContent =
 "▶ تشغيل";
@@ -1109,19 +1052,13 @@ button.textContent =
 }
 
 
-/* =========================
-   تشغيل YouTube
-========================= */
-
 function toggleYouTube(){
 
 if(!youtubePlayer)
 return;
 
-
 const state =
 youtubePlayer.getPlayerState();
-
 
 if(
 state === YT.PlayerState.PLAYING
@@ -1138,23 +1075,16 @@ youtubePlayer.playVideo();
 }
 
 
-/* =========================
-   تقديم YouTube
-========================= */
-
 function seekYouTube(seconds){
 
 if(!youtubePlayer)
 return;
 
-
 const current =
 youtubePlayer.getCurrentTime();
 
-
 const duration =
 youtubePlayer.getDuration();
-
 
 youtubePlayer.seekTo(
 Math.max(
@@ -1170,17 +1100,12 @@ true
 }
 
 
-/* =========================
-   شريط YouTube
-========================= */
-
 function startYouTubeProgress(){
 
 if(youtubeProgressInterval)
 clearInterval(
 youtubeProgressInterval
 );
-
 
 youtubeProgressInterval =
 setInterval(
@@ -1192,13 +1117,11 @@ typeof youtubePlayer.getCurrentTime !== "function"
 )
 return;
 
-
 const current =
 youtubePlayer.getCurrentTime();
 
 const duration =
 youtubePlayer.getDuration();
-
 
 if(duration){
 
@@ -1220,9 +1143,236 @@ formatTime(duration);
 }
 
 
-/* =========================
+/* =========================================================
+   تحميل مدة الأجزاء
+========================================================= */
+
+function getAudioDuration(url){
+
+return new Promise(
+(resolve,reject)=>{
+
+const temp =
+document.createElement("audio");
+
+temp.preload = "metadata";
+
+temp.src = url;
+
+temp.addEventListener(
+"loadedmetadata",
+()=>{
+
+if(Number.isFinite(temp.duration)){
+
+resolve(temp.duration);
+
+}else{
+
+reject(
+new Error("تعذر معرفة مدة الجزء")
+);
+
+}
+
+},
+{
+once:true
+}
+);
+
+temp.addEventListener(
+"error",
+()=>{
+
+reject(
+new Error("تعذر تحميل بيانات الجزء الصوتي")
+);
+
+},
+{
+once:true
+}
+);
+
+}
+);
+
+}
+
+
+/* =========================================================
+   تجهيز الأجزاء
+========================================================= */
+
+async function prepareAudioParts(){
+
+if(!audioParts.length)
+return;
+
+loadingParts = true;
+
+partDurations = [];
+
+partStartTimes = [];
+
+totalDuration = 0;
+
+
+/*
+   نحصل على مدة كل جزء
+*/
+
+for(
+let i = 0;
+i < audioParts.length;
+i++
+){
+
+try{
+
+const duration =
+await getAudioDuration(
+audioParts[i].audio_url
+);
+
+partDurations[i] =
+duration;
+
+}catch(error){
+
+console.error(
+"خطأ في مدة الجزء:",
+i + 1,
+error
+);
+
+partDurations[i] = 0;
+
+}
+
+}
+
+
+/*
+   حساب بداية كل جزء
+*/
+
+for(
+let i = 0;
+i < partDurations.length;
+i++
+){
+
+partStartTimes[i] =
+totalDuration;
+
+totalDuration +=
+partDurations[i] || 0;
+
+}
+
+
+durationEl.textContent =
+formatTime(totalDuration);
+
+loadingParts = false;
+
+}
+
+
+/* =========================================================
+   تشغيل جزء معين
+========================================================= */
+
+function loadPart(index, autoplay = false){
+
+if(
+index < 0 ||
+index >= audioParts.length
+)
+return;
+
+
+currentPartIndex =
+index;
+
+
+audio.src =
+audioParts[index].audio_url;
+
+
+/*
+   تحديث زر التحميل
+*/
+
+document.getElementById(
+"downloadButton"
+).href =
+audioParts[index].audio_url;
+
+
+/*
+   عند تغيير المصدر يحتاج المتصفح لتحميله
+*/
+
+audio.load();
+
+
+if(autoplay){
+
+const promise =
+audio.play();
+
+if(promise){
+
+promise.catch(
+error=>{
+console.warn(
+"تعذر التشغيل التلقائي:",
+error
+);
+}
+);
+
+}
+
+}
+
+}
+
+
+/* =========================================================
+   الانتقال للجزء التالي
+========================================================= */
+
+audio.addEventListener(
+"ended",
+function(){
+
+if(
+currentPartIndex <
+audioParts.length - 1
+){
+
+loadPart(
+currentPartIndex + 1,
+true
+);
+
+}else{
+
+updatePlayButton();
+
+}
+
+}
+);
+
+
+/* =========================================================
    MP3
-========================= */
+========================================================= */
 
 function togglePlay(){
 
@@ -1232,10 +1382,16 @@ playerMode !== "audio" ||
 )
 return;
 
-
 if(audio.paused){
 
-audio.play();
+audio.play().catch(
+error=>{
+console.error(
+"Audio play error:",
+error
+);
+}
+);
 
 }else{
 
@@ -1249,19 +1405,137 @@ audio.pause();
 function seek(seconds){
 
 if(
-playerMode !== "audio"
+playerMode !== "audio" ||
+!audioParts.length
 )
 return;
 
 
-if(Number.isFinite(audio.duration)){
+/*
+   الموضع الحالي داخل التلاوة كاملة
+*/
+
+let globalTime =
+(partStartTimes[currentPartIndex] || 0)
++
+audio.currentTime;
+
+globalTime += seconds;
+
+
+/*
+   منع الخروج من بداية التلاوة
+*/
+
+if(globalTime < 0)
+globalTime = 0;
+
+
+/*
+   إذا وصل للنهاية
+*/
+
+if(
+totalDuration &&
+globalTime >= totalDuration
+){
+
+globalTime =
+Math.max(
+0,
+totalDuration - 0.1
+);
+
+}
+
+
+/*
+   معرفة الجزء المطلوب
+*/
+
+let targetPart = 0;
+
+for(
+let i = 0;
+i < partStartTimes.length;
+i++
+){
+
+if(
+globalTime >= partStartTimes[i]
+){
+
+targetPart = i;
+
+}else{
+
+break;
+
+}
+
+}
+
+
+/*
+   الوقت داخل الجزء
+*/
+
+const localTime =
+globalTime -
+partStartTimes[targetPart];
+
+
+/*
+   إذا تغير الجزء
+*/
+
+if(
+targetPart !== currentPartIndex
+){
+
+loadPart(
+targetPart,
+!audio.paused
+);
+
+
+/*
+   ننتظر تحميل الجزء ثم نضع الوقت
+*/
+
+const setPosition =
+()=>{
 
 audio.currentTime =
 Math.max(
 0,
 Math.min(
-audio.duration,
-audio.currentTime + seconds
+localTime,
+audio.duration || localTime
+)
+);
+
+audio.removeEventListener(
+"loadedmetadata",
+setPosition
+);
+
+};
+
+
+audio.addEventListener(
+"loadedmetadata",
+setPosition
+);
+
+}else{
+
+audio.currentTime =
+Math.max(
+0,
+Math.min(
+localTime,
+audio.duration || localTime
 )
 );
 
@@ -1270,13 +1544,21 @@ audio.currentTime + seconds
 }
 
 
+/* =========================================================
+   تحديث زر التشغيل
+========================================================= */
+
 function updatePlayButton(){
 
 const playing =
 !audio.paused;
 
 playButton.textContent =
-playing ? "Ⅱ" : "▶";
+playing
+?
+"Ⅱ"
+:
+"▶";
 
 playButton.classList.toggle(
 "playing",
@@ -1304,61 +1586,138 @@ updatePlayButton
 );
 
 
-audio.addEventListener(
-"loadedmetadata",
-function(){
-
-durationEl.textContent =
-formatTime(
-audio.duration
-);
-
-}
-);
-
+/* =========================================================
+   تحديث الوقت والتقدم
+========================================================= */
 
 audio.addEventListener(
 "timeupdate",
 function(){
 
-if(audio.duration){
+if(!audioParts.length)
+return;
+
+
+const globalTime =
+(partStartTimes[currentPartIndex] || 0)
++
+audio.currentTime;
+
+
+if(totalDuration){
 
 progress.value =
-audio.currentTime /
-audio.duration *
-100;
+(globalTime / totalDuration) * 100;
+
+durationEl.textContent =
+formatTime(totalDuration);
 
 }
+
 
 currentTimeEl.textContent =
-formatTime(
-audio.currentTime
-);
+formatTime(globalTime);
 
 }
 );
 
 
-/* =========================
-   التحكم بالشريط
-========================= */
+/* =========================================================
+   شريط التقدم
+========================================================= */
 
 progress.addEventListener(
 "input",
 function(){
 
+const percentage =
+Number(progress.value) / 100;
+
+
+/* =========================
+   AUDIO
+========================= */
+
 if(
 playerMode === "audio" &&
-audio.duration
+totalDuration
 ){
 
-audio.currentTime =
-progress.value /
-100 *
-audio.duration;
+const globalTime =
+percentage * totalDuration;
+
+
+let targetPart = 0;
+
+for(
+let i = 0;
+i < partStartTimes.length;
+i++
+){
+
+if(
+globalTime >= partStartTimes[i]
+){
+
+targetPart = i;
+
+}else{
+
+break;
 
 }
 
+}
+
+
+const localTime =
+globalTime -
+partStartTimes[targetPart];
+
+
+if(
+targetPart !== currentPartIndex
+){
+
+const wasPlaying =
+!audio.paused;
+
+loadPart(
+targetPart,
+wasPlaying
+);
+
+const setPosition =
+()=>{
+
+audio.currentTime =
+localTime;
+
+audio.removeEventListener(
+"loadedmetadata",
+setPosition
+);
+
+};
+
+audio.addEventListener(
+"loadedmetadata",
+setPosition
+);
+
+}else{
+
+audio.currentTime =
+localTime;
+
+}
+
+}
+
+
+/* =========================
+   YOUTUBE
+========================= */
 
 if(
 playerMode === "youtube" &&
@@ -1369,9 +1728,7 @@ const duration =
 youtubePlayer.getDuration();
 
 youtubePlayer.seekTo(
-progress.value /
-100 *
-duration,
+percentage * duration,
 true
 );
 
@@ -1381,9 +1738,9 @@ true
 );
 
 
-/* =========================
+/* =========================================================
    تحميل التلاوة
-========================= */
+========================================================= */
 
 async function loadRecitation(){
 
@@ -1397,6 +1754,12 @@ return;
 
 }
 
+
+try{
+
+/* =========================
+   جلب التلاوة
+========================= */
 
 const {
 data,
@@ -1417,7 +1780,7 @@ recitationId
 if(error || !data){
 
 console.error(
-"Supabase error:",
+"Supabase recitation error:",
 error
 );
 
@@ -1439,13 +1802,12 @@ document.getElementById(
 data.name;
 
 
-/* =========================
+/* =========================================================
    AUDIO
-========================= */
+========================================================= */
 
 if(
-data.source_type === "audio" &&
-data.audio_url
+data.source_type === "audio"
 ){
 
 playerMode = "audio";
@@ -1471,6 +1833,96 @@ document.getElementById(
 );
 
 
+/*
+   أولاً نحاول جلب الأجزاء
+*/
+
+const {
+data:parts,
+error:partsError
+} =
+await supabaseClient
+.from("recitation_parts")
+.select(
+"part_number,audio_url"
+)
+.eq(
+"recitation_id",
+recitationId
+)
+.order(
+"part_number",
+{
+ascending:true
+}
+);
+
+
+/*
+   إذا كانت هناك أجزاء
+*/
+
+if(
+!partsError &&
+parts &&
+parts.length
+){
+
+audioParts =
+parts.filter(
+part =>
+part.audio_url
+);
+
+
+if(!audioParts.length){
+
+showError(
+"بيانات الأجزاء الصوتية ناقصة."
+);
+
+return;
+
+}
+
+
+/*
+   تجهيز المدد
+*/
+
+await prepareAudioParts();
+
+
+/*
+   تحميل الجزء الأول
+*/
+
+loadPart(
+0,
+false
+);
+
+}
+
+
+/*
+   التلاوات القديمة التي لها audio_url
+*/
+
+else if(data.audio_url){
+
+audioParts = [
+{
+part_number:1,
+audio_url:data.audio_url
+}
+];
+
+partDurations = [];
+partStartTimes = [0];
+totalDuration = 0;
+
+
 audio.src =
 data.audio_url;
 
@@ -1480,12 +1932,38 @@ document.getElementById(
 ).href =
 data.audio_url;
 
+
 }
 
 
-/* =========================
+/*
+   لا يوجد أجزاء ولا audio_url
+*/
+
+else{
+
+console.error(
+"Audio data missing:",
+{
+data,
+partsError
+}
+);
+
+showError(
+"بيانات التلاوة الصوتية ناقصة."
+);
+
+return;
+
+}
+
+}
+
+
+/* =========================================================
    YOUTUBE
-========================= */
+========================================================= */
 
 else if(
 data.source_type === "youtube" &&
@@ -1547,9 +2025,9 @@ createYouTubePlayer();
 }
 
 
-/* =========================
+/* =========================================================
    نوع غير معروف
-========================= */
+========================================================= */
 
 else{
 
@@ -1562,6 +2040,10 @@ return;
 }
 
 
+/*
+   إظهار المشغل
+*/
+
 document.getElementById(
 "loading"
 ).style.display =
@@ -1573,17 +2055,37 @@ document.getElementById(
 ).style.display =
 "block";
 
+
+}catch(error){
+
+console.error(
+"خطأ أثناء تحميل التلاوة:",
+error
+);
+
+showError(
+"حدث خطأ أثناء تحميل بيانات التلاوة."
+);
+
+}
+
 }
 
 
-/* =========================
+/* =========================================================
    الأخطاء
-========================= */
+========================================================= */
 
 function showError(message){
 
 document.getElementById(
 "loading"
+).style.display =
+"none";
+
+
+document.getElementById(
+"playerContent"
 ).style.display =
 "none";
 
@@ -1606,9 +2108,9 @@ error.style.display =
 }
 
 
-/* =========================
+/* =========================================================
    القائمة
-========================= */
+========================================================= */
 
 function openMenu(){
 
@@ -1644,9 +2146,9 @@ document.getElementById(
 }
 
 
-/* =========================
+/* =========================================================
    الوضع الداكن
-========================= */
+========================================================= */
 
 function updateThemeButtons(){
 
@@ -1712,16 +2214,18 @@ updateThemeButtons();
 }
 
 
-/* =========================
+/* =========================================================
    لوحة المفاتيح
-========================= */
+========================================================= */
 
 document.addEventListener(
 "keydown",
 function(e){
 
 if(e.key === "Escape"){
+
 closeMenu();
+
 }
 
 
@@ -1784,9 +2288,9 @@ seekYouTube(10);
 );
 
 
-/* =========================
+/* =========================================================
    تشغيل
-========================= */
+========================================================= */
 
 applySavedTheme();
 
