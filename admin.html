@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -59,10 +60,7 @@
 
         .categories {
             display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(240px, 1fr)
-            );
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
@@ -330,8 +328,6 @@
 
 <div class="container">
 
-    <!-- الصفحة الرئيسية -->
-
     <div id="home">
 
         <h1>لوحة التحكم</h1>
@@ -393,13 +389,7 @@
         </div>
     </div>
 
-
-    <!-- صفحة القسم -->
-
-    <div
-        id="categoryPage"
-        style="display: none;"
-    >
+    <div id="categoryPage" style="display: none;">
 
         <button
             class="back"
@@ -421,13 +411,7 @@
 
     </div>
 
-
-    <!-- صفحة القائمة -->
-
-    <div
-        id="listPage"
-        style="display: none;"
-    >
+    <div id="listPage" style="display: none;">
 
         <button
             class="back"
@@ -451,19 +435,11 @@
 
 </div>
 
-
-<!-- نافذة إنشاء قائمة -->
-
-<div
-    id="listModal"
-    class="modal"
->
+<div id="listModal" class="modal">
 
     <div class="modal-box">
 
-        <h2>
-            إنشاء قائمة
-        </h2>
+        <h2>إنشاء قائمة</h2>
 
         <input
             id="listName"
@@ -478,9 +454,7 @@
             إنشاء
         </button>
 
-        <button
-            onclick="closeListModal()"
-        >
+        <button onclick="closeListModal()">
             إلغاء
         </button>
 
@@ -488,28 +462,17 @@
 
 </div>
 
-
-<!-- نافذة إضافة تلاوة -->
-
-<div
-    id="recitationModal"
-    class="modal"
->
+<div id="recitationModal" class="modal">
 
     <div class="modal-box">
 
-        <h2>
-            إضافة تلاوة
-        </h2>
+        <h2>إضافة تلاوة</h2>
 
         <input
             id="recitationName"
             type="text"
             placeholder="اسم التلاوة"
         >
-
-
-        <!-- اختيار المصدر -->
 
         <div class="source-options">
 
@@ -530,7 +493,6 @@
 
             </label>
 
-
             <label
                 class="source-option"
                 id="audioOption"
@@ -549,9 +511,6 @@
 
         </div>
 
-
-        <!-- YouTube -->
-
         <div
             id="youtubeSection"
             class="source-section active"
@@ -565,9 +524,6 @@
 
         </div>
 
-
-        <!-- ملفات صوتية -->
-
         <div
             id="audioSection"
             class="source-section"
@@ -577,14 +533,9 @@
                 ارفع التلاوة على أجزاء. الحد الأقصى لكل جزء 50 MB.
             </p>
 
-
-            <!-- الجزء الأول -->
-
+            <!-- الجزء 1 -->
             <div class="part-box">
-
-                <div class="part-title">
-                    الجزء 1
-                </div>
+                <div class="part-title">الجزء 1</div>
 
                 <input
                     id="audioPart1"
@@ -593,23 +544,14 @@
                     onchange="showPartFile(1)"
                 >
 
-                <div
-                    id="part1Name"
-                    class="file-name"
-                >
+                <div id="part1Name" class="file-name">
                     لم يتم اختيار ملف
                 </div>
-
             </div>
 
-
-            <!-- الجزء الثاني -->
-
+            <!-- الجزء 2 -->
             <div class="part-box">
-
-                <div class="part-title">
-                    الجزء 2
-                </div>
+                <div class="part-title">الجزء 2</div>
 
                 <input
                     id="audioPart2"
@@ -618,23 +560,14 @@
                     onchange="showPartFile(2)"
                 >
 
-                <div
-                    id="part2Name"
-                    class="file-name"
-                >
+                <div id="part2Name" class="file-name">
                     لم يتم اختيار ملف
                 </div>
-
             </div>
 
-
-            <!-- الجزء الثالث -->
-
+            <!-- الجزء 3 -->
             <div class="part-box">
-
-                <div class="part-title">
-                    الجزء 3
-                </div>
+                <div class="part-title">الجزء 3</div>
 
                 <input
                     id="audioPart3"
@@ -643,23 +576,14 @@
                     onchange="showPartFile(3)"
                 >
 
-                <div
-                    id="part3Name"
-                    class="file-name"
-                >
+                <div id="part3Name" class="file-name">
                     لم يتم اختيار ملف
                 </div>
-
             </div>
 
-
-            <!-- الجزء الرابع -->
-
+            <!-- الجزء 4 -->
             <div class="part-box">
-
-                <div class="part-title">
-                    الجزء 4
-                </div>
+                <div class="part-title">الجزء 4</div>
 
                 <input
                     id="audioPart4"
@@ -668,17 +592,108 @@
                     onchange="showPartFile(4)"
                 >
 
-                <div
-                    id="part4Name"
-                    class="file-name"
-                >
+                <div id="part4Name" class="file-name">
                     لم يتم اختيار ملف
                 </div>
+            </div>
 
+            <!-- الجزء 5 -->
+            <div class="part-box">
+                <div class="part-title">الجزء 5</div>
+
+                <input
+                    id="audioPart5"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(5)"
+                >
+
+                <div id="part5Name" class="file-name">
+                    لم يتم اختيار ملف
+                </div>
+            </div>
+
+            <!-- الجزء 6 -->
+            <div class="part-box">
+                <div class="part-title">الجزء 6</div>
+
+                <input
+                    id="audioPart6"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(6)"
+                >
+
+                <div id="part6Name" class="file-name">
+                    لم يتم اختيار ملف
+                </div>
+            </div>
+
+            <!-- الجزء 7 -->
+            <div class="part-box">
+                <div class="part-title">الجزء 7</div>
+
+                <input
+                    id="audioPart7"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(7)"
+                >
+
+                <div id="part7Name" class="file-name">
+                    لم يتم اختيار ملف
+                </div>
+            </div>
+
+            <!-- الجزء 8 -->
+            <div class="part-box">
+                <div class="part-title">الجزء 8</div>
+
+                <input
+                    id="audioPart8"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(8)"
+                >
+
+                <div id="part8Name" class="file-name">
+                    لم يتم اختيار ملف
+                </div>
+            </div>
+
+            <!-- الجزء 9 -->
+            <div class="part-box">
+                <div class="part-title">الجزء 9</div>
+
+                <input
+                    id="audioPart9"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(9)"
+                >
+
+                <div id="part9Name" class="file-name">
+                    لم يتم اختيار ملف
+                </div>
+            </div>
+
+            <!-- الجزء 10 -->
+            <div class="part-box">
+                <div class="part-title">الجزء 10</div>
+
+                <input
+                    id="audioPart10"
+                    type="file"
+                    accept="audio/*"
+                    onchange="showPartFile(10)"
+                >
+
+                <div id="part10Name" class="file-name">
+                    لم يتم اختيار ملف
+                </div>
             </div>
 
         </div>
-
 
         <div
             id="uploadStatus"
@@ -686,7 +701,6 @@
         >
             جاري تجهيز الملفات...
         </div>
-
 
         <button
             class="primary"
@@ -696,9 +710,7 @@
             إضافة
         </button>
 
-        <button
-            onclick="closeRecitationModal()"
-        >
+        <button onclick="closeRecitationModal()">
             إلغاء
         </button>
 
@@ -706,19 +718,10 @@
 
 </div>
 
-
-<!-- Supabase -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="supabase.js"></script>
 
-
 <script>
-
-    /* =========================
-       التحقق من دخول المشرف
-    ========================= */
 
     if (
         localStorage.getItem("tibyanAdminLoggedIn") !== "true"
@@ -726,23 +729,10 @@
         location.href = "login.html";
     }
 
-
-    /* =========================
-       المتغيرات
-    ========================= */
-
     var currentCategory = null;
-
     var currentList = null;
-
     var currentSourceType = "youtube";
-
     var MAX_PART_SIZE = 50 * 1024 * 1024;
-
-
-    /* =========================
-       أسماء الأقسام
-    ========================= */
 
     function getCategoryName(category) {
 
@@ -761,19 +751,12 @@
         return "";
     }
 
-
-    /* =========================
-       فتح القسم
-    ========================= */
-
     async function openCategory(category) {
 
         currentCategory = category;
 
         document.getElementById("home").style.display = "none";
-
         document.getElementById("listPage").style.display = "none";
-
         document.getElementById("categoryPage").style.display = "block";
 
         document.getElementById("categoryTitle").textContent =
@@ -782,28 +765,15 @@
         await showLists();
     }
 
-
-    /* =========================
-       العودة للرئيسية
-    ========================= */
-
     function goHome() {
 
         document.getElementById("home").style.display = "block";
-
         document.getElementById("categoryPage").style.display = "none";
-
         document.getElementById("listPage").style.display = "none";
 
         currentCategory = null;
-
         currentList = null;
     }
-
-
-    /* =========================
-       عرض القوائم
-    ========================= */
 
     async function showLists() {
 
@@ -816,22 +786,14 @@
             </p>
         `;
 
-
         var result =
             await supabaseClient
                 .from("lists")
                 .select("*")
-                .eq(
-                    "category_id",
-                    currentCategory
-                )
-                .order(
-                    "created_at",
-                    {
-                        ascending: false
-                    }
-                );
-
+                .eq("category_id", currentCategory)
+                .order("created_at", {
+                    ascending: false
+                });
 
         if (result.error) {
 
@@ -849,10 +811,7 @@
             return;
         }
 
-
-        var lists =
-            result.data || [];
-
+        var lists = result.data || [];
 
         if (lists.length === 0) {
 
@@ -865,9 +824,7 @@
             return;
         }
 
-
         container.innerHTML = "";
-
 
         for (
             var i = 0;
@@ -877,28 +834,21 @@
 
             var list = lists[i];
 
-
             var recitationsResult =
                 await supabaseClient
                     .from("recitations")
                     .select("id")
-                    .eq(
-                        "list_id",
-                        list.id
-                    );
-
+                    .eq("list_id", list.id);
 
             var count =
                 recitationsResult.data
                     ? recitationsResult.data.length
                     : 0;
 
-
             var div =
                 document.createElement("div");
 
             div.className = "list";
-
 
             div.innerHTML = `
                 <h3>
@@ -924,15 +874,9 @@
                 </button>
             `;
 
-
             container.appendChild(div);
         }
     }
-
-
-    /* =========================
-       حماية النص
-    ========================= */
 
     function escapeHTML(text) {
 
@@ -945,11 +889,6 @@
         return div.innerHTML;
     }
 
-
-    /* =========================
-       نافذة إنشاء قائمة
-    ========================= */
-
     function showCreateList() {
 
         document
@@ -957,12 +896,10 @@
             .classList
             .add("show");
 
-
         document
             .getElementById("listName")
             .focus();
     }
-
 
     function closeListModal() {
 
@@ -972,11 +909,6 @@
             .remove("show");
     }
 
-
-    /* =========================
-       إنشاء قائمة
-    ========================= */
-
     async function createList() {
 
         var name =
@@ -985,26 +917,19 @@
                 .value
                 .trim();
 
-
         if (name === "") {
 
-            alert(
-                "اكتب اسم القائمة"
-            );
+            alert("اكتب اسم القائمة");
 
             return;
         }
-
 
         if (!currentCategory) {
 
-            alert(
-                "لم يتم تحديد القسم"
-            );
+            alert("لم يتم تحديد القسم");
 
             return;
         }
-
 
         var result =
             await supabaseClient
@@ -1016,14 +941,12 @@
                 .select()
                 .single();
 
-
         if (result.error) {
 
             console.error(
                 "SUPABASE ERROR:",
                 result.error
             );
-
 
             alert(
                 "خطأ Supabase:\n\n" +
@@ -1035,21 +958,14 @@
             return;
         }
 
-
         document
             .getElementById("listName")
             .value = "";
-
 
         closeListModal();
 
         await showLists();
     }
-
-
-    /* =========================
-       حذف القائمة
-    ========================= */
 
     async function deleteList(id) {
 
@@ -1063,16 +979,11 @@
             return;
         }
 
-
         var result =
             await supabaseClient
                 .from("lists")
                 .delete()
-                .eq(
-                    "id",
-                    id
-                );
-
+                .eq("id", id);
 
         if (result.error) {
 
@@ -1080,7 +991,6 @@
                 "SUPABASE ERROR:",
                 result.error
             );
-
 
             alert(
                 "حدث خطأ أثناء حذف القائمة:\n\n" +
@@ -1090,14 +1000,8 @@
             return;
         }
 
-
         await showLists();
     }
-
-
-    /* =========================
-       فتح القائمة
-    ========================= */
 
     async function openList(id) {
 
@@ -1105,12 +1009,8 @@
             await supabaseClient
                 .from("lists")
                 .select("*")
-                .eq(
-                    "id",
-                    id
-                )
+                .eq("id", id)
                 .single();
-
 
         if (result.error) {
 
@@ -1118,7 +1018,6 @@
                 "SUPABASE ERROR:",
                 result.error
             );
-
 
             alert(
                 "تعذر فتح القائمة:\n\n" +
@@ -1128,86 +1027,64 @@
             return;
         }
 
-
-        currentList =
-            result.data;
-
+        currentList = result.data;
 
         document
             .getElementById("categoryPage")
             .style
             .display = "none";
 
-
         document
             .getElementById("listPage")
             .style
             .display = "block";
-
 
         document
             .getElementById("listTitle")
             .textContent =
             currentList.name;
 
-
         await showRecitations();
     }
-
-
-    /* =========================
-       العودة للقوائم
-    ========================= */
 
     function backToCategory() {
 
         currentList = null;
-
 
         document
             .getElementById("listPage")
             .style
             .display = "none";
 
-
         document
             .getElementById("categoryPage")
             .style
             .display = "block";
 
-
         showLists();
     }
-
-
-    /* =========================
-       نافذة إضافة تلاوة
-    ========================= */
 
     function showAddRecitation() {
 
         currentSourceType = "youtube";
-
 
         document
             .getElementById("recitationModal")
             .classList
             .add("show");
 
-
         document
             .getElementById("recitationName")
             .value = "";
-
 
         document
             .getElementById("youtubeUrl")
             .value = "";
 
-
+        /* 10 أجزاء بالضبط */
         for (
             var i = 1;
-            i <= 4;
+            i <= 10;
             i++
         ) {
 
@@ -1221,21 +1098,17 @@
                 "لم يتم اختيار ملف";
         }
 
-
         document
             .getElementById("uploadStatus")
             .classList
             .remove("show");
 
-
         changeSourceType("youtube");
-
 
         document
             .getElementById("recitationName")
             .focus();
     }
-
 
     function closeRecitationModal() {
 
@@ -1245,15 +1118,9 @@
             .remove("show");
     }
 
-
-    /* =========================
-       تغيير نوع المصدر
-    ========================= */
-
     function changeSourceType(type) {
 
         currentSourceType = type;
-
 
         var youtubeOption =
             document.getElementById("youtubeOption");
@@ -1261,40 +1128,29 @@
         var audioOption =
             document.getElementById("audioOption");
 
-
         var youtubeSection =
             document.getElementById("youtubeSection");
 
         var audioSection =
             document.getElementById("audioSection");
 
-
         if (type === "youtube") {
 
             youtubeOption.classList.add("active");
-
             audioOption.classList.remove("active");
 
             youtubeSection.classList.add("active");
-
             audioSection.classList.remove("active");
 
         } else {
 
             youtubeOption.classList.remove("active");
-
             audioOption.classList.add("active");
 
             youtubeSection.classList.remove("active");
-
             audioSection.classList.add("active");
         }
     }
-
-
-    /* =========================
-       عرض اسم الجزء
-    ========================= */
 
     function showPartFile(partNumber) {
 
@@ -1305,12 +1161,10 @@
                 )
                 .files[0];
 
-
         var element =
             document.getElementById(
                 "part" + partNumber + "Name"
             );
-
 
         if (!file) {
 
@@ -1320,12 +1174,10 @@
             return;
         }
 
-
         var sizeMB =
             file.size /
             1024 /
             1024;
-
 
         element.textContent =
             file.name +
@@ -1334,11 +1186,6 @@
             " MB";
     }
 
-
-    /* =========================
-       استخراج YouTube ID
-    ========================= */
-
     function getYoutubeId(url) {
 
         var match =
@@ -1346,21 +1193,12 @@
                 /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/
             );
 
-
         if (match) {
-
             return match[1];
         }
 
-
         return null;
     }
-
-
-    /* =========================
-       رفع ملف واحد
-       باستخدام Signed Upload URL
-    ========================= */
 
     async function uploadAudioFast(
         file,
@@ -1379,17 +1217,13 @@
                     }
                 );
 
-
         if (signedResult.error) {
-
             throw signedResult.error;
         }
-
 
         var signedUrl =
             signedResult.data &&
             signedResult.data.signedUrl;
-
 
         if (!signedUrl) {
 
@@ -1398,13 +1232,11 @@
             );
         }
 
-
         return new Promise(
             function(resolve, reject) {
 
                 var xhr =
                     new XMLHttpRequest();
-
 
                 xhr.open(
                     "PUT",
@@ -1412,18 +1244,15 @@
                     true
                 );
 
-
                 xhr.setRequestHeader(
                     "Content-Type",
                     file.type || "audio/mpeg"
                 );
 
-
                 xhr.setRequestHeader(
                     "Cache-Control",
                     "max-age=3600"
                 );
-
 
                 xhr.upload.onprogress =
                     function(event) {
@@ -1434,13 +1263,11 @@
                             return;
                         }
 
-
                         var percent =
                             (
                                 event.loaded /
                                 event.total
                             ) * 100;
-
 
                         if (
                             typeof onProgress ===
@@ -1454,7 +1281,6 @@
                             );
                         }
                     };
-
 
                 xhr.onload =
                     function() {
@@ -1471,11 +1297,9 @@
                             return;
                         }
 
-
                         var message =
                             "فشل رفع الملف. HTTP " +
                             xhr.status;
-
 
                         try {
 
@@ -1483,7 +1307,6 @@
                                 JSON.parse(
                                     xhr.responseText
                                 );
-
 
                             if (
                                 response.message
@@ -1496,12 +1319,10 @@
 
                         } catch (_) {}
 
-
                         reject(
                             new Error(message)
                         );
                     };
-
 
                 xhr.onerror =
                     function() {
@@ -1513,7 +1334,6 @@
                         );
                     };
 
-
                 xhr.onabort =
                     function() {
 
@@ -1524,16 +1344,10 @@
                         );
                     };
 
-
                 xhr.send(file);
             }
         );
     }
-
-
-    /* =========================
-       إنشاء اسم ملف آمن
-    ========================= */
 
     function createSafeFilePath(
         partNumber,
@@ -1544,7 +1358,6 @@
             Math.random()
                 .toString(36)
                 .substring(2, 10);
-
 
         return (
             "recitations/" +
@@ -1558,11 +1371,6 @@
         );
     }
 
-
-    /* =========================
-       استخراج امتداد الملف
-    ========================= */
-
     function getExtension(file) {
 
         if (
@@ -1574,7 +1382,6 @@
             return "mp3";
         }
 
-
         var extension =
             file.name
                 .split(".")
@@ -1584,7 +1391,6 @@
                     /[^a-z0-9]/g,
                     ""
                 );
-
 
         var allowedExtensions = [
             "mp3",
@@ -1597,7 +1403,6 @@
             "flac"
         ];
 
-
         if (
             !allowedExtensions.includes(
                 extension
@@ -1607,23 +1412,17 @@
             return "mp3";
         }
 
-
         return extension;
     }
-
-
-    /* =========================
-       التحقق من الأجزاء
-    ========================= */
 
     function getAudioParts() {
 
         var parts = [];
 
-
+        /* 10 أجزاء بالضبط */
         for (
             var i = 1;
-            i <= 4;
+            i <= 10;
             i++
         ) {
 
@@ -1632,15 +1431,12 @@
                     "audioPart" + i
                 );
 
-
             var file =
                 input.files[0];
-
 
             if (!file) {
                 continue;
             }
-
 
             if (
                 !file.type.startsWith(
@@ -1655,7 +1451,6 @@
                 );
             }
 
-
             if (
                 file.size <= 0
             ) {
@@ -1666,7 +1461,6 @@
                     " فارغ."
                 );
             }
-
 
             if (
                 file.size >
@@ -1687,13 +1481,11 @@
                 );
             }
 
-
             parts.push({
                 partNumber: i,
                 file: file
             });
         }
-
 
         if (
             parts.length === 0
@@ -1704,14 +1496,8 @@
             );
         }
 
-
         return parts;
     }
-
-
-    /* =========================
-       إضافة التلاوة
-    ========================= */
 
     async function createRecitation() {
 
@@ -1724,7 +1510,6 @@
             return;
         }
 
-
         var name =
             document
                 .getElementById(
@@ -1732,7 +1517,6 @@
                 )
                 .value
                 .trim();
-
 
         if (name === "") {
 
@@ -1743,27 +1527,19 @@
             return;
         }
 
-
         var button =
             document.getElementById(
                 "addRecitationButton"
             );
-
 
         var status =
             document.getElementById(
                 "uploadStatus"
             );
 
-
         button.disabled = true;
 
-
         try {
-
-            /* =========================
-               YouTube
-            ========================= */
 
             if (
                 currentSourceType ===
@@ -1778,7 +1554,6 @@
                         .value
                         .trim();
 
-
                 if (url === "") {
 
                     alert(
@@ -1788,10 +1563,8 @@
                     return;
                 }
 
-
                 var videoId =
                     getYoutubeId(url);
-
 
                 if (!videoId) {
 
@@ -1802,18 +1575,14 @@
                     return;
                 }
 
-
                 var thumbnail =
                     "https://img.youtube.com/vi/" +
                     videoId +
                     "/hqdefault.jpg";
 
-
                 var result =
                     await supabaseClient
-                        .from(
-                            "recitations"
-                        )
+                        .from("recitations")
                         .insert({
 
                             list_id:
@@ -1836,17 +1605,13 @@
 
                         });
 
-
                 if (result.error) {
-
                     throw result.error;
                 }
-
 
                 alert(
                     "تمت إضافة التلاوة بنجاح"
                 );
-
 
                 closeRecitationModal();
 
@@ -1855,32 +1620,17 @@
                 return;
             }
 
-
-            /* =========================
-               الملفات الصوتية
-            ========================= */
-
             var parts =
                 getAudioParts();
-
 
             status.textContent =
                 "جاري إنشاء التلاوة...";
 
-
             status.classList.add("show");
-
-
-            /*
-             * ننشئ سجل التلاوة أولًا.
-             * بعد ذلك نربط الأجزاء به.
-             */
 
             var recitationInsert =
                 await supabaseClient
-                    .from(
-                        "recitations"
-                    )
+                    .from("recitations")
                     .insert({
 
                         list_id:
@@ -1905,7 +1655,6 @@
                     .select()
                     .single();
 
-
             if (
                 recitationInsert.error
             ) {
@@ -1913,19 +1662,12 @@
                 throw recitationInsert.error;
             }
 
-
             var recitation =
                 recitationInsert.data;
 
-
             var uploadedFiles = [];
 
-
             try {
-
-                /*
-                 * رفع الأجزاء واحدًا واحدًا
-                 */
 
                 for (
                     var i = 0;
@@ -1936,12 +1678,10 @@
                     var part =
                         parts[i];
 
-
                     var extension =
                         getExtension(
                             part.file
                         );
-
 
                     var filePath =
                         createSafeFilePath(
@@ -1949,14 +1689,12 @@
                             extension
                         );
 
-
                     status.textContent =
                         "جاري رفع الجزء " +
                         part.partNumber +
                         " من " +
                         parts.length +
                         "...";
-
 
                     var uploadResult =
                         await uploadAudioFast(
@@ -1973,12 +1711,10 @@
                                     1024 /
                                     1024;
 
-
                                 var totalMB =
                                     bytesTotal /
                                     1024 /
                                     1024;
-
 
                                 status.textContent =
                                     "جاري رفع الجزء " +
@@ -1995,15 +1731,9 @@
                             }
                         );
 
-
                     uploadedFiles.push(
                         uploadResult.path
                     );
-
-
-                    /*
-                     * الرابط العام للجزء
-                     */
 
                     var publicResult =
                         supabaseClient
@@ -2013,16 +1743,10 @@
                                 uploadResult.path
                             );
 
-
                     var audioUrl =
                         publicResult
                             .data
                             .publicUrl;
-
-
-                    /*
-                     * حفظ الجزء في recitation_parts
-                     */
 
                     var partInsert =
                         await supabaseClient
@@ -2042,7 +1766,6 @@
 
                             });
 
-
                     if (
                         partInsert.error
                     ) {
@@ -2051,26 +1774,18 @@
                     }
                 }
 
-
                 status.textContent =
                     "تم رفع جميع الأجزاء وحفظ التلاوة.";
-
 
                 alert(
                     "تمت إضافة التلاوة بجميع أجزائها بنجاح"
                 );
-
 
                 closeRecitationModal();
 
                 await showRecitations();
 
             } catch (uploadError) {
-
-                /*
-                 * إذا حصل خطأ أثناء الرفع:
-                 * نحذف الملفات التي تم رفعها.
-                 */
 
                 for (
                     var j = 0;
@@ -2090,21 +1805,13 @@
                     } catch (_) {}
                 }
 
-
-                /*
-                 * نحذف سجل التلاوة
-                 */
-
                 await supabaseClient
-                    .from(
-                        "recitations"
-                    )
+                    .from("recitations")
                     .delete()
                     .eq(
                         "id",
                         recitation.id
                     );
-
 
                 throw uploadError;
             }
@@ -2115,7 +1822,6 @@
                 "ERROR:",
                 error
             );
-
 
             alert(
                 "حدث خطأ:\n\n" +
@@ -2135,11 +1841,6 @@
         }
     }
 
-
-    /* =========================
-       عرض التلاوات
-    ========================= */
-
     async function showRecitations() {
 
         var container =
@@ -2147,13 +1848,11 @@
                 "recitations"
             );
 
-
         container.innerHTML = `
             <p class="subtitle">
                 جارٍ تحميل التلاوات...
             </p>
         `;
-
 
         if (!currentList) {
 
@@ -2165,7 +1864,6 @@
 
             return;
         }
-
 
         var result =
             await supabaseClient
@@ -2182,14 +1880,12 @@
                     }
                 );
 
-
         if (result.error) {
 
             console.error(
                 "SUPABASE ERROR:",
                 result.error
             );
-
 
             container.innerHTML = `
                 <p class="subtitle">
@@ -2200,10 +1896,8 @@
             return;
         }
 
-
         var recitations =
             result.data || [];
-
 
         if (
             recitations.length === 0
@@ -2218,9 +1912,7 @@
             return;
         }
 
-
         container.innerHTML = "";
-
 
         for (
             var i = 0;
@@ -2231,27 +1923,19 @@
             var rec =
                 recitations[i];
 
-
             var div =
                 document.createElement(
                     "div"
                 );
 
-
             div.className =
                 "recitation";
-
 
             var isAudio =
                 rec.source_type ===
                 "audio";
 
-
             if (isAudio) {
-
-                /*
-                 * جلب عدد الأجزاء
-                 */
 
                 var partsResult =
                     await supabaseClient
@@ -2272,16 +1956,13 @@
                             }
                         );
 
-
                 var parts =
                     partsResult.data ||
                     [];
 
-
                 var partsText =
                     parts.length +
                     " أجزاء";
-
 
                 if (
                     parts.length === 1
@@ -2290,7 +1971,6 @@
                     partsText =
                         "جزء واحد";
                 }
-
 
                 div.innerHTML = `
                     <div class="recitation-info">
@@ -2364,15 +2044,9 @@
                 `;
             }
 
-
             container.appendChild(div);
         }
     }
-
-
-    /* =========================
-       حذف تلاوة واحدة فقط
-    ========================= */
 
     async function deleteRecitation(id) {
 
@@ -2386,11 +2060,6 @@
             return;
         }
 
-
-        /*
-         * أولًا نقرأ التلاوة
-         */
-
         var recitationResult =
             await supabaseClient
                 .from("recitations")
@@ -2400,7 +2069,6 @@
                     id
                 )
                 .single();
-
 
         if (
             recitationResult.error
@@ -2414,18 +2082,10 @@
             return;
         }
 
-
         var rec =
             recitationResult.data;
 
-
-        /*
-         * إذا كانت صوتية:
-         * نجلب الأجزاء وروابطها
-         */
-
         var parts = [];
-
 
         if (
             rec.source_type ===
@@ -2437,29 +2097,20 @@
                     .from(
                         "recitation_parts"
                     )
-                    .select(
-                        "*"
-                    )
+                    .select("*")
                     .eq(
                         "recitation_id",
                         id
                     );
-
 
             if (
                 !partsResult.error
             ) {
 
                 parts =
-                    partsResult.data ||
-                    [];
+                    partsResult.data || [];
             }
         }
-
-
-        /*
-         * حذف ملفات Storage
-         */
 
         if (
             parts.length > 0
@@ -2467,10 +2118,8 @@
 
             var paths = [];
 
-
             var marker =
                 "/storage/v1/object/public/audio/";
-
 
             for (
                 var i = 0;
@@ -2481,19 +2130,14 @@
                 var audioUrl =
                     parts[i].audio_url;
 
-
-                if (
-                    !audioUrl
-                ) {
+                if (!audioUrl) {
                     continue;
                 }
-
 
                 var index =
                     audioUrl.indexOf(
                         marker
                     );
-
 
                 if (
                     index !== -1
@@ -2507,13 +2151,11 @@
                             )
                         );
 
-
                     paths.push(
                         filePath
                     );
                 }
             }
-
 
             if (
                 paths.length > 0
@@ -2538,11 +2180,6 @@
             }
         }
 
-
-        /*
-         * حذف أجزاء التلاوة
-         */
-
         var partsDelete =
             await supabaseClient
                 .from(
@@ -2554,7 +2191,6 @@
                     id
                 );
 
-
         if (
             partsDelete.error
         ) {
@@ -2565,11 +2201,6 @@
             );
         }
 
-
-        /*
-         * حذف سجل التلاوة فقط
-         */
-
         var result =
             await supabaseClient
                 .from("recitations")
@@ -2579,7 +2210,6 @@
                     id
                 );
 
-
         if (
             result.error
         ) {
@@ -2588,7 +2218,6 @@
                 "SUPABASE ERROR:",
                 result.error
             );
-
 
             alert(
                 "حدث خطأ أثناء حذف التلاوة:\n\n" +
@@ -2600,7 +2229,6 @@
             return;
         }
 
-
         await showRecitations();
     }
 
@@ -2608,3 +2236,4 @@
 
 </body>
 </html>
+```
