@@ -1922,16 +1922,47 @@ partDurations = [];
 partStartTimes = [0];
 totalDuration = 0;
 
-
 audio.src =
 data.audio_url;
-
 
 document.getElementById(
 "downloadButton"
 ).href =
 data.audio_url;
 
+/*
+   التلاوات القديمة ملف واحد،
+   لذلك نحصل على مدتها مباشرة
+*/
+
+try{
+
+const duration =
+await getAudioDuration(
+data.audio_url
+);
+
+partDurations = [
+duration
+];
+
+partStartTimes = [
+0
+];
+
+totalDuration = duration;
+
+durationEl.textContent =
+formatTime(totalDuration);
+
+}catch(error){
+
+console.error(
+"تعذر معرفة مدة التلاوة القديمة:",
+error
+);
+
+}
 
 }
 
